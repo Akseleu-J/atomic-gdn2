@@ -1910,7 +1910,7 @@
   ],
   "checkpoint_publication": {
     "hub_repository": "Akseleu/Atomic-GDN2",
-    "hub_revision": "5c133c76c528c5f94273f304628a99ff055cc2c1",
+    "hub_revision": "3244eba9175042647139566294f7e9baa266f384",
     "format": "FP32 original-layout Flax safetensors",
     "exports": [
       {
@@ -1960,6 +1960,7 @@
       "hybrid/seed-1": 62673,
       "hybrid/seed-2": 62683
     },
-    "verification": "Tensor bytes roundtripped exactly on Kaggle CPU; remote LFS SHA256 matched each export manifest; no restored-model evaluation was rerun"
+    "verification": "Tensor bytes roundtripped exactly on Kaggle CPU; remote LFS SHA256 matched each export manifest; no restored-model evaluation was rerun",
+    "current_tree_scope": "Four current runs plus seed-2 aliases; superseded legacy paths removed from main"
   }
 }

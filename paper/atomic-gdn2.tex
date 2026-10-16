@@ -32,8 +32,7 @@ The uncertainty shown is sample standard deviation over two seeds. Hybrid has lo
 at every shared logged evaluation in both seeds and reaches the evaluated BPB thresholds
 using 14.3--18.5\% fewer tokens and 10.4--13.6\% less logged notebook time.
 These results compare complete architectures: they do not isolate the contribution of
-delta routing, equalize FLOPs, or establish downstream generalization. Historical kernel
-timings are reported separately from these model results, with reproducibility caveats.
+delta routing, equalize FLOPs, or establish downstream generalization. Historical kernel microbenchmark ratios are not used to infer model-level speedups.
 Code, exact run evidence, analysis data and checkpoint export metadata accompany the paper.
 \end{abstract}
 
@@ -61,11 +60,6 @@ learning curves, first-observed threshold crossings and immutable source provena
 The two architectures share the same kernel implementation, so their quality difference
 is not a comparison of Pallas against a scan backend.
 
-The experimental result is intentionally narrow. At a shared observed token count, hybrid
-has lower validation loss despite having fewer parameters. This is evidence about these
-two architectures on this corpus and schedule, not a state-of-the-art claim or an isolated
-DAR ablation. The article also separates historical kernel timing reports from current
-model results rather than interpreting a large microbenchmark ratio as model-level speedup.
 
 \section{Background and mathematical specification}
 \subsection{Gated DeltaNet-2 recurrence}
@@ -156,48 +150,13 @@ $g_{max}b_{s2}/2=80$ stays below the nominal exponential limit 88.
 Kernel-level clipping uses $10^4$; the hybrid has separate mixer/residual sanitization
 at $10^3$. The frequency and quality effect of these safeguards were not measured.
 
-\subsection{Historical timing evidence and its scope}
-Table~\ref{tab:kernel} reproduces the values stored in the kernel repository's historical
-\texttt{attestation/scaling.json}, not a benchmark newly executed for this paper revision.
-They concern a single TPU v5e chip, $B=4$, head dimension 128, inner block size 64,
-and the supplied associative-scan wrapper. The largest reported ratio is 467.64$\times$.
-The model runs use eight devices, eight heads and inner block size 32, so the ratio is
-not transferred to their throughput.
-\begin{table}[htbp]\centering\small
-\caption{Historical reported kernel forward-plus-backward timings. The wrappers require
-the reproduction qualifications in the text; these are not new measurements of this release.}
-\label{tab:kernel}
-\begin{tabular}{rrrrr}\toprule
-Heads & Length & Scan wrapper (ms) & Pallas (ms) & Reported ratio\\\midrule
-2&2048&288.796&1.498&192.83$\times$\\
-2&4096&575.320&2.781&206.90$\times$\\
-4&2048&744.459&2.485&299.59$\times$\\
-4&4096&1501.515&4.668&321.69$\times$\\
-6&2048&1198.748&2.563&467.64$\times$\\
-6&4096&2398.292&5.352&448.10$\times$\\\bottomrule
-\end{tabular}\end{table}
-
-A static audit of the current reproduction notebook found duplicate argument passing
-and nonidentical initial-state, output-scale and final-state handling in the old scan
-wrapper. The supplied loss includes the final-state norm, so these differences matter.
-The old composition also normalizes transition matrices. A corrected reproduction
-harness now gates timing on matched forward and gradient comparisons, but has not been
-timed on TPU. Consequently, the historical ratios are descriptive reports, not newly
-established equivalent-workload speedups.
-
-Table~\ref{tab:correctness} records the historical forward-output comparisons against
-a JAX reference. They concern two shapes and do not constitute a general backward bound.
-The larger aggregate contains 145 PASS entries and one OLD-baseline MQAR OOM;
-its entries mix numerical, training and status checks. Raw per-notebook logs were not
-committed with that aggregate. A separate 200.17$\times$ end-to-end figure in older
-documentation lacks its matching raw artifact in the inspected aggregate and is not
-used as a result here. The complete evidence notes and exact files are linked in the repository.
-\begin{table}[htbp]\centering\small
-\caption{Historically reported forward relative $L_2$ error, Pallas versus the JAX reference,
-at length 2048. These are source-attestation values, not rerun results.}\label{tab:correctness}
-\begin{tabular}{rr}\toprule Heads&Relative $L_2$\\\midrule
-4&$2.486\times10^{-6}$\\6&$2.481\times10^{-6}$\\\bottomrule
-\end{tabular}\end{table}
+\subsection{Evidence boundary}
+Both language-model architectures use the same pinned kernel implementation.
+Historical kernel microbenchmarks use different shapes and a supplied scan wrapper whose
+initial-state, scaling, final-state and composition conventions require an equivalence audit.
+They are not used to claim a speedup of hybrid over the baseline. Detailed source evidence
+and a corrected, as-yet-untimed reproduction harness are provided in the model repository's
+\texttt{docs/KERNEL\_EVIDENCE.md}; kernel code remains at the pinned \texttt{atomic-ops} revision.
 
 \section{Hybrid architecture}
 The model has seven blocks, each with three GDN-2 mixers followed by one causal MLA
@@ -205,8 +164,7 @@ mixer and one SwiGLU FFN. MLA uses a rank-512 KV representation and separate 64-
 non-positional and rotary query/key components per head. The model configuration is
 given in Table~\ref{tab:model}. In comparison, each baseline block has four GDN-2 mixers
 and one FFN. The baseline has 334,156,800 parameters and hybrid has 307,131,392,
-approximately 8.09\% fewer. These are measured current parameter counts; the older
-342M Q/K-router model is a different implementation.
+approximately 8.09\% fewer.
 
 \begin{table}[htbp]\centering\small
 \caption{Current model configuration. A token mixer is counted separately from the one FFN
@@ -238,8 +196,8 @@ These are depth sources at the same sequence position, not persistent memory acr
 independent sequences. The current design does not contain the previous standalone
 IntraBlockAttention Q/K projection mechanism.
 
-\begin{figure}[p]\centering
-\includegraphics[width=0.97\textwidth,height=0.78\textheight,keepaspectratio]{figures/architecture.pdf}
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.90\textwidth,height=0.60\textheight,keepaspectratio]{figures/architecture.pdf}
 \caption{The current hybrid computation, with a diagram layout inspired by the stacked
 residual presentation of Vaswani et al.~\cite{transformer}. (a) Seven blocks, each containing
 three GDN-2 mixers, one MLA mixer and one FFN. (b) Sequential sublayers with an ordinary
@@ -297,7 +255,7 @@ hybrid&2&62,683&4.107993&8.801&Complete\\\bottomrule
 Figure~\ref{fig:main}A shows the mean and sample standard deviation over the two seeds.
 Hybrid is lower at every one of the 41 shared logged evaluations, from step 1500 to 61,500,
 in both seeds. Selected values appear in Table~\ref{tab:main}; the complete per-seed table
-is in the accompanying CSV and Appendix~\ref{app:full}.
+is in the accompanying CSV and machine-readable attestation.
 
 At exactly 61,500 steps, both models have processed 4,030,464,000 training target tokens.
 Baseline reaches $1.005909\pm0.000227$ estimated BPB and hybrid reaches
@@ -310,7 +268,6 @@ its observed final steps 62,673 and 62,683. Their respective means are 1.004928 
 $\Delta=-0.011617$. This analytical cutoff was selected after the runs and is not an
 exactly token-matched endpoint. The original baseline evaluations through 65,000 remain
 in the released logs; Table~\ref{tab:runs} reports actual completion rather than the cutoff.
-There is no fabricated hybrid observation at 63,000 or exact evaluation at 1.5B tokens.
 
 \begin{table}[htbp]\centering\small
 \caption{Selected shared-step estimated BPB results, mean $\pm$ sample SD across two seeds.
@@ -435,9 +392,8 @@ formal significance or asymptotic convergence claim.
 \paragraph{Numerics, artifacts and reproducibility.}
 The implementation uses clipping, damping and NaN replacement. Their activation rates
 and effect on quality are not separately characterized. Historical kernel attestations
-use older source/content identifiers and incomplete raw provenance; the previous
-reproducer had workload-equivalence defects. Its corrected parity-gated replacement is
-not a newly measured result. Finite training and successful checkpoint publication do
+use older source/content identifiers and incomplete raw provenance. No new equivalent-workload
+kernel speedup is established in this study. Finite training and successful checkpoint publication do
 not prove backward equivalence or independent reproduction. The release distinguishes
 lossless weight serialization checks from a full rerun of evaluation.
 
@@ -450,18 +406,15 @@ baseline, with lower BPB at all shared evaluations in both seeds and approximate
 14.3--18.5\% in tokens and 10.4--13.6\% in logged notebook time.
 These are bounded architectural results, not an isolated explanation of DAR's effect.
 The next informative experiments are additional seeds, component ablations, a fixed-token
-learning-rate schedule and independent task evaluation. A parity-gated kernel rerun is
-also needed before treating the historical largest speedup as a current equivalent-workload claim.
+learning-rate schedule and independent task evaluation.
 
 \paragraph{Code and artifact availability.}
 The publication repository is \repo. Kernel implementation and detailed historical
 evidence are at \url{https://github.com/Akseleu-J/atomic-ops}; checkpoint exports and model
 card are at \url{https://huggingface.co/Akseleu/Atomic-GDN2}. The model repository contains
 the source of this paper, vector figures, exact tables and a ZIP of all four run records.
-The old model repository is retained separately as a private archive. Readers should use
-the immutable training commits and per-file manifests rather than assume current main
-is the training snapshot. The availability statements describe the accompanying release,
-not an arXiv acceptance or submission.
+Immutable training commits and per-file manifests identify the code that produced
+the measurements; the publication repository contains the revised documentation and analysis.
 
 \begin{thebibliography}{9}
 \bibitem{gdn2} A. Hatamizadeh, Y. Choi and J. Kautz.
@@ -485,38 +438,23 @@ Advances in Neural Information Processing Systems, 2017. arXiv:1706.03762.
 \appendix
 \section{Per-seed and wall-time views}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\textwidth]{figures/figure4-per-seed.pdf}
+\includegraphics[width=.94\textwidth]{figures/figure4-per-seed.pdf}
 \caption{The two seed pairs shown separately, with the same axes and analytical cutoffs.
 Hybrid has lower estimated BPB at every common recorded step in each pair.}
 \end{figure}
 \begin{figure}[htbp]\centering
-\includegraphics[width=.86\textwidth]{figures/figure3-wall-time-to-target.pdf}
+\includegraphics[width=.74\textwidth]{figures/figure3-wall-time-to-target.pdf}
 \caption{Notebook time at the first logged target crossing, including setup/compilation
 and earlier validation/checkpoint overhead, excluding queue time. Bars are means and
 error bars are sample SD over two seeds.}
 \end{figure}
 \FloatBarrier
 
-\section{Complete shared-step results}\label{app:full}
-\small
-\input{tables/full-results.tex}
-\normalsize
-The near-step endpoints are deliberately outside the exact shared-step table. Their
-per-seed values are Baseline 1.005107974/1.004748581 at step 63,000 and hybrid
-0.993435231/0.993186593 at steps 62,673/62,683. Original baseline final values at 65,000
-are 1.004100976 and 1.003824738. All these observations remain in the raw records.
-
 \section{Reproduction records}
-The machine-readable attestation contains source commits and hashes, the full evolution,
-per-seed threshold crossings and the exact/near-step alignment distinction. The artifact ZIP
-retains the original metrics JSONL, notebook stdout/stderr and training log for each run,
-plus config, runtime checks and checkpoint metadata. Source/dataset edge hashes are not
-substitutes for full independent reproduction or a full-corpus checksum.
-
-Weight exports preserve FP32 values and Flax tensor naming. Each export manifest specifies
-the source step, seed, tensor count, element count and digest. The default weight paths
-identify a concrete seed rather than an averaged or merged model. The model card explains
-the difference between current and legacy weights, intended research use and the absence
-of instruction tuning. Optimizer state is retained in the original training checkpoint
-format, not silently embedded into an inference safetensors file.
+The repository attestation contains source hashes, learning curves, per-seed crossings and
+the exact/near-step distinction. Its artifact ZIP retains metrics, console and training logs,
+resolved configs and runtime checks for all four runs. Dataset edge hashes are not a full-corpus
+checksum. Each safetensors manifest records its source step, seed, shapes, count and digest;
+default aliases refer to seed 2. Inference exports exclude the optimizer state retained in
+the original Orbax checkpoints. The model card documents research use and absence of instruction tuning.
 \end{document}

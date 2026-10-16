@@ -53,7 +53,11 @@ The previous notebook had duplicate h0 arguments, unequal h0/final-state/scale b
 transition normalization inside OLD composition, a removed b4_dot_mode field hidden by a broad
 exception, and different timing repeat counts. It had no saved execution outputs.
 These defects do not prove historical measurements false, but prevent treating the old wrapper
-as an equivalent-workload reproducer. See `docs/REPRODUCTION_PROTOCOL.md` in atomic-ops.
+as an equivalent-workload reproducer. The optional corrected harness is
+[`scripts/reproduce_kernel_bench.py`](../scripts/reproduce_kernel_bench.py) in this model repository.
+At the owner's request, publication documentation changes in atomic-ops were reverted;
+its tracked tree is restored exactly to the pinned kernel revision. These audit notes belong
+to the model publication and do not change the numerical kernel implementation.
 
 The updated harness compares identical nonzero h0, actual final state, output scale and loss,
 uses pure affine composition, zero damping for equivalence, equal precision and repeats,

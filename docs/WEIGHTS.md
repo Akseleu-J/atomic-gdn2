@@ -14,7 +14,9 @@ The GPT-2 tokenizer is external; use `openai-community/gpt2`.
 
 Default model aliases, where provided, refer to seed 2; they are not an average or merged checkpoint.
 Check `export.json` for tensor shapes, finite-value checks, parameter count, exact roundtrip verification
-and the file SHA256. Legacy checkpoints are preserved under a separately labelled legacy path/history.
+and the file SHA256. The current HF tree contains only the four reported checkpoints and
+their seed-2 default aliases. Superseded legacy paths were removed from main; previous HF
+commits remain in ordinary revision history.
 
 ## Re-export an original Orbax checkpoint
 
@@ -43,6 +45,6 @@ All four were exported on Kaggle CPU and uploaded separately.
 | `hybrid/seed-1/model.safetensors` | 1,228,565,080 | `f0c178b48424c208a499cc0e58912d985a0f3f1a1a39e9a02d5621054ddc463f` |
 | `hybrid/seed-2/model.safetensors` | 1,228,565,080 | `4f44215338eaeab0fc043b9151ad7f32e798a0ae34ae83626b458c356e750ca8` |
 
-HF release revision: `5c133c76c528c5f94273f304628a99ff055cc2c1`.
+HF release revision: `3244eba9175042647139566294f7e9baa266f384`.
 
 Temporary private env datasets were used only for the authorized export. They are not part of this repository or the weight files.
