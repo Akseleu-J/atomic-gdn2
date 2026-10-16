@@ -45,6 +45,8 @@ All four were exported on Kaggle CPU and uploaded separately.
 | `hybrid/seed-1/model.safetensors` | 1,228,565,080 | `f0c178b48424c208a499cc0e58912d985a0f3f1a1a39e9a02d5621054ddc463f` |
 | `hybrid/seed-2/model.safetensors` | 1,228,565,080 | `4f44215338eaeab0fc043b9151ad7f32e798a0ae34ae83626b458c356e750ca8` |
 
-HF release revision: `3244eba9175042647139566294f7e9baa266f384`.
+HF release revision: `fb8fdf2e00b992f4041885d26b209fcedb5b5c0c`.
 
 Temporary private env datasets were used only for the authorized export. They are not part of this repository or the weight files.
+
+The current technical model card is also archived in [MODEL_CARD.md](MODEL_CARD.md).

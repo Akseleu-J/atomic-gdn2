@@ -1910,7 +1910,7 @@
   ],
   "checkpoint_publication": {
     "hub_repository": "Akseleu/Atomic-GDN2",
-    "hub_revision": "3244eba9175042647139566294f7e9baa266f384",
+    "hub_revision": "fb8fdf2e00b992f4041885d26b209fcedb5b5c0c",
     "format": "FP32 original-layout Flax safetensors",
     "exports": [
       {
