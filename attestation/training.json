@@ -1907,5 +1907,59 @@
     "Trend OLS is descriptive; adjacent evaluations are correlated.",
     "Time-to-target limited by 1500-step evaluation grid. No predicted savings used.",
     "Checkpoint binaries not restored in this audit."
-  ]
+  ],
+  "checkpoint_publication": {
+    "hub_repository": "Akseleu/Atomic-GDN2",
+    "hub_revision": "5c133c76c528c5f94273f304628a99ff055cc2c1",
+    "format": "FP32 original-layout Flax safetensors",
+    "exports": [
+      {
+        "repo": "Akseleu/Atomic-GDN2",
+        "path": "baseline/seed-1/model.safetensors",
+        "commit": "94a3fb75fda86e56ad5be4bd821f81bed6951759",
+        "remote_sha256": "2d1b79e067a3a4c9061337c171b8e97d44fbf7d5c1908ea3aa1cf329bcd48732",
+        "bytes": 1336666296,
+        "verified": true,
+        "export_location": "Kaggle CPU",
+        "slot": 2
+      },
+      {
+        "repo": "Akseleu/Atomic-GDN2",
+        "path": "baseline/seed-2/model.safetensors",
+        "commit": "9e993caefd140dec02deeff9d48e1b3dd847dd43",
+        "remote_sha256": "6984a9ea8eaef2b474eb3c9ca763b6ec18093fbb8376c8e6939f1807ce9ed02b",
+        "bytes": 1336666296,
+        "verified": true,
+        "export_location": "Kaggle CPU",
+        "slot": 3
+      },
+      {
+        "repo": "Akseleu/Atomic-GDN2",
+        "path": "hybrid/seed-1/model.safetensors",
+        "commit": "c8b582a07f996760619fb05ef902b4e37abf24cd",
+        "remote_sha256": "f0c178b48424c208a499cc0e58912d985a0f3f1a1a39e9a02d5621054ddc463f",
+        "bytes": 1228565080,
+        "verified": true,
+        "export_location": "Kaggle CPU",
+        "slot": 4
+      },
+      {
+        "repo": "Akseleu/Atomic-GDN2",
+        "path": "hybrid/seed-2/model.safetensors",
+        "commit": "f95712f78d76e095952211d5901fe718692778aa",
+        "remote_sha256": "4f44215338eaeab0fc043b9151ad7f32e798a0ae34ae83626b458c356e750ca8",
+        "bytes": 1228565080,
+        "verified": true,
+        "export_location": "Kaggle CPU",
+        "slot": 5
+      }
+    ],
+    "actual_checkpoint_steps": {
+      "baseline/seed-1": 65000,
+      "baseline/seed-2": 65000,
+      "hybrid/seed-1": 62673,
+      "hybrid/seed-2": 62683
+    },
+    "verification": "Tensor bytes roundtripped exactly on Kaggle CPU; remote LFS SHA256 matched each export manifest; no restored-model evaluation was rerun"
+  }
 }

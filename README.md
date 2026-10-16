@@ -60,8 +60,6 @@ is not part of this release. [Architecture](docs/ARCHITECTURE.md).
 
 ## Use the weights
 
-**Publication in progress:** current safetensors exports are being verified and uploaded.
-The previous experiment remains available under the clearly labelled legacy path.
 
 
 Weights on Hugging Face use **safetensors with original Flax tensor layout**. They are not a

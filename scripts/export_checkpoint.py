@@ -2,7 +2,7 @@
 import argparse,ctypes,hashlib,json,os,sys,struct,gc
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--slot',type=int,choices=[2,3,4,5],required=True);p.add_argument('--remote',action='store_true');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--slot',type=int,choices=[2,3,4,5],required=True);p.add_argument('--remote',action='store_true');p.add_argument('--checkpoint',type=Path);args=p.parse_args()
 import numpy as np
 os.environ['TENSORSTORE_CURL_LOW_SPEED_TIME_SECONDS']='600'
 import tensorstore as ts
@@ -17,9 +17,12 @@ spec={'driver':'ocdbt','base':{'driver':'file','path':cp.as_posix()+'/'}}
 if args.remote:
     from checkpoint_http import open_remote
     spec,server=open_remote(args.slot,run,name)
+elif args.checkpoint:
+    cp=args.checkpoint.resolve()
+    assert (cp/'manifest.ocdbt').is_file(), 'Pass the Orbax default directory containing manifest.ocdbt'
+    spec={'driver':'ocdbt','base':{'driver':'file','path':cp.as_posix()+'/'}}
 else:
-    receipt=json.loads((ROOT/'reports'/f'checkpoint-{args.slot}.json').read_text())
-    assert receipt['ok'] and receipt['checkpoint_step']==run['checkpoint_step']
+    raise ValueError('Use --checkpoint /path/to/step/default or --remote with ephemeral CHECKPOINT_URLS')
 kv=ts.KvStore.open(spec).result();keys=[k.decode() for k in kv.list().result()]
 paths=sorted(k[:-len('/.zarray')] for k in keys if k.startswith('params.') and k.endswith('/.zarray'))
 assert paths

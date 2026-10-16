@@ -1,0 +1,3103 @@
+{
+  "model": "baseline",
+  "seed": 1,
+  "step": 65000,
+  "parameters": 334156800,
+  "tensor_count": 318,
+  "dtype": "float32",
+  "source_commit": "bf80e315732837c4261f32faebbb052c51dee094",
+  "kernel_commit": "0dbc59cf74883315d7adbebe9229c520663e0d58",
+  "file_sha256": "2d1b79e067a3a4c9061337c171b8e97d44fbf7d5c1908ea3aa1cf329bcd48732",
+  "bytes": 1336666296,
+  "params_only": true,
+  "optimizer_state_included": false,
+  "all_finite": true,
+  "roundtrip_bitwise_equal": true,
+  "tensors": [
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cab4e99141111821f8e6049fe6824618b4a898869ee52ca360002052a5bbb1b6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cf05ce8d299bbd3a8513534d320bd87ec28c98b68791817030811aca08529e2c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ee5747eb9cc0d160e5456fb25913eb9ecdbd8b2d51146bb92b089926fc3abafe"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "12fb2945c4ecd28beaeba91739910abbe67c50e759f304afe24823e186f81deb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "5847a945f428f9f470cb5e88113e8d255e41c207e163191dd6481d2d32477be5"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "2ce3027abf8358077aba49c200cd528976c9dff89d89cc70e5c3dcbfade8dbfb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6823080b575e8f065a370095bedcd4cee8c87df8e9875aba9a4e75df57ccec63"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0887d59762e80ebef6bc829ebea54f8479dec332340932c30eff44f995d751f4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ee63a2638ab548aef994ed9e610f5f4cdf61982d09d47a9af65c9d9826c4a9d1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "71d3f7e4192f63c80f39a4a4da6960eb60a83ff5322bd8815621908cf92d72ea"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "436192155e23787f6aa26a9929c43c9f7b6c8ed7982a36d9f8fc5bd83575ad91"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c5ab3e4d1cbfcd279b2c27cf70e40aaf4e4839e3d2508481baa54f4a1d49d6bb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "88d86caa92b25142b9a47c0dd1a216dbe8338cf4bd15757d3a447efa7ecb197f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "034629473503d4a08a9a8a2bab9aa87a7993dbea37e6b5a682da5c54534d1313"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "434d1675b4f0ab44612dc624fc7ac61dd1c003cb11f49d3bf98a41d2659c472f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0ae3a1b1ac900e6e7b5b97d8262ba77fe864cde47115a9ba72366fd4d09137b0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "004e993ded50291c9bc7204f16f9ba3d5247d4c8d86ce4df57bd689918ae7ef9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "19fe928b8cb1d42461e43145ec8fd5a24ea00665ebf9785bd6cacd39962c1725"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "fcc68ba3fbab836661255276e3473897dc4b2c6881ee8d3dc7e6c83779342806"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8af4650979dcae7684a087f51d4b11703f55780872444d26df46ba1c355431f7"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "eed93793f9390b5446e5db2f3374faf3473c300d6f62e9fea711d50b3dbd7285"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "37bcd8cdf1b282a5956e4b09fb1177234e78262abbd3e4d209811c6884c59322"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "251a3410fac762995b3414ec412adf721b4ce63f823a105f5d21acd2f4cfe1ae"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "532be9bff884f815e61d35331a4209f118424e35f2140b4bcecc1aef13360389"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6171bf3d55161f87a3e80da153c5d17568a3e883fb0801737c1de3aa2e08f377"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "73f2a5f1973be9bfb7773fd9d2d33c1d20784f92591111abf267e5f9220375dc"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "85c3d0760c7dc78209c69d689ef2ea3a86bfb97da2359faf6a6a618526a49022"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "84af7f3052c7fe0e7d9b37165542d7ba8cfbe5ebc4ce16fcbe698f34f9693fba"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "fd9576f263866a15690d9e5a96411db6a093d2267c3ee7716a081b3375d8de23"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "0f37187fa1fe168b1d425490a782261d75068fa7de141960855ec14dbff5689f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "9bbc01a07eec20138a35667417075f7206faf40fdc56c04bbb73fc46b9d6e261"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bb7a6f3f38a5b6896a67378365381274642286d2a7206d23952be3a6282dc0b9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "ee5ae15cba9d630d9d67a883a6d794a478aa1aa89ceca13c99b7fcd208d1dd32"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "464726b497a09074a5109e7d5af5e2a3030a1e733c2c16dd36fdafe5099ca00f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "22dbfc5b4ea3675fd6429e209ee1df8a77030ac4dd10b263cc9e9a607d3c3839"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "7cdd94dece48d898b4be1a0a4a2c48c3e6a211a2c014f62676f83e91442e7aa4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "f020df702c699900554b105cfd7e921d9cf417bc31f0b2e1f016894e59244c00"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "026dd2f43df06e696a1c2d5118718e6671069efacdb90a5bb4484d5b6b8bb099"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "90ca7f8a9a694a4fa4c3c7dd9a92109eb0aa098af0a1bf6dd786eee041f1b260"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "1d648fe40d5c4efff048864fab641d7a2d17a2ac835a9c3f7074dad2886e79fc"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "b41e8c480bb2bd416937807c4f9ae2c809266af181acb37f55e71c1896f87509"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "f70f9c7c102c3fd38091b5440826645b8d295572a01b2d22cca730992ceea76e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "715b616a6d2e3beb83899f8ce8d1af20d7eb3a403f2e92fa8b20676eaffc00a8"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "3f342f65e6be717467251ca9ffca44472a2c89ab0c974ee1f0e0287ce5a596c8"
+    },
+    {
+      "key": "CheckpointBaselineBlock_0/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "3a8d10005693d71329c0d6d5134e53743344f0d471ebfd0820b7c464b1031297"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c42439de62b724f657162fa82305bb3f78275ecbd7e98738ca2bd9f4fd5eeac9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "b8729888753a266889191a71bcb708adc539eb7c17aca6eacb7c5990ac7252c4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "57f6621a7c157f23aef95c6b88ced17aa04af0fc0ebe3bb013c3848a4bd04d1e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "983aec93e408cd9dd6203c24e875ecd3ad4643730510c8c648c28dbb0f2b5d74"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "5028c1674d697744991ae955c88b2f6adefb625dd75dc63a52d21e750a869273"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "a544881ff115e8c97a7926e2acc1c682c2e31aa3e7203793bbf82b823db2f88f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "89934fae64d6cd728b92d298b9d77475044677e4c5e6aa587eddc3e3264ad1ce"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "07bb2b2482066a37ba2b8a6094c3845bc38c15e8de7b17ea0a9fded1c5903c68"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ac0808f6417856ae6302faf271437bbe0af940cba68f06658008b2cab8a46840"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "99f14f4ca08068b0598beefddbd676aef4838fa9bbf6df0bf2da65f6788ab8a9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "983f202d42737709d5829d2b048b735d22ab7aa1f7134dc87409715187425c3a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "76b06fbf3686519ab28fa551a42846275c18ced38d6fd0e7f340a3535f71d382"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c6c49496bbe6452cb1f5a9ab81a7f6faee79a363f368884b103da98eb6ae2f9e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "7288f269c7fc643429449fa401b14bc2705b00fdce98a9b3843a87ff71e9bfe8"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "58c4dd858cb929ef0d6c48e4bb48a71db117264b4914ccdc7fdeb66236dd923d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "70ece33439be1e1ff4518c7afa3fc11af9d5cac4a8c79000fae7430c037dc8a4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f11f0ff8970484a48267024bf95a51dcd467cf854eb0f11e23a31a4869f686ad"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "3b15d80c69c4abda364f1e20edd8829f7911480904e4208bcb85466418e95788"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c29fe4e666257a6b7f48968b214c14b597a4791d90c88e5ad31a2cfb7132bb74"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "770e7f49049d0c2c5c7358aa871c9c91b2c8d534473e0a8e2476b9d92a31f60b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "3dc14c22f2aa7efdfd985ef09265e674a8211be8c9fac48ccb9a8a69c2b232e0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "89d9c31e074168b71c31074d04451b67b74b56b69aef1ec9290033dfa8070e6d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "26e0c2eac3859795dde3a693251964bd4dba1749e2a863a92d595f4c7632f0c4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ed36506a6bc5bf16e2d8d7ba14e43ec71eb5ea435dc530353b657597bba857a2"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c32af09faf9bc5971d4eb74f44bbd1b47e9d78ee05fd2db3b0222b0b7ae8a5d3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "7bd83c0392baf693f1748f545dda64cae17dcc5d105ad9a2d5c548f3ccf28866"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cf73c0fad97f11f62ffd6cc34ae8e29a2720032aedf41ff3885dffcda58ee4fc"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "49b99f77de94568485c9b818ddaa4275c77ad0878e82164ab2916dff81773099"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "76b8abcace609c8b0af59824fc8bf202bddbc3dd32638a1ac0b2d5ca3c6dca0d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "f6c2e119684611509ba45c499760440f443380fe20b86c6e935ba58d5a64c215"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "7b6ec1a0f1aa4a7751b7d7505228c76e0ce68b8bd976955867147ea080d5dd6c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bd961d610c642c01294cc5dd0031a73bc1d55ecbc6de903d84dd2955fd53f0fb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "23a619cf457f72b10fc879168a4a96658cbd750c52baf3d2064f8260cb5e5505"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "063c8d6c9010145d78a690f529aaf34c9b07c52793ba6deda8a1254e4ceba180"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "5df625cfc16bc9a1067c15765ff02d674e335d264c61192098de01d1d95d960c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "fc909e23269f7e5ea52d418f4b369178b1f2a55781fa0abbcc9e813560eec7a3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "7b575c0b1d3f110527426360dd1d22054e2759456d2bf07d54cfe0c63e44abbd"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "58d5645ff1716a5ae2928c583f5db1d5b9192204969c58a5a18db9279a7a0692"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "53437dc2be2e6f772e18f3dcf6ca916aabb780121156d23d42162c8a5ba57db4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "bd36e5fca4d4a64220525a0b7dc60bc7236ef6104864c6257e7651224f24f91a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "491f1c2d436029aab6a1cf2bc9f3cb170789ef61245af3f0ea823b6cee37ed02"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "f049602ed06883ce829a6b33b299c3f477dbbf7747fdebbe52a6b7fa079ad8e5"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "94a1828b06e6661e974c9c3686129e0c708ccb618b1ae0c8aa25263071a46aa9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "a7f019dc98d8883dbf6700d8d91368143f283a8357e3e1adac4c37e1d0141377"
+    },
+    {
+      "key": "CheckpointBaselineBlock_1/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "a3f6abc62cd940a7ce88a154f88d52c0b120739156e675998a35592eccbb3277"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "9849b8b6f26409f5d8a914e980ed3f56cc1703d8e9e54e39ef13487e516de1d6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ef6c57b5e58bb9a666a9999a99630070b638422cb849808d2821b19227d8cd9a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f31b56c7cb2b3841b6a6eb10479933359a60f0b78e128412ce65c4aece4fe0ed"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "9a8a67c3be913e4e5b210703359a6bd2d395560e0bad94ffc6e8b4375b95a0b8"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "1c11f77c21b4502408e856bb1f98467c98eeea493cca97a3b9aab8c2da3a6105"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "3025baea8586db43869d950c7ca78b9d984d8755965fa6091a52ee8859facde4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "29d8c8d79a30ba0ffc0efaae04adfb9e489a6b2b605ef69a97708629b4480921"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f6f5548fa971c54e29e0f7ca4451635726c93f33ce7c9fbe2d89c40d2ffb34e4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "73fb39a36f620170ced3f41072a5d0d0d60e5f75ff06d8bef2a573b1fcf3e0f3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "fabe61e363fe31c10b0143cdd0bdfb420c6f6b81acbcb8d173afacfc41fc9a62"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "78d217820c89ec3f09f8be089df49d46635c418cd2ee7e16a1dce0d76425b6ac"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "e0f560c86c7820dd6496032ba25c7f5cbc875b64a722b8442e77facb127536ed"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "d6f904b10b6939efc212c3cfdeda3f7c2d0ba748f7b6c6bcb4004d23cf5f2d5d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "eb7e6c0fd63791f3dc8b72ba65126cf00f5ec6e4ed4b3cae3d6e372bf059103b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cee5515cacc909bb97ab464b0441a847a81f980e9520c82ad7d75d34016fc6f9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "22712576ec73846743b2d3d72b02d9c6c7b638ca70323d3872d541e67bb3e3c2"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "7c489d1b102f72b4887f767be0b37b8729d74bbb39d22c7a44c3f9fb4990b532"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "39e73b1f026ce51c5e7caaad98f73e21aa2a8b55920aa78bfa98fc3fcd4af36c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "9cd10fdd7ec573c1a19ba91983fb24c5435da58cc8892c9a5cad51c99b062781"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "55602e79695c5b04929e0e4b14b47dc87001f14382ec14b64409b3e1a7427acf"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "b69b780be6316c5318e2f8658b28675715331dcbb91fcb9f82f36153980527c3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "f6700de960dc84e7e0a18f2c85d6c9d487e39456aee54f9b18236f684202cbb1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "e67e60a636fe305707463e028aeed4e66e1582d98ffef2addf21344e5e826583"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bc0cfc0cb051531f38a7de44afaffa12c66e013086350151ef0b272db0963c7f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "a72e781de70c5799990cdcb036ec5af51cd9c24cc3077121febadf0dcfd6be8b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "5b6290e95b9526321fbeaac9736d4871027aa1bbc3204755adce6bcf825137d0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8945a5962a7fdcb349bcd06f3a3b0b954f07b85e4f105cc9ff9f0444eec8cbb0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c30653f172601fa932278add5014ea82b28b4cad4238556fa24a504b3d3d20f1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "4fc09356b1625033133ee24788975b2aaf89e3040f6d1b1a71e1f381ec37903c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "e1066c80973e96d0f023c093f53da56930d9a42228ad5f335b45b876d43f6593"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "acdd64ad733b4ef60719fae6db59127f0aafe0e19ddd585c8018376cce98cf43"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8a3e102d3213eab69c821b4f5072a6b3730d9f76fc27c21ddb35b024f64918ab"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "362c74b12626dda9ef6b1cfa2694876c31d07b4c3445671dd6cd2cd3ca2f25b4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "dedde1e38197c6c4482ea60c41b1c0ff39aa985b588180137464bade224d0a6d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "c7821c084314c827219433ae7cd6620591e8524f8e3b0e860b6d45d65b160cb1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "960b7ee090e4b0a69df425a78ba870b1090314bc38d04256c4028fec932650bb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "16d5e69aafcf2ca08ed10e45b05095caca10386f3296276144dfc88c3b46b8a0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "caaa57de02871b6e76c2d909ed5764de8d7d27e63b13375ac4f845b6ce7505d6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "cc46c66bfa49d57ce8a54b70e4e7c35257abec28b3f3849699b5e669ae563e8f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "8941607e2390b5e4538d108d5a991fdc85b307653bea009e5c8b08928dfce24e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "8d5191896374012ce4ebaacfb820e851a110f4314dd58adffe00108f65f3cfae"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "d4341be6ffca931a6f88c458e1364574037006feaafe106a688669338340b0ef"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "7b9d3880029d475e2b845fc522bec6a52be13ac0cb19be842ec9ad52c6aa9a1b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "4653bf29ba7a85858086d35467aefd6f6899b9b4a416b5f9d156c83aeb8b38eb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_2/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "a27dd3879b83c6b775b5ce0600ba586739979d7576ff1cecf8eb25ee42c7f828"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ffa152e878ed9b26b1393b1ee2166ae7df9e0b5d1ab2605bcb00dd5e8b2b22d6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "14a86c7c791c1bab43b249aaeab854364b6a2a1c53616ffdf082b9319cf6f8cd"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "1b68a43748144eda9e053222e9176f228aa4c30919a182e3aebeaa66a3f846fe"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0f45ec1e08165df54221b8380c1c3a4fab7651eb5bf58dc7627df3e01ac9531d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f257dc767d5bd274324ecdf5f056e25188e618e1a2cd5bacb0d887a173f73578"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "f04e7c4c1d960e1091668976c46a303f136ee9e79fdbb76d6e1f0604f852f50b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "326619bebf91b02db848778bd9ea863737abfe6a8b3f50a30d1948acae468f32"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0886572fd5ea70b30a8083be8b1ca6901a10a2179b6dcf865f733be3fe296822"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "fb4917270f30fb262fd746d7430b46a8cab5bdfa2a615d4c6f97e349d9ee0f54"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "aa45d07ffe5c4f12ad850ba05c5503c0603d7e09f1d91f1a8ab951d76c853286"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "5fa26e0bf63735b923ea9a1e188ef4a5ee5025a23fa5f7cc3c893a94a6e2b44b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "d1ee9c57217467a5ba3d4804bc9c8e80ab0503ed8dc3f31eaef1f0ec91d9186f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bf4c5a2d98e90e82b0146f702ee94e42c7f856f714be0821e33f03bf2bce10aa"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "0cb8ae859a2aabb48cf562d896241a7adc89cbe11aa24e125ec3f4296116fb22"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cb9f9a4a33e5435f77321873e650689fcbf9001f81f899ea1405281c7fb8af64"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6b217dd5e3ac230cb467761097cb74a4b891d52d94a2c96532956fc39e20c060"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "712d67831f9df25e4d348ec63a7d32b19a387f1e45aa2aa990e088f8be201bac"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "e5660a643c3b27c46398baa5560cb0f97aedddd8903e23db19b32f0f8c5d84ad"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f430a42aa71cd8824012d38ae4280510baa4b1424a2e8ea51bf6612299121de6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "fba28f11d6b839a17f2365e13fcc2530dc96477da55a3f306c5fcd54d8caad02"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "73789a89e92631a4f72326bc04a61dcf1e869f4c900b19947742008181cee2ca"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "2ff8e77c4c5150c8a29328484e302ab96e3cf80630010c7d0304338eff13829f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8bf4c4c3ddd891f81c4879d4c26eca27ef5b3d1276235c78f87a045a5730cd74"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bd10a005da34cb1f4e631dfc0d8688656cd710c4a9349b442e4f4272aed76e7e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "a9cf5e4bc48b77bf4e08e8968f5b1390f3f299ec3b320e4341ae0badf070e745"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "088692ad105513ecc022c282fe6621d56cc864a27f8f1b40acf1e5470eb2c4df"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f1c2b65262b15b50aa188c0565d72f2799c8c179916eb66b4c676063f6f566b4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c43479f4f76c9b5b256ec8b0f66bcfc042275a223a4ec398f8e1b3a26cdd3646"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "629d76ff6050dec236dbf8085866d614ed551efb92bc43de1eec979796ad5450"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "1d7ea97c4905df5e30b67b18b9ea6a3c26900820f49ebc062d73bcae90eab067"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "de8f7650e49c3d03a3c10ceec2fde022c1b47e4fbe6b0387a98819dbaba62b3c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "390ed3ce8e4b9cb261ef398bb976095b09fb5389246c5d6892617d8707471597"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "83cd3576e6c3e8347c03ee7288e5ad239e7ca3e0866196360bad10865184cd9d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "242249ab0ccf2bf21a32b34e6e590a425f519b1be3b4f8169b41d33eb011f19b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "9fbda7031655843b11bcc8dcf6739d98998a4e3eb11e5685554cd6c1025b3dbb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "c24f4abf7337063a504b0003dad1575ad9152ca8e7a746512df9d4ab97208b34"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "b3988dda70b0ab79bcad81949444926a6fb7126e2f3fd4fe42a3f41b26d90bcb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "1c19d389d63737a274bcd80430df9934e860807029185a9d9646cac18b7a2edb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "50cd732f1184d81a6a55aade83de41ef8e6eba657164d88d67816c96f7e96a78"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "a67bc3fe78578f1a40cd08e2577d83bebb7b52ddf9b7fb2fe1dfce473b0a3f1d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "5c89115167df29e62d1f08b3407d62d712a6294527db3afcfbd56c6867920d8f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "10e6281f3a9757e2c5d79b3291f68ff76f78053cadb0858df152d207de8abd4d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "1112d5c25eb5ee9a79cd0bb88e8419c9a92b20fb0a2f636381d6c218cfb3a63f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "23e0940c1e796013b78df13f069067476d52e23d9fcf838ebc7c16018ccadbdb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_3/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "23494f667471ddef03f91c0d345972982cfd7270babc73d72fa5dfdaa6ca87c2"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "1ec7f773381a861e52a394048989b2ceda3cabc6704c88e32e41bd84be03291a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8216bb6c27f5a38577d0d8dd2f3508ba226f8e13c2d8128032d7cde5e8ae35fd"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "7b103d30f595a6ab59ba6ddf79a607b5d91f9990bd77843e3e293540510552ee"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "b89ed949d803fb4d0b1c25c2e0404b91e06eda281d745d57d604926958eacf9c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "04e3008378caac9a7f6688b463ee4fbe01c142c3b808d78c3fba507de18112c7"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "df361ed283df0b772eb842a69e3da573cd2c5a0c1c9685f25ac1971cfde855ce"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0c5c5b072db34781eddf3a236473aedd919919b227b686f2c475007453f6bcc0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "d2d86c87bd3ef5054f222d32daaedf7960d02b11ef9bc519f1bf38c95010f153"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "b014457a47188d542cca814e416f5726f6d4a4a0c470f7d4cbfc4c3e28c0a24a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "90e36b3b90853e296f6b443e04d0685d0c835c15f869364c163d3d5c8f013386"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "b93631830b0e5352b009918b35c56859448e06d0c00882fd9688b900aa41f970"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "07b6fa44776ec0ef42503e6cbb625380bbcadd56d390fd585874a2a193228723"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "11f73c120e99e7b38ebdb1a26fe6860f94388dbab6669ef53b3443dd6aab566b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "fe366eb3d803456c7048f2468f62ff9a5dc6d9ddd58666fbad5641f3343a430e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "03d2115a0955318b251b6b2f6b6bfb7b2bafccb5dfdda4a4b4304a9e90769330"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "eacf300eab2f8f0a7b1fe8da441acf6a4781898f5c04f0f6a757f101cf498d2a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ab484737b6c8b3b3f19dbd3a28fa27dd84e1b1af945c70f2f8fd6db5a37072ff"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "e76a033733dd7472681f2c7912962be9aa58c417088e841a6b86d9b11463435f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6d1fa87499e88eeb2aab9162737ec971478db7433b1a2fe5a7046d2bb6853926"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "94e1e2cc7ccd8502d807673664cb0c899a84076de104dda5eed6bcb1feb948b1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f910ba225b37bb277a8a8bc77108001f0ebbba4998c32ebe2ec68dc747d7e7da"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "35e573411a3190e49ca37341ee4df8dcfe5d70f85b90c2904324e0b9713fe1fc"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ffbcd22792cfb50dcde251d1d11060e0b476004acee15c73aa35105b51ca3af9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "50410c16595da238d5e1088d0d6cb6b267dd0e78ee660df2cf89c509bde9b713"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bb67924c842b8556e5964ff8652a3f943f042f2fe87f30a9c84c8945ba236792"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "514862d19d7ef7c9851cf9b6072d162c60b3a16ea6145da1f2b4943ec35fad2a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "474a1ea87a00e5d6f4d5d78fec346139e26de1747ee767b55ce639cfd42878c6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cc395e38652a605dfb144f1c46c8688ba6cf096d558215e5584014bf28a9e718"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "df77c1c706bb6d0fef112e652a38d84ebb31f3c74c3a9c0c12780781c5795a7d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "ee73cd52f557f08f8e84b7b7a1a64028bf52dc7e40d08f1428dbf415bcd85bf5"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ce4cc3e95824e93fc4024f23203f62214df08a430636c6fc1efe6aa27749e3ff"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0be02ff1b0d9f84a778a001081977d4475550659e63bc7e1cc665b898203aa3a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "a88c3d1e64b92e5d3ac8c5f2bedff9e954417fd1854b9ca6f5a39319f32f3af1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "b66d15ed69ed8fb80653e613c4d31da9b6f760d25e80ad3576f4aae5cac82246"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "15a3061d5bcf46fa6eb8a09bf70c8269f27b45acf5c2e8245fc83c033c716bf9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "9e7a60d6e39398b943a6915f1898ad9afaba0bf19686fbf38a9718add72b62bf"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "2af886ad3dd00d594ddcad0cf5f44938854c8e63937f776cd84b609f7e8fa003"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "6cc2c223af50efbb1d24258671a0fa7c2457514da8ac6be661b8f79a5062ec94"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "629df33868655fb645eab7f01c02e074a5752c325a3c6acbf3d4e5ba5b913276"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "885c16d5b6eb0f330972bc9f39ef306c8a63b1a1001e4b748f9c41ac3e177c67"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "deed64cf6932e4f6cfe2c125632632f16f4837347b80f90217013024f14260b1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "a0f38bb9b21b1b1276228c397365f6f8074a7d63f6ec518d7dc72c6cad9dd425"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "68c6bfbd5d4893d97ace3e691a5399824c99c3fafb3b11861efbe52a56253ed9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "2e6777d0ac06912d004418817a8d9bfeef6878ead0340e3802635191f54a7143"
+    },
+    {
+      "key": "CheckpointBaselineBlock_4/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "88135eda98e5f9d519e83e104111dca5a01eb2088da09f82d8d2c1bbd93fd46d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "718aafbe0714ee5b1c5624937f221f1e84588f427dd5332ba5a12764770cfa33"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f091d22a1c1dc2d5632bfc8d7f4900b8a33d1bf9230e6e531f41727f7e0eed19"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "32483d0ac0760ac6b8041659ebc612b67731f77127a1177609c01e2330378f3c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "cd60d07f841edfc1938b302c5dd121e22d3b5a397a377bed114b30d5d3c0e5eb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "3e07c9875b9d9d8e200a2a2ebe7bab268195ee0b8a987680f238d7ee867de944"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "c1350e7b05d9d2fe517220800d3f6c6dde88d0f04b15570f4dcea5f43039ec89"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "2c6c39470e3abd5aabfd858b82a7027618a7221d6297be4cb060961a68db136d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ff34cf9e8a1b2adab1c990399dbd53d6e81bff5c0d57638f622420c3467bc7a3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "98efcf8384d23121c4b87be1c3834dac7cefbb9570a07ab39c29a0b7a5c93b01"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c17865a3efaaf2ec41e29e29ea908d9155b71acfea2442ec64f49a267837dc88"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "a5afe65b93ad4e3345a3e761d5783cc7bfef672cc60f97aec1d1e7b50b001ac6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "a4c5f48e50a4d2bf1499a263c350c91154a3edbfee2f30ffe40974c723168877"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "01e2fdfe52140d14e748191278f0a8e884ac63715f030424e83b9e806e52531e"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "e91af5b13549e4ed8b1e458a50261b2ab8408a05c12f97d18b8a99db4a68dfc0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "33a31a35a457d9a9ac3486161581033aab0f3680e55459842d3f6b7e2988258f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f89b78e514c841da2d96fda677376a9cb850d0a1fb7be4dfb9475c7c86028f83"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c99601254eb1542560231b27fee12372868712cb64b79ba608b42d84f8d72258"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "9ca04ef0ec428227f9204c5bdfdb3a109926414082a2a4f1479044b3fc6be59b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6bbe5ddac3266820329b759d77218f8eda8f333530ffdb441d84133b825dd369"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "62953b959436b2edfbbb89b71c906b8dcfb261098dd1a8a76d1ccebe636af654"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "347b7a05773157b2eedc4f01fd5d01735947c47f3ef4332d0e0c9e5d4f624009"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "13544cebd3545e0cafb8b7b4981635c0c2a5013f7a1129776fd9e8cf0f0470c3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ba56f355a745cedbf25a1391d231ad28759987c36bf8fcd0be9f4f295c28395c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bb617b5b387737e3b3d3ba02b3dfd8a0ae38dc06fe8c19f45a5560d6410da6cc"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "006da6f5a0349801be4814ab4146e01db0731b8838d6d966c9504c1bdbe6da01"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6602716a02c57f560b7c7362db85422e98febd9661d9edbac1daed4d4c08f6d3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ec20bb71e60de275e48d497519933ae7721f74f962d8cd5fe9f159c33662b8f4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "bee438f97f778f6f5af8e2f5dd4dabcf8b7327865fc7ea148ae0c43c9e9c2f46"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c451e55babdc7c5817ca11ed58a409c59dcf0ebba61f7577b936ec9d3d2fa10c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "bf7d369ca4a4371c34baf45a01a010be801016504563d586a94ef41e37ce048c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "1adc81c3713c37ef63c471e7cb787435e37a66a7847b811b7dca6b2a3b5b44df"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8aa0d803b3852705129739d2ecfc9a6062c365e6ac682ba09e4b7556ac8af9ea"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "d59c6878e8a67cf298a2b62d2cd424cb7f1bb5b179db8bf3c1c2344c250621fd"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "b015f811d2e989abec2d9f0d38066415b01c05a01ec9f017f9fb5d7c7d20a7e9"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "5962e55f1e65cbe39ae043674cd14cde431db7b357c0f2eae6310398feac137a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "75278f62cdc5afbc8f9dcb60cc37154b2e78751148106ec6617db7f501fd0576"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "052cc55de071467bda419dda0b02f6e032cc6ad4f14a3cd91b590df15c6367b4"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "2312e1b146dea4f0180e6917359d2241b31fb6924b88572a656a0cde498fd635"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "5ca569e1900c1875ca8d035a0de56515f0fd080b013c1f1b29756ba4ab999763"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "1eebd10b64d7e365bd2e672603881335441d39564fd5609affdf22385848538b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "172c2a274ea29315af6c9c13e1bf38f3caa61a0a92d14dba9dde8c24abd6f18f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "97365f791b18c4167d8203cc89aa0f3c2d5ecfb596a59cd420c8a7e0f9cce456"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "0a95ef613a02f9a13e16e7f4050f613e50f964035acefe9d9f74741f366b6dac"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "c2ced5bde050ce7b28f84a01543082625c62b57c210021120eafc0ad2d660d5f"
+    },
+    {
+      "key": "CheckpointBaselineBlock_5/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "f0dea28cecaa3c8cdfe35bf30d4c03c38431b550c3522fffb8c78840b7e33755"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ef7eb3471e0cf799d6c99b0f5f102ad51d66f7c36007e492df34568857094bb5"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f65646d550e657cabc59f993649b258684d07be6903dd357b5b816554c5c5181"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "f969eb328e8030ac292fb2ae265bd49c0221b10da796b47c32abe8a3e3abf0c3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "830158375c19d57ab0d5187791527adca68de14eb0adb45cf0b5851326fe6780"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "59700c85846c00f7bac698eee3d31e61d1f5b9785e8002645907bcce0920735d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "d302488ce63be158cffd6fa63380551c00bfcdf5bb003683713c4d6e76c9af94"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "708dcf19ac6897c5d3fc8f615c3e67bff2f971d24fd20f1edc0f6f40fbbaa320"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_0/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "9d93bdb72f2fe7b0ee2b1a7750e5d6aba96c51f67553bdc76c4ac2715c6d189b"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "3d9510b058de6b43d94802c44de7ebaaaffc41b5717c5d7ce146be75250d9011"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "76dd345b35ab7109e0b8a95d6315b8c1ad54f8dff30cc3decb2ca38e793411ac"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c6cdfa7f83a1851b80029cc8a2dde2f0e4b4415332387aad0f367ce5f9f7ffe3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "26ccc7f1565423e741a4f7deebaef705d80dff827c095f1893704946eac27202"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "6801c88b627c4a69b47b0d63816aacb28c6a0d48695fef7a5312b683e7e6e5bb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "58ff439b26a9482289869cac29dc14ffbcb8c811235aa19350811ce77f58b59a"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "99f96bc642548377dbe09f1bd77b6122c8a8ceb794d930c7daea0c2ee2431bcb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_1/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "c07e3cf2fa9678a5c0811f4cd26e76b5363830d8896c63de60600ef28cc12c0c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0a8bb699d9b2b76cccd656323eb7b645b6fa99b7bf1f4c209369a0b266b2d36d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "34898b58846e7b7985e8fea44e1e5d10b6750b3522c3f6073f9164ebdf34cc55"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "23988358eb3d31e63b3ef20bc0247d45532d0fdd90a393cb30ae33f8f5ff9fee"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "24cfdc2e4566bc6c2d175236981179fe8f78b293614eb906f7bbde5213ad5047"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "dcf3263a83cf1da23ea67f5a8092aee38f2b67fce8099e31f12893bc7533bbb7"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "17ff95913752e5c7081de7d0061ef20a4ead5b6da22ca2df45932a4d5d0cf6c2"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "ebff475ea314f9819aaf3b57be3dabb0612311a2f48eaa1e9c815a6d8644bc22"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_2/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "b4f83b2d04c542fada3c7f593bab25bca710e03dcd3f391596f66268d3eaed8c"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_0/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8b2100794263b09c5fde49787dd7a55f42c56e70df3b2ec3c8f68c8d30ec5d23"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_1/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "764923744006fc85360ca8fdfc28431bb603cc93eb40cf2bf017e150f66fd0b3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_2/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "8d5be5fcec8d5ebb53a8b8e21f77314a5164977ea0d291a873cdce570fb027c0"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_3/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "e1079b45887e1f15920b3e3f39d745c6899b24609b8f7bde0760012ba6268bec"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_4/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "abd4f2d1381ebacc3c3ae1198bb65ff04fa62d735bcbede2c4303c009a6339bf"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_5/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "4b230e938772914d8c0836186196f1e53956f9a4ce92c4b241e552bce45f10c3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_5/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "0e569f6cfe6eef8a68736112ea3d83b785a3a76c8a7c60f4aab47a183f813d29"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/GDN2Sub_3/Dense_6/kernel",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1048576,
+      "sha256": "3cbc3ecb022a1cabecfaef5a997bd5f9ba61b36dfb4a1ffa99b8e78600d0a0e2"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "9d2f868abc9ca8a2f8050f9c36880261b2720136beb1ee7eb7b60b3c00a9006d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "9125bcf980603873f448196e2caab69dcc9f37cd1c79dc93564a090ed8320719"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_1/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "463d1addcf6259a6fb36a3e4c03b98e52fcae0af17eb3d7d66234231eb60cbfb"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_1/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "06c4547d0892356bf9de9acf3099f86b9497dc2b9c285767add3c00709aa53e1"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_2/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "2cedd6fc6a0083bf43ae69967d0fb7bc44417d54e81d42267ee105535a42f6c7"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_2/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "d4b734e04029e74093c6d742fd6141be3c65185e8a07504bf55f8fa800f9ed42"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_3/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "b7d71057540caad32177049957bbfc27d0b1a054204c3898f569af6368db6d05"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_3/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "1b2ce4b76caaeabdf6a550ccd7540a5ec5e44474f72f5724b03b847072a6a3c6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_4/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "a740c7ef45479302508fd09daecd01db2a968f259b25b4f811551a83f7af2ed3"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/LayerNorm_4/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "b6f8d37ca1b48b0d649706f7b41b4162e97f40b15775bff0f08efa062b47f85d"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/SwiGLU_0/Dense_0/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "1cec79ceb01d536effea00fdbb0243dce08862e1028544f3691425f9c21f27a6"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/SwiGLU_0/Dense_1/kernel",
+      "shape": [
+        1024,
+        3584
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "8dbc35ae03730cbeb0f27a0db5f2c535fcbdf639d5a6e357f0ae2183470a6746"
+    },
+    {
+      "key": "CheckpointBaselineBlock_6/SwiGLU_0/Dense_2/kernel",
+      "shape": [
+        3584,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 3670016,
+      "sha256": "7272c12c6789c9302cf1d94c5b9d373039d48d64f3f4c3bf4c3361e3f4e0f9e1"
+    },
+    {
+      "key": "Embed_0/embedding",
+      "shape": [
+        50257,
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 51463168,
+      "sha256": "b928331fbda2f40b5d2bcda6b72598b6eea2b7c420cf9be9f8d4588e87d9ba34"
+    },
+    {
+      "key": "LayerNorm_0/bias",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "d8e5f92a47ded5eede24d711e403a697f26868cdd77be987969e06945fdbb5d4"
+    },
+    {
+      "key": "LayerNorm_0/scale",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "elements": 1024,
+      "sha256": "7d429cd31afad915b955c3bad4d60a65695f4f799a051024ccbf016fb2ed6151"
+    }
+  ],
+  "validation": {
+    "loss": 2.92315699449226,
+    "bpb_est": 1.0041009761175883,
+    "tokens_seen": 4259840000
+  }
+}
