@@ -1,0 +1,11 @@
+{
+  "sample_std_independently_verified": true,
+  "thresholds_first_observed_verified": true,
+  "source_hashes_verified": true,
+  "exact_common_steps": 41,
+  "endpoint_cutoffs_verified": true,
+  "figure_formats_verified": true,
+  "png_figures": 6,
+  "legacy_artifacts_preserved": true,
+  "note": "Plots visually inspected. Two seeds do not establish significance or universal benefit."
+}

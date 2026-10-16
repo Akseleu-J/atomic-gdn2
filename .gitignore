@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+runs/
+*.safetensors
+*.part
+
+# LaTeX build intermediates
+*.aux
+*.out
+*.log

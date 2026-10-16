@@ -1,0 +1,1241 @@
+{
+  "collected_utc": "2026-10-16T14:12:22.633773+00:00",
+  "runs": [
+    {
+      "slot": 2,
+      "model": "baseline",
+      "seed": 1,
+      "version": 2,
+      "commit": "bf80e315732837c4261f32faebbb052c51dee094",
+      "parameters": 334156800,
+      "steps": 65000,
+      "tokens": 4259840000,
+      "train_fraction": 0.4714516197695022,
+      "val_loss": 2.92315699449226,
+      "val_ppl": 18.599914696375357,
+      "val_bpb_est": 1.0041009761175883,
+      "hours": 8.570953826755277,
+      "notebook_seconds": 31565.226785059,
+      "within_budget": true,
+      "dar_gradient_max_abs": 0.0,
+      "checkpoint_step": 65000,
+      "checkpoint_remote_files": [
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/_CHECKPOINT_METADATA",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/commit_success.txt",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/_METADATA",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/_sharding",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/array_metadatas/process_0",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/commit_success.txt",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/d/cc0125ae44e208127af7cb98d8a706a8",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/manifest.ocdbt",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/ocdbt.process_0/d/31340e7ade6c707770a603a75ead8728",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/ocdbt.process_0/d/57ee32c05bd31ecb22a0e090c309c209",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/ocdbt.process_0/d/6a2533d805079badf00575c0cac60ccc",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/ocdbt.process_0/d/828d486c281953d9d1182be1f9c7da19",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/ocdbt.process_0/d/b29b6ffe809bdd59c790d8919283d73d",
+        "baseline_seed1_b32/runs/baseline_seed1_b32/checkpoints/65000/default/ocdbt.process_0/manifest.ocdbt"
+      ],
+      "checkpoint_binary_downloaded": false,
+      "checkpoint_restore_verified": false,
+      "checked_source_files": 54,
+      "unchecked_source_files": [
+        "atomic-gdn2/LICENSE",
+        "atomic-gdn2/README.md",
+        "atomic-gdn2/src/atomic_gdn2_model/py.typed",
+        "atomic-ops/LICENSE",
+        "atomic-ops/README.md",
+        "atomic-ops/atomic_gdn2/py.typed",
+        "atomic-ops/atomic_ops/py.typed"
+      ],
+      "checks": {
+        "kaggle_complete": true,
+        "successful_nonempty_training": true,
+        "summary_matches_metrics": true,
+        "final_eval_matches_step": true,
+        "sampled_train_metrics_finite": true,
+        "tpu_eight_devices": true,
+        "exact_expected_commit": true,
+        "source_file_hashes_match": true,
+        "final_checkpoint_commit_markers": true,
+        "checkpoint_binary_files_published": true,
+        "stopped_by_budget": true
+      },
+      "all_checks_passed": true,
+      "checkpoint_wait_warnings": 12,
+      "started_utc": "2026-10-16T03:42:16Z",
+      "final_utc": "2026-10-16T12:17:02.120925+00:00",
+      "validation_evals": [
+        {
+          "step": 1500,
+          "loss": 4.363412301931808,
+          "partial": true
+        },
+        {
+          "step": 3000,
+          "loss": 3.9048041763590344,
+          "partial": true
+        },
+        {
+          "step": 4500,
+          "loss": 3.6887406235310567,
+          "partial": true
+        },
+        {
+          "step": 6000,
+          "loss": 3.5661817735700465,
+          "partial": true
+        },
+        {
+          "step": 7500,
+          "loss": 3.4819918746378886,
+          "partial": true
+        },
+        {
+          "step": 9000,
+          "loss": 3.4193211918446553,
+          "partial": true
+        },
+        {
+          "step": 10500,
+          "loss": 3.3711227267535766,
+          "partial": true
+        },
+        {
+          "step": 12000,
+          "loss": 3.3305342375342524,
+          "partial": true
+        },
+        {
+          "step": 13500,
+          "loss": 3.2981580940645134,
+          "partial": true
+        },
+        {
+          "step": 15000,
+          "loss": 3.270106201741233,
+          "partial": true
+        },
+        {
+          "step": 16500,
+          "loss": 3.244165356479474,
+          "partial": true
+        },
+        {
+          "step": 18000,
+          "loss": 3.2223014048675993,
+          "partial": true
+        },
+        {
+          "step": 19500,
+          "loss": 3.20323954411407,
+          "partial": true
+        },
+        {
+          "step": 21000,
+          "loss": 3.1844204504098466,
+          "partial": true
+        },
+        {
+          "step": 22500,
+          "loss": 3.1685170735885846,
+          "partial": true
+        },
+        {
+          "step": 24000,
+          "loss": 3.15231258121889,
+          "partial": true
+        },
+        {
+          "step": 25500,
+          "loss": 3.137457434810809,
+          "partial": true
+        },
+        {
+          "step": 27000,
+          "loss": 3.1232804006605006,
+          "partial": true
+        },
+        {
+          "step": 28500,
+          "loss": 3.11059991281424,
+          "partial": true
+        },
+        {
+          "step": 30000,
+          "loss": 3.097473525289279,
+          "partial": true
+        },
+        {
+          "step": 31500,
+          "loss": 3.0846968693519705,
+          "partial": true
+        },
+        {
+          "step": 33000,
+          "loss": 3.0732975966894807,
+          "partial": true
+        },
+        {
+          "step": 34500,
+          "loss": 3.062736610868084,
+          "partial": true
+        },
+        {
+          "step": 36000,
+          "loss": 3.050957188677432,
+          "partial": true
+        },
+        {
+          "step": 37500,
+          "loss": 3.0413097979417487,
+          "partial": true
+        },
+        {
+          "step": 39000,
+          "loss": 3.0313791196737716,
+          "partial": true
+        },
+        {
+          "step": 40500,
+          "loss": 3.020182257267966,
+          "partial": true
+        },
+        {
+          "step": 42000,
+          "loss": 3.0113378389557797,
+          "partial": true
+        },
+        {
+          "step": 43500,
+          "loss": 3.0025272511724217,
+          "partial": true
+        },
+        {
+          "step": 45000,
+          "loss": 2.9933340015696057,
+          "partial": true
+        },
+        {
+          "step": 46500,
+          "loss": 2.984489697128979,
+          "partial": true
+        },
+        {
+          "step": 48000,
+          "loss": 2.977167930176009,
+          "partial": true
+        },
+        {
+          "step": 49500,
+          "loss": 2.9700341117915823,
+          "partial": true
+        },
+        {
+          "step": 51000,
+          "loss": 2.9623358071739996,
+          "partial": true
+        },
+        {
+          "step": 52500,
+          "loss": 2.9564469323229434,
+          "partial": true
+        },
+        {
+          "step": 54000,
+          "loss": 2.9506673777281347,
+          "partial": true
+        },
+        {
+          "step": 55500,
+          "loss": 2.9449709209043586,
+          "partial": true
+        },
+        {
+          "step": 57000,
+          "loss": 2.9402700644820485,
+          "partial": true
+        },
+        {
+          "step": 58500,
+          "loss": 2.936251419693676,
+          "partial": true
+        },
+        {
+          "step": 60000,
+          "loss": 2.9324116279829795,
+          "partial": true
+        },
+        {
+          "step": 61500,
+          "loss": 2.9288882106097778,
+          "partial": true
+        },
+        {
+          "step": 63000,
+          "loss": 2.926088585782407,
+          "partial": true
+        },
+        {
+          "step": 64500,
+          "loss": 2.9238667381343557,
+          "partial": true
+        },
+        {
+          "step": 65000,
+          "loss": 2.92315699449226,
+          "partial": false
+        }
+      ],
+      "data": {
+        "train": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/train.bin",
+          "bytes": 18071164978,
+          "available_tokens": 9035582489,
+          "effective_tokens": 9035582489,
+          "edge_sha256": "9ad6e226c00aa9335651b38bfb1d2c77b651ee54b2ebb9b5dbc8ed7db0620fcd"
+        },
+        "val": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/val.bin",
+          "bytes": 8869212,
+          "available_tokens": 4434606,
+          "effective_tokens": 4434606,
+          "edge_sha256": "f482eaf05b384fb72b27f0cf4af56dbbc07412d44e001ffa91842baeb620f2b2"
+        }
+      },
+      "config": "name: baseline_seed1_b32\narch: baseline\nmodel:\n  vocab_size: 50257\n  d_model: 1024\n  n_heads: 8\n  d_ff: 3584\n  layers_per_block: 4\n  num_blocks: 7\n  dropout_rate: 0.1\n  gdn2_chunk_size: 128\n  gdn2_bs2: 32\n  gdn2_mb: 8\n  gdn2_g_init: 0.05\n  l2norm_qk: true\n  rope_theta: 10000.0\n  kv_lora_rank: 512\n  q_lora_rank: null\n  qk_nope_head_dim: 64\n  qk_rope_head_dim: 64\n  d_latent: 256\n  layer_types_override: []\n  tie_embeddings: true\n  use_bf16: true\n  kernel_interpret: false\ndata:\n  dir: /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  candidates:\n  - /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  - /kaggle/input/openwebtext-gpt2\n  - /kaggle/input/windmaple/openwebtext-gpt2\n  train_file: train.bin\n  val_file: val.bin\n  train_tokens: 9035582489\n  val_tokens: 50000000\n  in_memory: false\n  bytes_per_token: 4.2\ntrain:\n  seq_len: 2048\n  batch_size: 32\n  accum_steps: 1\n  epochs: 1\n  peak_lr: 0.0003\n  weight_decay: 0.1\n  warmup_ratio: 0.01\n  min_lr_ratio: 0.1\n  grad_clip: 1.0\n  muon_momentum: 0.95\n  muon_ns_steps: 5\n  adam_b1: 0.9\n  adam_b2: 0.95\n  eval_every: 1500\n  eval_batches: 100\n  ckpt_every: 5000\n  ckpt_keep: 2\n  log_every: 50\n  seed_init: 1\n  seed_data: 43\n  seed_dropout: 124\n  max_steps: null\nruntime:\n  shard: true\n  require_tpu: true\n  backend_wait_s: 1\n  wall_deadline_unix: 1792153522.1998475\n  checkpoint_margin_s: 600\n",
+      "url": "https://www.kaggle.com/code/akseley/gdn2-baseline-seed1-b32-isolated-20261015"
+    },
+    {
+      "slot": 3,
+      "model": "baseline",
+      "seed": 2,
+      "version": 2,
+      "commit": "bf80e315732837c4261f32faebbb052c51dee094",
+      "parameters": 334156800,
+      "steps": 65000,
+      "tokens": 4259840000,
+      "train_fraction": 0.4714516197695022,
+      "val_loss": 2.9223528050664647,
+      "val_ppl": 18.584962854518196,
+      "val_bpb_est": 1.0038247379993666,
+      "hours": 8.547459929709166,
+      "notebook_seconds": 31474.8722727,
+      "within_budget": true,
+      "dar_gradient_max_abs": 0.0,
+      "checkpoint_step": 65000,
+      "checkpoint_remote_files": [
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/_CHECKPOINT_METADATA",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/commit_success.txt",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/_METADATA",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/_sharding",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/array_metadatas/process_0",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/commit_success.txt",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/d/4889fb4532e8c027f957c6303b48b18d",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/manifest.ocdbt",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/0da245d9f978441f979a361391038f7a",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/1ae33ad909c312793fed397a18e4098c",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/211bc69e6f500b7a4eb3053d1c375586",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/23b1bd44438863bfca663281c4ce844b",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/84dc662d46816d5ac81568f324f49f8e",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/e3a04e7b87dbb02477f91fcf35afe57b",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/d/e49225e776198a83be99bb256b9021a6",
+        "baseline_seed2_b32/runs/baseline_seed2_b32/checkpoints/65000/default/ocdbt.process_0/manifest.ocdbt"
+      ],
+      "checkpoint_binary_downloaded": false,
+      "checkpoint_restore_verified": false,
+      "checked_source_files": 54,
+      "unchecked_source_files": [
+        "atomic-gdn2/LICENSE",
+        "atomic-gdn2/README.md",
+        "atomic-gdn2/src/atomic_gdn2_model/py.typed",
+        "atomic-ops/LICENSE",
+        "atomic-ops/README.md",
+        "atomic-ops/atomic_gdn2/py.typed",
+        "atomic-ops/atomic_ops/py.typed"
+      ],
+      "checks": {
+        "kaggle_complete": true,
+        "successful_nonempty_training": true,
+        "summary_matches_metrics": true,
+        "final_eval_matches_step": true,
+        "sampled_train_metrics_finite": true,
+        "tpu_eight_devices": true,
+        "exact_expected_commit": true,
+        "source_file_hashes_match": true,
+        "final_checkpoint_commit_markers": true,
+        "checkpoint_binary_files_published": true,
+        "stopped_by_budget": true
+      },
+      "all_checks_passed": true,
+      "checkpoint_wait_warnings": 12,
+      "started_utc": "2026-10-16T03:42:13Z",
+      "final_utc": "2026-10-16T12:15:32.389385+00:00",
+      "validation_evals": [
+        {
+          "step": 1500,
+          "loss": 4.3576668838956465,
+          "partial": true
+        },
+        {
+          "step": 3000,
+          "loss": 3.903840687737536,
+          "partial": true
+        },
+        {
+          "step": 4500,
+          "loss": 3.6896374510295353,
+          "partial": true
+        },
+        {
+          "step": 6000,
+          "loss": 3.565004569381031,
+          "partial": true
+        },
+        {
+          "step": 7500,
+          "loss": 3.48217346774998,
+          "partial": true
+        },
+        {
+          "step": 9000,
+          "loss": 3.419556194276952,
+          "partial": true
+        },
+        {
+          "step": 10500,
+          "loss": 3.3690753588035927,
+          "partial": true
+        },
+        {
+          "step": 12000,
+          "loss": 3.3301387331378995,
+          "partial": true
+        },
+        {
+          "step": 13500,
+          "loss": 3.296579236414895,
+          "partial": true
+        },
+        {
+          "step": 15000,
+          "loss": 3.269011419210861,
+          "partial": true
+        },
+        {
+          "step": 16500,
+          "loss": 3.2438534160158525,
+          "partial": true
+        },
+        {
+          "step": 18000,
+          "loss": 3.220078190760826,
+          "partial": true
+        },
+        {
+          "step": 19500,
+          "loss": 3.2019256371170726,
+          "partial": true
+        },
+        {
+          "step": 21000,
+          "loss": 3.1826891151826775,
+          "partial": true
+        },
+        {
+          "step": 22500,
+          "loss": 3.1660110452281893,
+          "partial": true
+        },
+        {
+          "step": 24000,
+          "loss": 3.1514813437390683,
+          "partial": true
+        },
+        {
+          "step": 25500,
+          "loss": 3.1358631653572195,
+          "partial": true
+        },
+        {
+          "step": 27000,
+          "loss": 3.121904814421241,
+          "partial": true
+        },
+        {
+          "step": 28500,
+          "loss": 3.1086123701351793,
+          "partial": true
+        },
+        {
+          "step": 30000,
+          "loss": 3.0989674703398746,
+          "partial": true
+        },
+        {
+          "step": 31500,
+          "loss": 3.084641915648731,
+          "partial": true
+        },
+        {
+          "step": 33000,
+          "loss": 3.0726320280957578,
+          "partial": true
+        },
+        {
+          "step": 34500,
+          "loss": 3.061902039086641,
+          "partial": true
+        },
+        {
+          "step": 36000,
+          "loss": 3.0500190258026123,
+          "partial": true
+        },
+        {
+          "step": 37500,
+          "loss": 3.039336546143489,
+          "partial": true
+        },
+        {
+          "step": 39000,
+          "loss": 3.0305273283773393,
+          "partial": true
+        },
+        {
+          "step": 40500,
+          "loss": 3.0197463035583496,
+          "partial": true
+        },
+        {
+          "step": 42000,
+          "loss": 3.0104000568389893,
+          "partial": true
+        },
+        {
+          "step": 43500,
+          "loss": 3.0012965415840718,
+          "partial": true
+        },
+        {
+          "step": 45000,
+          "loss": 2.9930659514754567,
+          "partial": true
+        },
+        {
+          "step": 46500,
+          "loss": 2.983914517644626,
+          "partial": true
+        },
+        {
+          "step": 48000,
+          "loss": 2.9761569393214895,
+          "partial": true
+        },
+        {
+          "step": 49500,
+          "loss": 2.969165908756541,
+          "partial": true
+        },
+        {
+          "step": 51000,
+          "loss": 2.9619855489303815,
+          "partial": true
+        },
+        {
+          "step": 52500,
+          "loss": 2.955598792033409,
+          "partial": true
+        },
+        {
+          "step": 54000,
+          "loss": 2.94990864796425,
+          "partial": true
+        },
+        {
+          "step": 55500,
+          "loss": 2.944019004480163,
+          "partial": true
+        },
+        {
+          "step": 57000,
+          "loss": 2.939395868956153,
+          "partial": true
+        },
+        {
+          "step": 58500,
+          "loss": 2.9350535157901136,
+          "partial": true
+        },
+        {
+          "step": 60000,
+          "loss": 2.9313026826773116,
+          "partial": true
+        },
+        {
+          "step": 61500,
+          "loss": 2.927952737950567,
+          "partial": true
+        },
+        {
+          "step": 63000,
+          "loss": 2.9250423125366667,
+          "partial": true
+        },
+        {
+          "step": 64500,
+          "loss": 2.923101798811955,
+          "partial": true
+        },
+        {
+          "step": 65000,
+          "loss": 2.9223528050664647,
+          "partial": false
+        }
+      ],
+      "data": {
+        "train": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/train.bin",
+          "bytes": 18071164978,
+          "available_tokens": 9035582489,
+          "effective_tokens": 9035582489,
+          "edge_sha256": "9ad6e226c00aa9335651b38bfb1d2c77b651ee54b2ebb9b5dbc8ed7db0620fcd"
+        },
+        "val": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/val.bin",
+          "bytes": 8869212,
+          "available_tokens": 4434606,
+          "effective_tokens": 4434606,
+          "edge_sha256": "f482eaf05b384fb72b27f0cf4af56dbbc07412d44e001ffa91842baeb620f2b2"
+        }
+      },
+      "config": "name: baseline_seed2_b32\narch: baseline\nmodel:\n  vocab_size: 50257\n  d_model: 1024\n  n_heads: 8\n  d_ff: 3584\n  layers_per_block: 4\n  num_blocks: 7\n  dropout_rate: 0.1\n  gdn2_chunk_size: 128\n  gdn2_bs2: 32\n  gdn2_mb: 8\n  gdn2_g_init: 0.05\n  l2norm_qk: true\n  rope_theta: 10000.0\n  kv_lora_rank: 512\n  q_lora_rank: null\n  qk_nope_head_dim: 64\n  qk_rope_head_dim: 64\n  d_latent: 256\n  layer_types_override: []\n  tie_embeddings: true\n  use_bf16: true\n  kernel_interpret: false\ndata:\n  dir: /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  candidates:\n  - /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  - /kaggle/input/openwebtext-gpt2\n  - /kaggle/input/windmaple/openwebtext-gpt2\n  train_file: train.bin\n  val_file: val.bin\n  train_tokens: 9035582489\n  val_tokens: 50000000\n  in_memory: false\n  bytes_per_token: 4.2\ntrain:\n  seq_len: 2048\n  batch_size: 32\n  accum_steps: 1\n  epochs: 1\n  peak_lr: 0.0003\n  weight_decay: 0.1\n  warmup_ratio: 0.01\n  min_lr_ratio: 0.1\n  grad_clip: 1.0\n  muon_momentum: 0.95\n  muon_ns_steps: 5\n  adam_b1: 0.9\n  adam_b2: 0.95\n  eval_every: 1500\n  eval_batches: 100\n  ckpt_every: 5000\n  ckpt_keep: 2\n  log_every: 50\n  seed_init: 2\n  seed_data: 44\n  seed_dropout: 125\n  max_steps: null\nruntime:\n  shard: true\n  require_tpu: true\n  backend_wait_s: 1\n  wall_deadline_unix: 1792153522.225028\n  checkpoint_margin_s: 600\n",
+      "url": "https://www.kaggle.com/code/umirbayulgaisha/gdn2-baseline-seed2-b32-isolated-20261015"
+    },
+    {
+      "slot": 4,
+      "model": "paper-DAR hybrid",
+      "seed": 1,
+      "version": 3,
+      "commit": "697a10d3cf06be5a5b9cafa38fe272629814e64f",
+      "parameters": 307131392,
+      "steps": 62673,
+      "tokens": 4107337728,
+      "train_fraction": 0.45457365178175396,
+      "val_loss": 2.89210668250696,
+      "val_ppl": 18.031255748337937,
+      "val_bpb_est": 0.9934352306130054,
+      "hours": 8.62451469047,
+      "notebook_seconds": 31710.460572748,
+      "within_budget": true,
+      "dar_gradient_max_abs": 0.0004397462762426585,
+      "checkpoint_step": 62673,
+      "checkpoint_remote_files": [
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/_CHECKPOINT_METADATA",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/commit_success.txt",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/_METADATA",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/_sharding",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/array_metadatas/process_0",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/commit_success.txt",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/d/76e3033064aa568e9f368bc4d23a97dd",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/manifest.ocdbt",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/ocdbt.process_0/d/2af50a24aa770aa5823927afcf1ff60a",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/ocdbt.process_0/d/31ffb7d3b8ddac55440a3051b43f2878",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/ocdbt.process_0/d/8b5b4bdc8541e6f0cd31ec30b97373f2",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/ocdbt.process_0/d/937556e25f6850bef1e92dcf085c4269",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/ocdbt.process_0/d/b8a919e863cac2c8f30fb85927b2b7cb",
+        "hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32/checkpoints/62673/default/ocdbt.process_0/manifest.ocdbt"
+      ],
+      "checkpoint_binary_downloaded": false,
+      "checkpoint_restore_verified": false,
+      "checked_source_files": 54,
+      "unchecked_source_files": [
+        "atomic-gdn2/LICENSE",
+        "atomic-gdn2/README.md",
+        "atomic-gdn2/src/atomic_gdn2_model/py.typed",
+        "atomic-ops/LICENSE",
+        "atomic-ops/README.md",
+        "atomic-ops/atomic_gdn2/py.typed",
+        "atomic-ops/atomic_ops/py.typed"
+      ],
+      "checks": {
+        "kaggle_complete": true,
+        "successful_nonempty_training": true,
+        "summary_matches_metrics": true,
+        "final_eval_matches_step": true,
+        "sampled_train_metrics_finite": true,
+        "tpu_eight_devices": true,
+        "exact_expected_commit": true,
+        "source_file_hashes_match": true,
+        "final_checkpoint_commit_markers": true,
+        "checkpoint_binary_files_published": true,
+        "stopped_by_budget": true
+      },
+      "all_checks_passed": true,
+      "checkpoint_wait_warnings": 12,
+      "started_utc": "2026-10-16T04:45:21Z",
+      "final_utc": "2026-10-16T13:23:15.961610+00:00",
+      "validation_evals": [
+        {
+          "step": 1500,
+          "loss": 4.194006471491572,
+          "partial": true
+        },
+        {
+          "step": 3000,
+          "loss": 3.758829622126337,
+          "partial": true
+        },
+        {
+          "step": 4500,
+          "loss": 3.5794535857528005,
+          "partial": true
+        },
+        {
+          "step": 6000,
+          "loss": 3.475025312224431,
+          "partial": true
+        },
+        {
+          "step": 7500,
+          "loss": 3.4007115648753605,
+          "partial": true
+        },
+        {
+          "step": 9000,
+          "loss": 3.3455224535358488,
+          "partial": true
+        },
+        {
+          "step": 10500,
+          "loss": 3.3056910607352186,
+          "partial": true
+        },
+        {
+          "step": 12000,
+          "loss": 3.268257002332317,
+          "partial": true
+        },
+        {
+          "step": 13500,
+          "loss": 3.2393863556989984,
+          "partial": true
+        },
+        {
+          "step": 15000,
+          "loss": 3.2141174522798455,
+          "partial": true
+        },
+        {
+          "step": 16500,
+          "loss": 3.1891458675042905,
+          "partial": true
+        },
+        {
+          "step": 18000,
+          "loss": 3.169563261430655,
+          "partial": true
+        },
+        {
+          "step": 19500,
+          "loss": 3.151245853794155,
+          "partial": true
+        },
+        {
+          "step": 21000,
+          "loss": 3.13333070456092,
+          "partial": true
+        },
+        {
+          "step": 22500,
+          "loss": 3.1180037242263112,
+          "partial": true
+        },
+        {
+          "step": 24000,
+          "loss": 3.104280503828134,
+          "partial": true
+        },
+        {
+          "step": 25500,
+          "loss": 3.0885790034906186,
+          "partial": true
+        },
+        {
+          "step": 27000,
+          "loss": 3.075939303013816,
+          "partial": true
+        },
+        {
+          "step": 28500,
+          "loss": 3.0631900936809937,
+          "partial": true
+        },
+        {
+          "step": 30000,
+          "loss": 3.0505938707892573,
+          "partial": true
+        },
+        {
+          "step": 31500,
+          "loss": 3.038804004441446,
+          "partial": true
+        },
+        {
+          "step": 33000,
+          "loss": 3.0273541336628926,
+          "partial": true
+        },
+        {
+          "step": 34500,
+          "loss": 3.016863556050543,
+          "partial": true
+        },
+        {
+          "step": 36000,
+          "loss": 3.0055192050649158,
+          "partial": true
+        },
+        {
+          "step": 37500,
+          "loss": 2.996474721538487,
+          "partial": true
+        },
+        {
+          "step": 39000,
+          "loss": 2.9860761414712935,
+          "partial": true
+        },
+        {
+          "step": 40500,
+          "loss": 2.975995675841374,
+          "partial": true
+        },
+        {
+          "step": 42000,
+          "loss": 2.9671613102528585,
+          "partial": true
+        },
+        {
+          "step": 43500,
+          "loss": 2.9590910797688497,
+          "partial": true
+        },
+        {
+          "step": 45000,
+          "loss": 2.9503265067712583,
+          "partial": true
+        },
+        {
+          "step": 46500,
+          "loss": 2.9414136374174658,
+          "partial": true
+        },
+        {
+          "step": 48000,
+          "loss": 2.934599641543716,
+          "partial": true
+        },
+        {
+          "step": 49500,
+          "loss": 2.9288184180188535,
+          "partial": true
+        },
+        {
+          "step": 51000,
+          "loss": 2.9215793680788864,
+          "partial": true
+        },
+        {
+          "step": 52500,
+          "loss": 2.9160713829211335,
+          "partial": true
+        },
+        {
+          "step": 54000,
+          "loss": 2.9114452867365594,
+          "partial": true
+        },
+        {
+          "step": 55500,
+          "loss": 2.9067812784394222,
+          "partial": true
+        },
+        {
+          "step": 57000,
+          "loss": 2.902454152036069,
+          "partial": true
+        },
+        {
+          "step": 58500,
+          "loss": 2.898891683834702,
+          "partial": true
+        },
+        {
+          "step": 60000,
+          "loss": 2.8965995098227886,
+          "partial": true
+        },
+        {
+          "step": 61500,
+          "loss": 2.8935070002256933,
+          "partial": true
+        },
+        {
+          "step": 62673,
+          "loss": 2.89210668250696,
+          "partial": false
+        }
+      ],
+      "data": {
+        "train": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/train.bin",
+          "bytes": 18071164978,
+          "available_tokens": 9035582489,
+          "effective_tokens": 9035582489,
+          "edge_sha256": "9ad6e226c00aa9335651b38bfb1d2c77b651ee54b2ebb9b5dbc8ed7db0620fcd"
+        },
+        "val": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/val.bin",
+          "bytes": 8869212,
+          "available_tokens": 4434606,
+          "effective_tokens": 4434606,
+          "edge_sha256": "f482eaf05b384fb72b27f0cf4af56dbbc07412d44e001ffa91842baeb620f2b2"
+        }
+      },
+      "config": "name: hybrid_darfix_seed1_b32\narch: hybrid\nmodel:\n  vocab_size: 50257\n  d_model: 1024\n  n_heads: 8\n  d_ff: 3584\n  layers_per_block: 4\n  num_blocks: 7\n  dropout_rate: 0.1\n  gdn2_chunk_size: 128\n  gdn2_bs2: 32\n  gdn2_mb: 8\n  gdn2_g_init: 0.05\n  l2norm_qk: true\n  rope_theta: 10000.0\n  kv_lora_rank: 512\n  q_lora_rank: null\n  qk_nope_head_dim: 64\n  qk_rope_head_dim: 64\n  d_latent: 256\n  layer_types_override: []\n  tie_embeddings: true\n  use_bf16: true\n  kernel_interpret: false\ndata:\n  dir: /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  candidates:\n  - /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  - /kaggle/input/openwebtext-gpt2\n  - /kaggle/input/windmaple/openwebtext-gpt2\n  train_file: train.bin\n  val_file: val.bin\n  train_tokens: 9035582489\n  val_tokens: 50000000\n  in_memory: false\n  bytes_per_token: 4.2\ntrain:\n  seq_len: 2048\n  batch_size: 32\n  accum_steps: 1\n  epochs: 1\n  peak_lr: 0.0003\n  weight_decay: 0.1\n  warmup_ratio: 0.01\n  min_lr_ratio: 0.1\n  grad_clip: 1.0\n  muon_momentum: 0.95\n  muon_ns_steps: 5\n  adam_b1: 0.9\n  adam_b2: 0.95\n  eval_every: 1500\n  eval_batches: 100\n  ckpt_every: 5000\n  ckpt_keep: 2\n  log_every: 50\n  seed_init: 1\n  seed_data: 43\n  seed_dropout: 124\n  max_steps: null\nruntime:\n  shard: true\n  require_tpu: true\n  backend_wait_s: 1\n  wall_deadline_unix: 1792157373.2928164\n  checkpoint_margin_s: 600\n",
+      "url": "https://www.kaggle.com/code/aishaucom/gdn2-hybrid-darfix-seed1-b32-isolated-20261015"
+    },
+    {
+      "slot": 5,
+      "model": "paper-DAR hybrid",
+      "seed": 2,
+      "version": 3,
+      "commit": "697a10d3cf06be5a5b9cafa38fe272629814e64f",
+      "parameters": 307131392,
+      "steps": 62683,
+      "tokens": 4107993088,
+      "train_fraction": 0.45464618280018004,
+      "val_loss": 2.8913828437008076,
+      "val_ppl": 18.01820874823578,
+      "val_bpb_est": 0.9931865928377581,
+      "hours": 8.624327378884722,
+      "notebook_seconds": 31683.004250702,
+      "within_budget": true,
+      "dar_gradient_max_abs": 0.0004397462762426585,
+      "checkpoint_step": 62683,
+      "checkpoint_remote_files": [
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/_CHECKPOINT_METADATA",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/commit_success.txt",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/_METADATA",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/_sharding",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/array_metadatas/process_0",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/commit_success.txt",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/d/9850bca081c5590d10446e26a2a45dbc",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/manifest.ocdbt",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/ocdbt.process_0/d/7ea574a771232ae5f0c4401bc6084f7a",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/ocdbt.process_0/d/a54f6b2aace41fbbd7957b6f48e48fd0",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/ocdbt.process_0/d/bd19ecadf0aec4e576b8400238b2dc64",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/ocdbt.process_0/d/c354ac95326e423dc95e8a33d3db5dd4",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/ocdbt.process_0/d/ceeadbc04b2621f1f26d0a02078b1c69",
+        "hybrid_darfix_seed2_b32/runs/hybrid_darfix_seed2_b32/checkpoints/62683/default/ocdbt.process_0/manifest.ocdbt"
+      ],
+      "checkpoint_binary_downloaded": false,
+      "checkpoint_restore_verified": false,
+      "checked_source_files": 54,
+      "unchecked_source_files": [
+        "atomic-gdn2/LICENSE",
+        "atomic-gdn2/README.md",
+        "atomic-gdn2/src/atomic_gdn2_model/py.typed",
+        "atomic-ops/LICENSE",
+        "atomic-ops/README.md",
+        "atomic-ops/atomic_gdn2/py.typed",
+        "atomic-ops/atomic_ops/py.typed"
+      ],
+      "checks": {
+        "kaggle_complete": true,
+        "successful_nonempty_training": true,
+        "summary_matches_metrics": true,
+        "final_eval_matches_step": true,
+        "sampled_train_metrics_finite": true,
+        "tpu_eight_devices": true,
+        "exact_expected_commit": true,
+        "source_file_hashes_match": true,
+        "final_checkpoint_commit_markers": true,
+        "checkpoint_binary_files_published": true,
+        "stopped_by_budget": true
+      },
+      "all_checks_passed": true,
+      "checkpoint_wait_warnings": 12,
+      "started_utc": "2026-10-16T04:45:15Z",
+      "final_utc": "2026-10-16T13:23:08.794334+00:00",
+      "validation_evals": [
+        {
+          "step": 1500,
+          "loss": 4.19527862321085,
+          "partial": true
+        },
+        {
+          "step": 3000,
+          "loss": 3.7696790339341804,
+          "partial": true
+        },
+        {
+          "step": 4500,
+          "loss": 3.586088023968597,
+          "partial": true
+        },
+        {
+          "step": 6000,
+          "loss": 3.4797977475977655,
+          "partial": true
+        },
+        {
+          "step": 7500,
+          "loss": 3.406551898415409,
+          "partial": true
+        },
+        {
+          "step": 9000,
+          "loss": 3.3514432942689356,
+          "partial": true
+        },
+        {
+          "step": 10500,
+          "loss": 3.307396675223735,
+          "partial": true
+        },
+        {
+          "step": 12000,
+          "loss": 3.27269149894145,
+          "partial": true
+        },
+        {
+          "step": 13500,
+          "loss": 3.2418907507142025,
+          "partial": true
+        },
+        {
+          "step": 15000,
+          "loss": 3.2160977712318077,
+          "partial": true
+        },
+        {
+          "step": 16500,
+          "loss": 3.1924726678364315,
+          "partial": true
+        },
+        {
+          "step": 18000,
+          "loss": 3.1715492668436536,
+          "partial": true
+        },
+        {
+          "step": 19500,
+          "loss": 3.15391858656015,
+          "partial": true
+        },
+        {
+          "step": 21000,
+          "loss": 3.1356111533606232,
+          "partial": true
+        },
+        {
+          "step": 22500,
+          "loss": 3.1189965063066625,
+          "partial": true
+        },
+        {
+          "step": 24000,
+          "loss": 3.104285478591919,
+          "partial": true
+        },
+        {
+          "step": 25500,
+          "loss": 3.0895914177396406,
+          "partial": true
+        },
+        {
+          "step": 27000,
+          "loss": 3.076797645483444,
+          "partial": true
+        },
+        {
+          "step": 28500,
+          "loss": 3.0638951863815533,
+          "partial": true
+        },
+        {
+          "step": 30000,
+          "loss": 3.0534322902337827,
+          "partial": true
+        },
+        {
+          "step": 31500,
+          "loss": 3.0394784550168623,
+          "partial": true
+        },
+        {
+          "step": 33000,
+          "loss": 3.0284328496278223,
+          "partial": true
+        },
+        {
+          "step": 34500,
+          "loss": 3.0185266003679874,
+          "partial": true
+        },
+        {
+          "step": 36000,
+          "loss": 3.0056802194509933,
+          "partial": true
+        },
+        {
+          "step": 37500,
+          "loss": 2.995429615476238,
+          "partial": true
+        },
+        {
+          "step": 39000,
+          "loss": 2.9861279637066285,
+          "partial": true
+        },
+        {
+          "step": 40500,
+          "loss": 2.9767978760733533,
+          "partial": true
+        },
+        {
+          "step": 42000,
+          "loss": 2.9673402060323686,
+          "partial": true
+        },
+        {
+          "step": 43500,
+          "loss": 2.958868119254041,
+          "partial": true
+        },
+        {
+          "step": 45000,
+          "loss": 2.950261116027832,
+          "partial": true
+        },
+        {
+          "step": 46500,
+          "loss": 2.9424730770623504,
+          "partial": true
+        },
+        {
+          "step": 48000,
+          "loss": 2.9344468970796953,
+          "partial": true
+        },
+        {
+          "step": 49500,
+          "loss": 2.9285541470371075,
+          "partial": true
+        },
+        {
+          "step": 51000,
+          "loss": 2.9213132466842877,
+          "partial": true
+        },
+        {
+          "step": 52500,
+          "loss": 2.915670213414662,
+          "partial": true
+        },
+        {
+          "step": 54000,
+          "loss": 2.910717099460203,
+          "partial": true
+        },
+        {
+          "step": 55500,
+          "loss": 2.905560436533458,
+          "partial": true
+        },
+        {
+          "step": 57000,
+          "loss": 2.902136332953154,
+          "partial": true
+        },
+        {
+          "step": 58500,
+          "loss": 2.8984831233522783,
+          "partial": true
+        },
+        {
+          "step": 60000,
+          "loss": 2.895943744858699,
+          "partial": true
+        },
+        {
+          "step": 61500,
+          "loss": 2.8930495390251503,
+          "partial": true
+        },
+        {
+          "step": 62683,
+          "loss": 2.8913828437008076,
+          "partial": false
+        }
+      ],
+      "data": {
+        "train": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/train.bin",
+          "bytes": 18071164978,
+          "available_tokens": 9035582489,
+          "effective_tokens": 9035582489,
+          "edge_sha256": "9ad6e226c00aa9335651b38bfb1d2c77b651ee54b2ebb9b5dbc8ed7db0620fcd"
+        },
+        "val": {
+          "path": "/kaggle/input/datasets/windmaple/openwebtext-gpt2/val.bin",
+          "bytes": 8869212,
+          "available_tokens": 4434606,
+          "effective_tokens": 4434606,
+          "edge_sha256": "f482eaf05b384fb72b27f0cf4af56dbbc07412d44e001ffa91842baeb620f2b2"
+        }
+      },
+      "config": "name: hybrid_darfix_seed2_b32\narch: hybrid\nmodel:\n  vocab_size: 50257\n  d_model: 1024\n  n_heads: 8\n  d_ff: 3584\n  layers_per_block: 4\n  num_blocks: 7\n  dropout_rate: 0.1\n  gdn2_chunk_size: 128\n  gdn2_bs2: 32\n  gdn2_mb: 8\n  gdn2_g_init: 0.05\n  l2norm_qk: true\n  rope_theta: 10000.0\n  kv_lora_rank: 512\n  q_lora_rank: null\n  qk_nope_head_dim: 64\n  qk_rope_head_dim: 64\n  d_latent: 256\n  layer_types_override: []\n  tie_embeddings: true\n  use_bf16: true\n  kernel_interpret: false\ndata:\n  dir: /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  candidates:\n  - /kaggle/input/datasets/windmaple/openwebtext-gpt2\n  - /kaggle/input/openwebtext-gpt2\n  - /kaggle/input/windmaple/openwebtext-gpt2\n  train_file: train.bin\n  val_file: val.bin\n  train_tokens: 9035582489\n  val_tokens: 50000000\n  in_memory: false\n  bytes_per_token: 4.2\ntrain:\n  seq_len: 2048\n  batch_size: 32\n  accum_steps: 1\n  epochs: 1\n  peak_lr: 0.0003\n  weight_decay: 0.1\n  warmup_ratio: 0.01\n  min_lr_ratio: 0.1\n  grad_clip: 1.0\n  muon_momentum: 0.95\n  muon_ns_steps: 5\n  adam_b1: 0.9\n  adam_b2: 0.95\n  eval_every: 1500\n  eval_batches: 100\n  ckpt_every: 5000\n  ckpt_keep: 2\n  log_every: 50\n  seed_init: 2\n  seed_data: 44\n  seed_dropout: 125\n  max_steps: null\nruntime:\n  shard: true\n  require_tpu: true\n  backend_wait_s: 1\n  wall_deadline_unix: 1792157376.292706\n  checkpoint_margin_s: 600\n",
+      "url": "https://www.kaggle.com/code/aqseleu/gdn2-hybrid-darfix-seed2-b32-isolated-20261015"
+    }
+  ],
+  "paired": [
+    {
+      "seed": 1,
+      "final_loss_delta": -0.031050311985300283,
+      "final_ppl_change_pct": -3.0573201937761456,
+      "token_change_pct": -3.5800000000000054,
+      "common_step": 61500,
+      "common_tokens": 4030464000,
+      "baseline_loss": 2.9288882106097778,
+      "paper_loss": 2.8935070002256933,
+      "common_loss_delta": -0.03538121038408448
+    },
+    {
+      "seed": 2,
+      "final_loss_delta": -0.030969961365657106,
+      "final_ppl_change_pct": -3.049530476433729,
+      "token_change_pct": -3.5646153846153883,
+      "common_step": 61500,
+      "common_tokens": 4030464000,
+      "baseline_loss": 2.927952737950567,
+      "paper_loss": 2.8930495390251503,
+      "common_loss_delta": -0.034903198925416934
+    }
+  ],
+  "mean_val_loss": {
+    "baseline": 2.9227548997793624,
+    "paper": 2.8917447631038837
+  },
+  "mean_loss_delta": -0.031010136675478694,
+  "geometric_mean_ppl_change_pct": -3.053425413343515,
+  "all_checks_passed": true,
+  "cross_run_checks": {
+    "dataset_descriptors_identical": true,
+    "notebook_within_budget": true,
+    "hybrid_task_gradient_nonzero": true
+  },
+  "validation_target_tokens": 4390912,
+  "checkpoint_weights_downloaded": false
+}

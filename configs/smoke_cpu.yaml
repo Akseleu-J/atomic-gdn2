@@ -1,0 +1,33 @@
+# Tiny CPU config (Pallas interpret mode) used by tests / CI. Override arch with --set arch=hybrid.
+name: smoke_cpu
+arch: baseline
+model:
+  vocab_size: 256
+  d_model: 64
+  n_heads: 4
+  d_ff: 128
+  num_blocks: 2
+  layers_per_block: 2
+  gdn2_chunk_size: 128
+  kv_lora_rank: 32
+  qk_nope_head_dim: 16
+  qk_rope_head_dim: 16
+  d_latent: 16
+  dropout_rate: 0.0
+  use_bf16: false
+  kernel_interpret: true
+data:
+  train_tokens: 20000
+  val_tokens: 5000
+train:
+  seq_len: 128
+  batch_size: 2
+  epochs: 1
+  eval_every: 0
+  eval_batches: 1
+  ckpt_every: 2
+  log_every: 1
+  max_steps: 4
+runtime:
+  shard: false
+  require_tpu: false

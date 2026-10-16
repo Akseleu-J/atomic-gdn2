@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atomic-gdn2-model"
+version = "0.2.0"
+description = "GDN-2 baseline vs hybrid GDN-2/MLA + hierarchical block-delta DAR language models in JAX/Flax on TPU"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Akseleu" }]
+keywords = ["jax", "tpu", "pallas", "linear-attention", "gated-delta-net", "language-model"]
+dependencies = [
+    "numpy",
+    "pyyaml>=6.0",
+    "jax>=0.11.2",
+    "flax==0.12.9",
+    "optax>=0.2.0",
+    "orbax-checkpoint",
+    "atomic-ops>=0.2.0",   # GDN-2 Pallas kernels (import name: atomic_gdn2)
+]
+
+[project.optional-dependencies]
+tpu = ["jax[tpu]==0.11.2"]          # also needs the libtpu find-links, see requirements-tpu.txt
+weights = ["safetensors>=0.4", "huggingface_hub>=0.25"]
+plot = ["matplotlib>=3.8"]
+dev = ["pytest>=8", "ruff>=0.5", "nbformat"]
+
+[project.scripts]
+atomic-gdn2-model-train = "atomic_gdn2_model.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+atomic_gdn2_model = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["kernel: needs atomic-ops Pallas kernels (interpret mode on CPU, slow)"]
+
+[tool.ruff]
+line-length = 135
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E741", "E731", "B905"]

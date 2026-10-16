@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this research artifact and its accompanying paper."
+title: "Atomic-GDN2: TPU Kernels and Hierarchical Delta Routing for Hybrid Language Models"
+type: software
+authors:
+  - family-names: Omirbay
+    given-names: Akseleu
+date-released: 2026-10-16
+url: "https://github.com/Akseleu-J/atomic-gdn2"
+license: Apache-2.0

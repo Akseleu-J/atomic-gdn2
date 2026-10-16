@@ -1,0 +1,8 @@
+# CPU / development install:  pip install -r requirements.txt && pip install -e ".[dev]"
+numpy
+pyyaml>=6.0
+jax==0.11.2
+flax==0.12.9
+optax>=0.2.0
+orbax-checkpoint
+atomic-ops>=0.2.0

@@ -1,0 +1,9 @@
+# TPU install (Kaggle / Colab TPU VM). Pins are the versions the reported runs were trained with.
+--find-links https://storage.googleapis.com/jax-releases/libtpu_releases.html
+jax[tpu]==0.11.2
+flax==0.12.9
+optax>=0.2.0
+orbax-checkpoint
+numpy
+pyyaml>=6.0
+atomic-ops>=0.2.0

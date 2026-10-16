@@ -1,0 +1,44 @@
+# Hybrid: 7 blocks x (3 x GDN-2 + 1 x MLA, hierarchical block-delta DAR, + SwiGLU), d_model=1024.
+name: hybrid_hier_1024_28l
+arch: hybrid
+model:
+  vocab_size: 50257
+  d_model: 1024
+  n_heads: 8
+  d_ff: 3584
+  num_blocks: 7
+  layers_per_block: 4
+  gdn2_chunk_size: 128
+  gdn2_bs2: 32
+  gdn2_mb: 8
+  kv_lora_rank: 512
+  qk_nope_head_dim: 64
+  qk_rope_head_dim: 64
+  d_latent: 256
+  dropout_rate: 0.1
+  tie_embeddings: true
+  l2norm_qk: true
+data:
+  train_tokens: 9035582489
+  val_tokens: 50000000
+  in_memory: false
+  bytes_per_token: 4.20
+train:
+  seq_len: 2048
+  batch_size: 32            # 48 did not fit in HBM for the hybrid
+  accum_steps: 1
+  epochs: 1
+  peak_lr: 3.0e-4
+  weight_decay: 0.1
+  warmup_ratio: 0.01
+  min_lr_ratio: 0.1
+  grad_clip: 1.0
+  eval_every: 1500
+  eval_batches: 100
+  ckpt_every: 5000
+  seed_init: 0
+  seed_data: 42
+  seed_dropout: 123
+runtime:
+  shard: true
+  require_tpu: true
