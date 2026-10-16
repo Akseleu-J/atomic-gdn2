@@ -13,3 +13,8 @@ runs/
 *.aux
 *.out
 *.log
+
+# LaTeX build intermediates
+*.aux
+*.out
+*.log
