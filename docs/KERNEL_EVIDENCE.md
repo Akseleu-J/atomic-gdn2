@@ -39,7 +39,9 @@ Forward relative L2 values 2.486e-6 and 2.481e-6 refer to two shapes, not univer
 The `c6862ced...` identifier in the attestation README is described as a content hash and
 must not automatically be treated as a Git commit. Original per-notebook raw logs are not committed.
 
-The aggregate has 145 PASS / 1 FAIL entries mixing numerical, training and status gates.
+The aggregate summary has 145 PASS / 1 FAIL entries mixing numerical, training and status gates.
+The complete cell list additionally contains 6 INFO and 1 ERROR records; the ERROR is a disk-full
+scale attempt documented as superseded by a later scale notebook.
 The FAIL is an OLD MQAR OOM, not a NEW numerical failure. Do not call this 146 numerical tests.
 
 Older README reports 103.29 vs 20674.62 ms (200.17x) for a 27.5M L=2048 LM. The matching

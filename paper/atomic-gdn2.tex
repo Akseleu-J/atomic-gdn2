@@ -4,7 +4,9 @@
 \usepackage{lmodern,microtype,amsmath,amssymb,graphicx,booktabs,longtable,array}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage[hidelinks]{hyperref}
+\hypersetup{pdfauthor={Akseleu Omirbay},pdftitle={Atomic-GDN2: TPU Kernels and Hierarchical Delta Routing for Hybrid Language Models},pdfsubject={Pallas kernel evaluation and two-seed hybrid language-model study}}
 \usepackage{float}
+\usepackage{needspace}
 \newfloat{algorithm}{tbp}{loa}
 \floatname{algorithm}{Algorithm}
 \usepackage{placeins}
@@ -21,10 +23,13 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-This paper describes a TPU-oriented Gated DeltaNet-2 implementation in JAX/Pallas and a
+I present my TPU-oriented Gated DeltaNet-2 implementation in JAX/Pallas and a
 language-model experiment combining recurrent token mixing, Multi-head Latent Attention,
 and hierarchical delta routing. The kernel uses a three-stage forward path and a fused
-custom backward, with explicit chunk-level residuals and numerical constraints. The
+custom backward, with explicit chunk-level residuals and numerical constraints. In my
+prior single-chip TPU evaluation, it achieved up to 468$\times$ kernel speedup over
+\texttt{associative\_scan}, with forward relative $L_2$ error about $2.5\times10^{-6}$.
+A separate 27.5M-parameter LM benchmark reported 200.17$\times$ end-to-end step speedup. The
 307.13M-parameter hybrid model is compared with a 334.16M-parameter pure GDN-2 baseline
 in four fresh TPU v5e-8 runs, with two seeds per architecture and a common batch size of 32.
 At exactly 61,500 optimizer steps, after 4.030B training target tokens per run, hybrid
@@ -34,7 +39,7 @@ The uncertainty shown is sample standard deviation over two seeds. Hybrid has lo
 at every shared logged evaluation in both seeds and reaches the evaluated BPB thresholds
 using 14.3--18.5\% fewer tokens and 10.4--13.6\% less logged notebook time.
 These results compare complete architectures: they do not isolate the contribution of
-delta routing, equalize FLOPs, or establish downstream generalization. Historical kernel microbenchmark ratios are not used to infer model-level speedups.
+delta routing, equalize FLOPs, or establish downstream generalization. The kernel, small-LM end-to-end and two-seed architecture experiments are reported as distinct measurements.
 Code, exact run evidence, analysis data and checkpoint export metadata accompany the paper.
 \end{abstract}
 
@@ -47,7 +52,7 @@ matrix operations, on-chip working storage and explicit forward/backward interfa
 The mathematical model, the kernel implementation and the surrounding language model
 are distinct levels of the system; their evidence should be kept distinct as well.
 
-This work studies two connected engineering questions. First, how can a GDN-2 kernel be
+I study two connected engineering questions. First, how can a GDN-2 kernel be
 structured in JAX/Pallas for TPU execution while making numerical assumptions explicit?
 Second, how does a recurrent/attention hybrid with hierarchical depth routing compare
 with a pure GDN-2 model under a practical, fixed session budget? The hybrid replaces
@@ -55,12 +60,13 @@ one recurrent mixer per block with Multi-head Latent Attention (MLA) \cite{deeps
 adapts the scoring and additive routing equations of Delta Attention Residuals (DAR)
 \cite{dar} to previous-block summaries and earlier within-block deltas.
 
-The contributions are: (i) a documented kernel decomposition with a fused backward and
-selective recomputation; (ii) an explicit implementation of hierarchical routing in a
+My contributions are: (i) an original TPU-native kernel with a fused backward, selective
+recomputation, numerical validation and measured kernel/end-to-end speedups; (ii) an explicit implementation of hierarchical routing in a
 GDN-2/MLA language model; and (iii) a two-seed, four-run comparison with complete logged
 learning curves, first-observed threshold crossings and immutable source provenance.
-The two architectures share the same kernel implementation, so their quality difference
-is not a comparison of Pallas against a scan backend.
+I developed the kernel and the hybrid integration as parts of the same investigation.
+Both language-model architectures use my kernel; their quality comparison therefore
+measures the architectural change rather than switching between Pallas and a scan backend.
 
 
 \section{Method: hierarchical delta routing}\label{sec:method}
@@ -70,7 +76,7 @@ next update while preserving the ordinary residual stream. Previous blocks are r
 by their net changes, whereas earlier mixers in the current block remain separate sources.
 
 \paragraph{Notation.}
-We suppress batch and token-position axes in the depth-routing equations. At one token
+I suppress batch and token-position axes in the depth-routing equations. At one token
 position, $x_{b,i}\in\mathbb R^d$ is the residual after sublayer $i$ of block $b$;
 $x_{b,0}$ is its input. Mixers have $i=1,\ldots,4$, and $i=5$ denotes the FFN.
 $\delta_{b,i}$ is a sublayer output (sanitized and stored locally for mixers), $s_b$ a completed block change,
@@ -109,7 +115,7 @@ key and its original value. At each token position,
  r_{b,i}&=\sum_j a_{b,i,j}v_j.\label{eq:dar}
 \end{align}
 The query is a learned vector independent of the current residual; the softmax is over
-depth sources, not sequence positions. For an empty list we define $r_{b,i}=0$.
+depth sources, not sequence positions. For an empty list I define $r_{b,i}=0$.
 For each mixer, the implemented update is
 \begin{align}
  h_{b,i}&=\operatorname{RMSNorm}_{\mathrm{pre},b,i}(x_{b,i-1}+r_{b,i}),\\
@@ -179,7 +185,7 @@ These are depth sources at the same sequence position, not persistent memory acr
 independent sequences.
 
 
-\begin{table}[htbp]\centering\small
+\begin{table}[H]\centering\small
 \caption{What is inherited from DAR and what this implementation changes. The original
 paper already includes both sublayer and block variants; block grouping itself is not a new claim.}
 \label{tab:dar-adaptation}
@@ -193,7 +199,7 @@ Backbone&Transformer attention/MLP sublayers&Three GDN-2 mixers, one MLA mixer a
 Numerics&Residual update formulation&Two mixer clipping sites; FFN update follows Eq.~\ref{eq:ffn}\\\bottomrule
 \end{tabular}\end{table}
 
-\begin{algorithm}[htbp]
+\begin{algorithm}[H]
 \caption{One hierarchical hybrid block, matching the released forward path.}
 \label{alg:hierarchical}
 \small
@@ -220,7 +226,7 @@ represented in later blocks by the net summary $s_b$. This hierarchy trades indi
 access to completed-block sublayers for a shorter source list; it does not preserve
 every past sublayer as a distinct candidate. Figure~\ref{fig:architecture} shows the same path.
 
-\begin{figure}[htbp]\centering
+\begin{figure}[H]\centering
 \includegraphics[width=0.90\textwidth,height=0.60\textheight,keepaspectratio]{figures/architecture.pdf}
 \caption{The current hybrid computation, with a diagram layout inspired by the stacked
 residual presentation of Vaswani et al.~\cite{transformer}. (a) Seven blocks, each containing
@@ -232,7 +238,7 @@ Block input/output correspond to $x_{b,0}$ and $x_{b,5}$; the summary is $s_b$.}
 \end{figure}
 \FloatBarrier
 
-\section{TPU implementation}
+\section{My TPU kernel: implementation and results}
 \subsection{Execution structure and memory}
 The \texttt{atomic-ops} distribution contains two distinct kernel generations:
 the older \texttt{atomic\_ops} port and the TPU-oriented \texttt{atomic\_gdn2} implementation
@@ -278,13 +284,79 @@ $g_{max}b_{s2}/2=80$ stays below the nominal exponential limit 88.
 Kernel-level clipping uses $10^4$; the hybrid has separate mixer/residual sanitization
 at $10^3$. The frequency and quality effect of these safeguards were not measured.
 
-\subsection{Evidence boundary}
-Both language-model architectures use the same pinned kernel implementation.
-Historical kernel microbenchmarks use different shapes and a supplied scan wrapper whose
-initial-state, scaling, final-state and composition conventions require an equivalence audit.
-They are not used to claim a speedup of hybrid over the baseline. Detailed source evidence
-and a corrected, as-yet-untimed reproduction harness are provided in the model repository's
-\href{https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/KERNEL_EVIDENCE.md}{kernel evidence notes}; kernel code remains at the pinned \texttt{atomic-ops} revision.
+\subsection{Direct kernel benchmark}
+I wanted to see how far a hand-written Pallas kernel could go. The forward uses three
+programs; the chunk-wise recurrence carries its matrix state on chip. For $L=2048$ and
+chunk length 128 this is 16 recurrence iterations. In the backward I fuse the five stages
+into one Pallas call per segment and reuse saved forward quantities, with the local
+recomputation described above.
+
+Table~\ref{tab:kernel-speed} restores the direct kernel experiment from my first article:
+a single TPU v5e chip, $B=4$, head dimension 128, inner block size 64, and seed 0.
+The metric is forward plus backward for the supplied objective including output and
+final-state terms. I report the recorded speedups from
+\href{https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/attestation/scaling.json}{the scaling attestation}.
+The largest ratio is 467.64$\times$, rounded to \textbf{468$\times$}.
+
+\begin{table}[htbp]\centering\small
+\caption{Direct GDN-2 kernel forward-plus-backward timings on one TPU v5e chip.
+Batch 4, head dimension 128, inner block size 64. Ratios are as recorded in the attestation.}
+\label{tab:kernel-speed}
+\begin{tabular}{rrrrr}\toprule
+Heads&Length&\texttt{associative\_scan} (ms)&\texttt{atomic\_gdn2} (ms)&Speedup\\\midrule
+2&2048&288.796&1.498&192.83$\times$\\
+2&4096&575.320&2.781&206.90$\times$\\
+4&2048&744.459&2.485&299.59$\times$\\
+4&4096&1501.515&4.668&321.69$\times$\\
+6&2048&1198.748&2.563&\textbf{467.64$\times$}\\
+6&4096&2398.292&5.352&448.10$\times$\\\bottomrule
+\end{tabular}\end{table}
+
+The speedup grows with head count in these shapes. This is a direct timing comparison
+against the supplied JAX scan implementation, not against a tuned GPU/Triton kernel.
+The model experiment below instead uses eight devices, eight heads and inner block size 32.
+
+\Needspace{9\baselineskip}
+\subsection{End-to-end training benchmark}
+I also report the separate small-LM benchmark documented in
+\href{https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/docs/ATTESTATION.md}{the TPU attestation summary}
+and \href{https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/README.md}{the kernel release}.
+For a 27.5M-parameter LM with $B=8$, $L=2048$, six heads and head dimension 128,
+the reported training-step times are 103.29\,ms with my kernel and 20,674.62\,ms with
+\texttt{associative\_scan}: \textbf{200.17$\times$ end-to-end speedup}.
+This corresponds to the release's reported 158,626 versus 792 tokens/s.
+The published ratio uses the reported benchmark precision; the displayed millisecond
+values are rounded.
+
+This is a measured small-model end-to-end result, distinct from the kernel-only ratio.
+Neither number is used as the throughput ratio of the 307M hybrid to the 334M baseline:
+both larger models use the same Pallas implementation. I did not rerun the kernel or
+small-LM benchmarks while revising the four-run language-model experiment.
+
+\subsection{Numerical validation}
+I checked the implementation against reference computations, rather than relying only
+on successful training. The original forward comparisons at $L=2048$ give relative
+$L_2$ errors of $2.486\times10^{-6}$ for four heads and $2.481\times10^{-6}$ for six heads.
+The broader TPU attestation also records gradient, finite-difference and causality checks
+(Table~\ref{tab:kernel-validation}). These results apply to their tested configurations;
+forward output agreement is not a universal backward-error bound.
+
+\begin{table}[htbp]\centering\small
+\caption{Selected numerical-validation records from the external TPU attestation.
+Each tolerance belongs to its own test protocol; these are not measurements from the LM runs.}
+\label{tab:kernel-validation}
+\begin{tabular}{lrr}\toprule Check&Recorded result&Tolerance\\\midrule
+Forward reference vs token-serial&$1.5\times10^{-4}$&$5\times10^{-3}$\\
+Gradient-gate worst case&$3.427\times10^{-5}$&$5\times10^{-3}$\\
+Serial fp64 finite difference&$1.4\times10^{-10}$&$5\times10^{-5}$\\
+Kernel bf16x3 finite difference&$6.5\times10^{-4}$&$2\times10^{-3}$\\
+Causality&$0$&$10^{-6}$\\\bottomrule
+\end{tabular}\end{table}
+
+The aggregate summary records 145 PASS entries and one failure caused by the OLD MQAR baseline
+running out of memory. It combines numerical, training and status checks, rather than
+146 interchangeable correctness tests. Full protocols and aggregate records remain in
+\href{https://github.com/Akseleu-J/atomic-ops/tree/main/attestation}{the kernel attestation directory}.
 
 \section{Experiments}
 \subsection{Data, optimization and run protocol}
@@ -330,7 +402,9 @@ hybrid&2&62,683&4.107993&8.801&Complete\\\bottomrule
 \end{tabular}\end{table}
 
 \subsection{Validation learning curves and matched-step comparison}
-Figure~\ref{fig:main}A shows the mean and sample standard deviation over the two seeds.
+Figure~\ref{fig:main}A is the main learning-curve comparison: mean and sample standard
+deviation over two seeds. Individual trajectories are retained only as per-seed detail
+in Appendix~\ref{app:perseed}.
 Hybrid is lower at every one of the 41 shared logged evaluations, from step 1500 to 61,500,
 in both seeds. Selected values appear in Table~\ref{tab:main}; the complete per-seed table
 is in the accompanying CSV and machine-readable attestation.
@@ -380,7 +454,7 @@ interval. The curve stops at the last common observation, 61,500 steps.}\label{f
 
 \subsection{Token and time to target}
 For each seed separately, the threshold crossing is the first recorded validation at
-or below the target. We then average those step/token/time values across seeds; this
+or below the target. I then average those step/token/time values across seeds; this
 is not a crossing computed from the mean BPB curve. Table~\ref{tab:efficiency} gives the
 four evaluated thresholds. Token savings are 14.29--18.52\%. A zero SD in observed crossing steps means both seeds
 crossed on the same 1500-step grid point; it does not locate the true crossing exactly.
@@ -408,8 +482,7 @@ records are included in the appendix and machine-readable tables.
 All four notebooks report completion and contain a nonempty SUCCESS record. Recorded
 updates have finite loss/gradient norms and zero skipped steps; each runtime preflight
 reports eight TPU devices and finite forward/backward execution. Hybrid's routing branch
-has a nonzero preflight task gradient. These checks establish observed execution health,
-not numerical equivalence to a reference at every training step.
+has a nonzero preflight task gradient. These checks establish observed execution health.
 
 The baseline and hybrid training source commits are respectively
 \texttt{bf80e315} and \texttt{697a10d3}; the common kernel commit is \texttt{0dbc59cf}.
@@ -425,7 +498,7 @@ Gated DeltaNet-2 supplies the channel-wise erase/write recurrence and its chunkw
 formulation \cite{gdn2}; MLA supplies the compressed key/value attention component
 \cite{deepseek}. The delta-routing scoring and additive equations follow DAR \cite{dar},
 while the source grouping here combines previous block changes and local earlier deltas
-in a GDN-2/MLA backbone. We do not claim to have introduced those underlying mechanisms.
+in a GDN-2/MLA backbone. I do not claim to have introduced those underlying mechanisms.
 The block composition and engineering integration are the object of this experiment.
 
 Pallas exposes accelerator-specific kernel programming within JAX \cite{pallas}.
@@ -455,8 +528,8 @@ The consistent sign in both seeds does not establish a universal advantage.
 \paragraph{Attribution and resource matching.}
 The architectures differ in MLA, routing and normalization details, parameter counts
 and FLOPs. No component ablation isolates DAR. Equal target tokens and batch size do
-not imply equal compute. Both use the same kernel; a historical Pallas/scan ratio cannot
-explain the architecture comparison as a backend change. Longer-context behavior and
+not imply equal compute. Both use the same kernel; the kernel speedup against scan is a separate
+implementation comparison, not the cause of a backend change between these architectures. Longer-context behavior and
 comparisons with tuned external implementations remain unmeasured.
 
 \paragraph{Schedule and stopping.}
@@ -474,15 +547,17 @@ formal significance or asymptotic convergence claim.
 
 \paragraph{Numerics, artifacts and reproducibility.}
 The implementation uses clipping, damping and NaN replacement. Their activation rates
-and effect on quality are not separately characterized. Historical kernel attestations
-use older source/content identifiers and incomplete raw provenance. No new equivalent-workload
-kernel speedup is established in this study. Finite training and successful checkpoint publication do
-not prove backward equivalence or independent reproduction. The release distinguishes
+and effect on quality are not separately characterized. Kernel validation establishes agreement for the recorded numerical checks, not all possible
+shapes, precisions or inputs. The kernel and small-LM benchmarks use their own configurations
+and source records. Finite LM training and checkpoint serialization are separate checks. The release distinguishes
 lossless weight serialization checks from a full rerun of evaluation.
 
 \section{Conclusion}
-Atomic-GDN2 combines a documented TPU kernel implementation with an explicit hierarchical
-delta-routing hybrid and a four-run training comparison. At exactly 4.030B training
+I developed a TPU-native Pallas kernel and an explicit hierarchical delta-routing hybrid.
+My kernel evaluation reaches 468$\times$ forward-plus-backward speedup against the supplied
+JAX scan baseline, with forward error about $2.5\times10^{-6}$; a separate 27.5M LM
+benchmark reports 200.17$\times$ end-to-end step speedup. I then compare the hybrid
+with a pure GDN-2 model in four fresh runs. At exactly 4.030B training
 target tokens, hybrid improves estimated validation BPB by 0.012071 over the pure GDN-2
 baseline, with lower BPB at all shared evaluations in both seeds and approximately
 8.09\% fewer parameters. The observed savings to the evaluated quality thresholds are
@@ -492,8 +567,8 @@ The next informative experiments are additional seeds, component ablations, a fi
 learning-rate schedule and independent task evaluation.
 
 \paragraph{Code and artifact availability.}
-The publication repository is \repo. Kernel implementation and detailed historical
-evidence are at \url{https://github.com/Akseleu-J/atomic-ops}; checkpoint exports and model
+The publication repository is \repo. Kernel implementation and detailed evaluation
+records are at \url{https://github.com/Akseleu-J/atomic-ops}; checkpoint exports and model
 card are at \url{https://huggingface.co/Akseleu/Atomic-GDN2}. The model repository contains
 the source of this paper, vector figures, exact tables and a ZIP of all four run records.
 Immutable training commits and per-file manifests identify the code that produced
@@ -518,11 +593,12 @@ Advances in Neural Information Processing Systems, 2017. arXiv:1706.03762.
 
 \clearpage
 \appendix
-\section{Per-seed and wall-time views}
+\section{Per-seed detail and wall-time measurements}\label{app:perseed}
 \begin{figure}[htbp]\centering
 \includegraphics[width=.94\textwidth]{figures/figure4-per-seed.pdf}
-\caption{The two seed pairs shown separately, with the same axes and analytical cutoffs.
-Hybrid has lower estimated BPB at every common recorded step in each pair.}
+\caption{Per-seed detail for the aggregate comparison in Figure~\ref{fig:main}A. The two pairs
+use the same axes and analytical cutoffs. This appendix view exposes individual trajectories;
+it is not additional independent evidence beyond the two seeds in the main figure.}
 \end{figure}
 \begin{figure}[htbp]\centering
 \includegraphics[width=.74\textwidth]{figures/figure3-wall-time-to-target.pdf}

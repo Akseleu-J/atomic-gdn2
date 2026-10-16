@@ -1,7 +1,7 @@
 {
   "pdf": "paper/atomic-gdn2.pdf",
-  "sha256": "e746141b35525b8732f275ef9422019d1eac9acd9c318c6e82252b3b3461d327",
-  "pages": 11,
+  "sha256": "74443ba84475989e45546be40d17071e0c4bbf2056f2c22c82f0306026fb8943",
+  "pages": 13,
   "external_links": [
     {
       "url": "https://arxiv.org/abs/1706.03762",
@@ -56,15 +56,7 @@
       "status": 200,
       "final_url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/attestation/training.json",
       "content_type": "text/html; charset=utf-8",
-      "bytes_read": 716449,
-      "ok": true
-    },
-    {
-      "url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/KERNEL_EVIDENCE.md",
-      "status": 200,
-      "final_url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/KERNEL_EVIDENCE.md",
-      "content_type": "text/html; charset=utf-8",
-      "bytes_read": 247002,
+      "bytes_read": 716540,
       "ok": true
     },
     {
@@ -72,7 +64,7 @@
       "status": 200,
       "final_url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/REPRODUCING.md",
       "content_type": "text/html; charset=utf-8",
-      "bytes_read": 220326,
+      "bytes_read": 220411,
       "ok": true
     },
     {
@@ -80,7 +72,39 @@
       "status": 200,
       "final_url": "https://github.com/Akseleu-J/atomic-ops",
       "content_type": "text/html; charset=utf-8",
-      "bytes_read": 449322,
+      "bytes_read": 449321,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/README.md",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/README.md",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 419121,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/attestation/scaling.json",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/attestation/scaling.json",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 258292,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/docs/ATTESTATION.md",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-ops/blob/0dbc59cf74883315d7adbebe9229c520663e0d58/docs/ATTESTATION.md",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 263904,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-ops/tree/main/attestation",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-ops/tree/main/attestation",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 240275,
       "ok": true
     },
     {
@@ -88,7 +112,7 @@
       "status": 200,
       "final_url": "https://github.com/KellerJordan/Muon",
       "content_type": "text/html; charset=utf-8",
-      "bytes_read": 280333,
+      "bytes_read": 280337,
       "ok": true
     },
     {
@@ -109,7 +133,7 @@
     }
   ],
   "external_links_all_ok": true,
-  "internal_targets": 25,
+  "internal_targets": 29,
   "internal_targets_all_resolved": true,
   "bibliography_entries": 6,
   "all_bibliography_entries_cited": true,
@@ -152,10 +176,87 @@
     "paper_comparison": "DAR v1 Section 2.3 Eqs 1\u20132 and Figure 3; no new-claim attribution for original block grouping",
     "external_bibliography": "Titles/authors/years checked on official arXiv/JAX/Muon pages"
   },
-  "scope": "Document/source/metrics/link audit; no new training or post-export model evaluation",
+  "scope": "Editorial, source, recorded metrics, kernel evidence and links; no new TPU timing, training or exported-model evaluation",
+  "author": "Akseleu Omirbay",
+  "authorial_voice": "I/my",
+  "figure_2A": "Main text: two-seed mean and sample SD",
+  "figure_4": "Appendix A: per-seed detail",
   "per_seed_consistency_verified": {
     "common_steps": 41,
     "pairs": 2,
     "hybrid_lower_at_all_common_steps": true
+  },
+  "kernel": {
+    "peak_speedup": 467.64,
+    "headline_rounding": 468,
+    "end_to_end_reported": 200.17,
+    "scaling_rounding_checks": [
+      {
+        "H": 2,
+        "L": 2048,
+        "reported": 192.83,
+        "ratio_of_displayed_times": 192.78771695594125,
+        "rounding_intervals_overlap": true
+      },
+      {
+        "H": 2,
+        "L": 4096,
+        "reported": 206.9,
+        "ratio_of_displayed_times": 206.8752247393024,
+        "rounding_intervals_overlap": true
+      },
+      {
+        "H": 4,
+        "L": 2048,
+        "reported": 299.59,
+        "ratio_of_displayed_times": 299.5810865191147,
+        "rounding_intervals_overlap": true
+      },
+      {
+        "H": 4,
+        "L": 4096,
+        "reported": 321.69,
+        "ratio_of_displayed_times": 321.6613110539846,
+        "rounding_intervals_overlap": true
+      },
+      {
+        "H": 6,
+        "L": 2048,
+        "reported": 467.64,
+        "ratio_of_displayed_times": 467.71283651970344,
+        "rounding_intervals_overlap": true
+      },
+      {
+        "H": 6,
+        "L": 4096,
+        "reported": 448.1,
+        "ratio_of_displayed_times": 448.1113602391629,
+        "rounding_intervals_overlap": true
+      }
+    ],
+    "aggregate_cell_status_counts": {
+      "PASS": 145,
+      "INFO": 6,
+      "FAIL": 1,
+      "ERROR": 1
+    },
+    "gradient_gate_worst_case": 3.427e-05,
+    "source_sha256": {
+      "README.md": "48bfd5e68da5fe581885ab5e810f61ec1c7367b6761c966660f8a051dd9a254a",
+      "docs/ATTESTATION.md": "436f1842ff33ebbae79413085190174c76448c8e91b6cfd0bbcd13bc2866e421",
+      "attestation/scaling.json": "0d3db04f8e0ac15bbff77369a0bfbe3221f74a7825fcefeb5a28d0da2a7e1446",
+      "attestation/final_report.json": "bca630ac9e1f5aab8e7e1ee87dfd2c1afff8bc05779d1797a3773cab9fdf21f0",
+      "notebooks/speedup_scaling.ipynb": "1c70ba03e0def8a53db1699ec8763a38af2176e9bbace721dde90cdbe555d247"
+    }
+  },
+  "strict_audit": {
+    "editorial_checks": "PASS",
+    "current_metric_recalculation": "PASS",
+    "historical_kernel_records": "Retained and source checked; no new TPU run",
+    "open_findings": [
+      "K1: exact 200.17x raw execution record absent from inspected aggregate",
+      "K2: committed scaling notebook contains invalid wrapper calls"
+    ],
+    "report": "docs/PUBLICATION_AUDIT.md"
   }
 }
