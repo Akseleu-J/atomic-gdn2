@@ -1,0 +1,24 @@
+name: Export verified research checkpoints
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        slot: [2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install export dependencies
+        run: python -m pip install numpy==2.4.3 tensorstore==0.1.85 safetensors==0.8.0 huggingface_hub==2.2.0 PyYAML==6.0.3 requests==2.32.5
+      - name: Export parameters, verify tensor bytes and upload
+        env:
+          CHECKPOINT_URLS: ${{ secrets[format('CHECKPOINT_URLS_{0}', matrix.slot)] }}
+          HF_EXPORT_TOKEN: ${{ secrets.HF_EXPORT_TOKEN }}
+        run: python -u scripts/export_checkpoint.py --remote --slot ${{ matrix.slot }}

@@ -1,0 +1,66 @@
+name: baseline_seed1_b32
+arch: baseline
+model:
+  vocab_size: 50257
+  d_model: 1024
+  n_heads: 8
+  d_ff: 3584
+  layers_per_block: 4
+  num_blocks: 7
+  dropout_rate: 0.1
+  gdn2_chunk_size: 128
+  gdn2_bs2: 32
+  gdn2_mb: 8
+  gdn2_g_init: 0.05
+  l2norm_qk: true
+  rope_theta: 10000.0
+  kv_lora_rank: 512
+  q_lora_rank: null
+  qk_nope_head_dim: 64
+  qk_rope_head_dim: 64
+  d_latent: 256
+  layer_types_override: []
+  tie_embeddings: true
+  use_bf16: true
+  kernel_interpret: false
+data:
+  dir: /kaggle/input/datasets/windmaple/openwebtext-gpt2
+  candidates:
+  - /kaggle/input/datasets/windmaple/openwebtext-gpt2
+  - /kaggle/input/openwebtext-gpt2
+  - /kaggle/input/windmaple/openwebtext-gpt2
+  train_file: train.bin
+  val_file: val.bin
+  train_tokens: 9035582489
+  val_tokens: 50000000
+  in_memory: false
+  bytes_per_token: 4.2
+train:
+  seq_len: 2048
+  batch_size: 32
+  accum_steps: 1
+  epochs: 1
+  peak_lr: 0.0003
+  weight_decay: 0.1
+  warmup_ratio: 0.01
+  min_lr_ratio: 0.1
+  grad_clip: 1.0
+  muon_momentum: 0.95
+  muon_ns_steps: 5
+  adam_b1: 0.9
+  adam_b2: 0.95
+  eval_every: 1500
+  eval_batches: 100
+  ckpt_every: 5000
+  ckpt_keep: 2
+  log_every: 50
+  seed_init: 1
+  seed_data: 43
+  seed_dropout: 124
+  max_steps: null
+runtime:
+  shard: true
+  require_tpu: true
+  backend_wait_s: 1
+  wall_deadline_unix: 1792153522.1998475
+  checkpoint_margin_s: 600

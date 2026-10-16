@@ -6,4 +6,4 @@ optax>=0.2.0
 orbax-checkpoint
 numpy
 pyyaml>=6.0
-atomic-ops>=0.2.0
+atomic-ops @ git+https://github.com/Akseleu-J/atomic-ops@0dbc59cf74883315d7adbebe9229c520663e0d58

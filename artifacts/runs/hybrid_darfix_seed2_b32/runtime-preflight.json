@@ -1,0 +1,10 @@
+{
+  "backend": "tpu",
+  "devices": 8,
+  "data_sharding": true,
+  "forward_backward_finite": true,
+  "dar_gradient_max_abs": 0.0004397462762426585,
+  "loss": 5.616876602172852,
+  "loss_type": "next_token_cross_entropy",
+  "cpu_parity_checked": false
+}

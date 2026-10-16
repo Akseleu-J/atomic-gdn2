@@ -1,0 +1,15 @@
+{
+  "kind": "done",
+  "time": 1792156995.96161,
+  "name": "hybrid_darfix_seed1_b32",
+  "arch": "hybrid",
+  "n_params": 307131392,
+  "final_step": 62673,
+  "skipped_steps": 0,
+  "best_val_bpb_est": 0.9934352306130054,
+  "hours": 8.62451469047,
+  "run_dir": "/kaggle/working/hybrid_darfix_seed1_b32/runs/hybrid_darfix_seed1_b32",
+  "stop_reason": "wall_time_budget",
+  "tokens_seen": 4107337728,
+  "completed_data_pass": false
+}

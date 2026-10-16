@@ -1,0 +1,15 @@
+{
+  "kind": "done",
+  "time": 1792152932.3893852,
+  "name": "baseline_seed2_b32",
+  "arch": "baseline",
+  "n_params": 334156800,
+  "final_step": 65000,
+  "skipped_steps": 0,
+  "best_val_bpb_est": 1.0038247379993666,
+  "hours": 8.547459929709166,
+  "run_dir": "/kaggle/working/baseline_seed2_b32/runs/baseline_seed2_b32",
+  "stop_reason": "wall_time_budget",
+  "tokens_seen": 4259840000,
+  "completed_data_pass": false
+}

@@ -1,0 +1,52 @@
+{
+  "runs": [
+    {
+      "slot": 2,
+      "model": "baseline",
+      "seed": 1,
+      "version": 2,
+      "commit": "bf80e315732837c4261f32faebbb052c51dee094",
+      "parameters": 334156800,
+      "checkpoint_step": 65000,
+      "val_loss": 2.92315699449226,
+      "val_bpb_est": 1.0041009761175883,
+      "tokens": 4259840000
+    },
+    {
+      "slot": 3,
+      "model": "baseline",
+      "seed": 2,
+      "version": 2,
+      "commit": "bf80e315732837c4261f32faebbb052c51dee094",
+      "parameters": 334156800,
+      "checkpoint_step": 65000,
+      "val_loss": 2.9223528050664647,
+      "val_bpb_est": 1.0038247379993666,
+      "tokens": 4259840000
+    },
+    {
+      "slot": 4,
+      "model": "paper-DAR hybrid",
+      "seed": 1,
+      "version": 3,
+      "commit": "697a10d3cf06be5a5b9cafa38fe272629814e64f",
+      "parameters": 307131392,
+      "checkpoint_step": 62673,
+      "val_loss": 2.89210668250696,
+      "val_bpb_est": 0.9934352306130054,
+      "tokens": 4107337728
+    },
+    {
+      "slot": 5,
+      "model": "paper-DAR hybrid",
+      "seed": 2,
+      "version": 3,
+      "commit": "697a10d3cf06be5a5b9cafa38fe272629814e64f",
+      "parameters": 307131392,
+      "checkpoint_step": 62683,
+      "val_loss": 2.8913828437008076,
+      "val_bpb_est": 0.9931865928377581,
+      "tokens": 4107993088
+    }
+  ]
+}

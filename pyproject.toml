@@ -18,7 +18,7 @@ dependencies = [
     "flax==0.12.9",
     "optax>=0.2.0",
     "orbax-checkpoint",
-    "atomic-ops>=0.2.0",   # GDN-2 Pallas kernels (import name: atomic_gdn2)
+    "atomic-ops @ git+https://github.com/Akseleu-J/atomic-ops@0dbc59cf74883315d7adbebe9229c520663e0d58",
 ]
 
 [project.optional-dependencies]

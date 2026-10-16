@@ -5,7 +5,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .venv/
-runs/
+/runs/
 *.safetensors
 *.part
 
@@ -13,6 +13,14 @@ runs/
 *.aux
 *.out
 *.log
+
+# LaTeX build intermediates
+*.aux
+*.out
+*.log
+
+/checkpoint-exports/
+/checkpoint-cache/
 
 # LaTeX build intermediates
 *.aux

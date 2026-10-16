@@ -2,8 +2,8 @@
 
 **TPU language-model research: pure GDN-2 and a GDN-2/MLA hybrid with hierarchical delta attention residuals.**
 
-[Paper](paper/atomic-gdn2.pdf) · [Weights](https://huggingface.co/Akseleu/Atomic-GDN2) ·
-[Kernel](https://github.com/Akseleu-J/atomic-ops) · [Exact results](attestation/training.json) ·
+[Paper](paper/atomic-gdn2.pdf) В· [Weights](https://huggingface.co/Akseleu/Atomic-GDN2) В·
+[Kernel](https://github.com/Akseleu-J/atomic-ops) В· [Exact results](attestation/training.json) В·
 [Full run evidence](artifacts/four-runs-20261016.zip)
 
 ![hybrid architecture](paper/figures/architecture.png)
@@ -14,18 +14,18 @@ Four fresh Kaggle TPU v5e-8 runs, two initialization/data seeds per model, batch
 The **hybrid** combines 21 GDN-2 mixers, 7 MLA mixers and 7 SwiGLU FFNs; the **Baseline** uses
 28 GDN-2 mixers and 7 FFNs. Both use the same external `atomic_gdn2` kernel implementation.
 
-| Model | Parameters | BPB at exactly 61,500 steps (mean ± sample SD) |
+| Model | Parameters | BPB at exactly 61,500 steps (mean В± sample SD) |
 |---|---:|---:|
-| Baseline | 334,156,800 | 1.005909 ± 0.000227 |
-| hybrid | 307,131,392 | **0.993838 ± 0.000111** |
+| Baseline | 334,156,800 | 1.005909 В± 0.000227 |
+| hybrid | 307,131,392 | **0.993838 В± 0.000111** |
 
 At this common point both have processed **4,030,464,000 training target tokens**;
-Δ (hybrid − Baseline) = **−0.012071 estimated BPB**. Hybrid is lower at all 41 shared logged
+О” (hybrid в€’ Baseline) = **в€’0.012071 estimated BPB**. Hybrid is lower at all 41 shared logged
 evaluation steps in both seeds. Sample SD is computed across two seeds (`ddof=1`), not a confidence interval.
 
 ![Validation learning curves](results/figure1-val-bpb.png)
 
-| Target BPB ≤ | Fewer tokens to first logged target | Less notebook time |
+| Target BPB в‰¤ | Fewer tokens to first logged target | Less notebook time |
 |---:|---:|---:|
 | 1.10 | 18.52% | 13.48% |
 | 1.08 | 17.65% | 13.55% |
@@ -41,7 +41,7 @@ Models differ in parameters/FLOPs; learning rates follow elapsed time rather tha
 `estimated BPB = token cross-entropy / ln(2) / 4.2`. This is not exact byte-level BPB.
 Evaluation covers 4,390,912 target tokens (67 full batches) from the available validation split.
 Actual final checkpoints: Baseline seed 1/2 at 65,000; hybrid seeds at 62,673/62,683.
-The chosen near-step plot cutoff uses Baseline 63,000; its Δ is −0.011617 BPB and is explicitly
+The chosen near-step plot cutoff uses Baseline 63,000; its О” is в€’0.011617 BPB and is explicitly
 **not exactly token matched**. All original later evaluations are retained in the raw artifacts.
 
 ## Architecture and source provenance
@@ -59,6 +59,10 @@ is not part of this release. [Architecture](docs/ARCHITECTURE.md).
 - This is a new repository. The previous repository and its history are preserved as a private archive.
 
 ## Use the weights
+
+**Publication in progress:** current safetensors exports are being verified and uploaded.
+The previous experiment remains available under the clearly labelled legacy path.
+
 
 Weights on Hugging Face use **safetensors with original Flax tensor layout**. They are not a
 Transformers `AutoModelForCausalLM` checkpoint. Use this package's loader and matching model config;
@@ -85,7 +89,7 @@ artifacts and `scripts/training_entry.py`. No training job auto-resumes into the
 
 `atomic-ops` contains distinct v0.1 and v0.2 kernel generations; this model imports v0.2 `atomic_gdn2`.
 Historical kernel microbenchmarks and current model quality are separate evidence.
-The old 468× headline is a historical shape-specific microbenchmark against a supplied scan baseline,
+The old 468Г— headline is a historical shape-specific microbenchmark against a supplied scan baseline,
 not a speedup of this hybrid over the Baseline. [Kernel evidence and caveats](docs/KERNEL_EVIDENCE.md).
 
 ## Limitations
