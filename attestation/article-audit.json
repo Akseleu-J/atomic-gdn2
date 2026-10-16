@@ -1,0 +1,161 @@
+{
+  "pdf": "paper/atomic-gdn2.pdf",
+  "sha256": "e746141b35525b8732f275ef9422019d1eac9acd9c318c6e82252b3b3461d327",
+  "pages": 11,
+  "external_links": [
+    {
+      "url": "https://arxiv.org/abs/1706.03762",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1706.03762",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 43644,
+      "ok": true
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.04434",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2405.04434",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 67380,
+      "ok": true
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.18855",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2605.18855",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 42511,
+      "ok": true
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.22791",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2605.22791",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 43125,
+      "ok": true
+    },
+    {
+      "url": "https://docs.jax.dev/en/latest/pallas/",
+      "status": 200,
+      "final_url": "https://docs.jax.dev/en/latest/pallas/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 61734,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-gdn2",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-gdn2",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 315162,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/attestation/training.json",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/attestation/training.json",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 716449,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/KERNEL_EVIDENCE.md",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/KERNEL_EVIDENCE.md",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 247002,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/REPRODUCING.md",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/REPRODUCING.md",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 220326,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/Akseleu-J/atomic-ops",
+      "status": 200,
+      "final_url": "https://github.com/Akseleu-J/atomic-ops",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 449322,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/KellerJordan/Muon",
+      "status": 200,
+      "final_url": "https://github.com/KellerJordan/Muon",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 280333,
+      "ok": true
+    },
+    {
+      "url": "https://huggingface.co/Akseleu/Atomic-GDN2",
+      "status": 200,
+      "final_url": "https://huggingface.co/Akseleu/Atomic-GDN2",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 162767,
+      "ok": true
+    },
+    {
+      "url": "https://www.kaggle.com/datasets/windmaple/openwebtext-gpt2",
+      "status": 200,
+      "final_url": "https://www.kaggle.com/datasets/windmaple/openwebtext-gpt2",
+      "content_type": "text/html; charset=utf-8",
+      "bytes_read": 9694,
+      "ok": true
+    }
+  ],
+  "external_links_all_ok": true,
+  "internal_targets": 25,
+  "internal_targets_all_resolved": true,
+  "bibliography_entries": 6,
+  "all_bibliography_entries_cited": true,
+  "evidence": {
+    "shared_step": 61500,
+    "target_tokens": 4030464000,
+    "hybrid_parameter_reduction_pct": 8.087642687504793,
+    "runs": [
+      {
+        "model": "baseline",
+        "seed": 1,
+        "step": 65000,
+        "bpb_est": 1.0041009761175883,
+        "hours": 8.768118551405278
+      },
+      {
+        "model": "baseline",
+        "seed": 2,
+        "step": 65000,
+        "bpb_est": 1.0038247379993666,
+        "hours": 8.74302007575
+      },
+      {
+        "model": "paper-DAR hybrid",
+        "seed": 1,
+        "step": 62673,
+        "bpb_est": 0.9934352306130054,
+        "hours": 8.808461270207777
+      },
+      {
+        "model": "paper-DAR hybrid",
+        "seed": 2,
+        "step": 62683,
+        "bpb_est": 0.9931865928377581,
+        "hours": 8.800834514083888
+      }
+    ],
+    "math_checked_against": "models/hybrid.py: PaperDAR, PaperLayer, PaperBlock, LM",
+    "initialization": "Algebraic softmax-zero-query and triangle-inequality observation; not an identity or isolated quality proof",
+    "paper_comparison": "DAR v1 Section 2.3 Eqs 1\u20132 and Figure 3; no new-claim attribution for original block grouping",
+    "external_bibliography": "Titles/authors/years checked on official arXiv/JAX/Muon pages"
+  },
+  "scope": "Document/source/metrics/link audit; no new training or post-export model evaluation",
+  "per_seed_consistency_verified": {
+    "common_steps": 41,
+    "pairs": 2,
+    "hybrid_lower_at_all_common_steps": true
+  }
+}

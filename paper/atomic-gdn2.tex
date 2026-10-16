@@ -5,6 +5,8 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage[hidelinks]{hyperref}
 \usepackage{float}
+\newfloat{algorithm}{tbp}{loa}
+\floatname{algorithm}{Algorithm}
 \usepackage{placeins}
 \setlength{\parskip}{0.35em}
 \setlength{\parindent}{0pt}
@@ -61,7 +63,20 @@ The two architectures share the same kernel implementation, so their quality dif
 is not a comparison of Pallas against a scan backend.
 
 
-\section{Background and mathematical specification}
+\section{Method: hierarchical delta routing}\label{sec:method}
+The design separates mixing across tokens from routing across depth. GDN-2 and MLA
+compute token-dependent updates; DAR selects earlier depth changes to condition the
+next update while preserving the ordinary residual stream. Previous blocks are represented
+by their net changes, whereas earlier mixers in the current block remain separate sources.
+
+\paragraph{Notation.}
+We suppress batch and token-position axes in the depth-routing equations. At one token
+position, $x_{b,i}\in\mathbb R^d$ is the residual after sublayer $i$ of block $b$;
+$x_{b,0}$ is its input. Mixers have $i=1,\ldots,4$, and $i=5$ denotes the FFN.
+$\delta_{b,i}$ is a sublayer output (sanitized and stored locally for mixers), $s_b$ a completed block change,
+$\mathcal V_{b,i}$ the available source list, and $r_{b,i}$ the retrieved update.
+$z_{b,i}\in\mathbb R^d$ is a learned query. The index $t$ below denotes sequence time.
+
 \subsection{Gated DeltaNet-2 recurrence}
 Let $S_t\in\mathbb{R}^{d_k\times d_v}$ be the recurrent state. The reference implemented
 in the accompanying kernel repository uses channel-wise erase and write vectors
@@ -75,7 +90,7 @@ $b_t,w_t$, a decay vector $\alpha_t$, and query/key/value vectors $q_t,k_t,v_t$:
 \end{align}
 Here $\gamma=1/\sqrt{d_k}$ in the language model. This explicitly distinguishes the
 erase and write channels; a scalar-gate formula without $w_t$ would not specify this API.
-The implementation applies $b_t=\sigma(W_bx_t)$ and
+The model projects $w_t=W_wx_t$ without a sigmoid, applies $b_t=\sigma(W_bx_t)$, and uses
 \begin{equation}
  g_t=-\min\!\left(\operatorname{softplus}(W_gx_t+c_g),\frac{160}{b_{s2}}\right),
  \qquad \alpha_t=\exp(g_t).
@@ -85,26 +100,139 @@ chosen balanced two-leg (BTL) decay computation, not to every implementation of 
 The deployed chunked computation also includes damping and sanitization, described below;
 its agreement with an undamped mathematical recurrence must be evaluated under matched settings.
 
-\subsection{Delta routing along depth}
-DAR routes changes introduced by earlier sublayers rather than only cumulative hidden
-states \cite{dar}. We retain its learned query-vector scoring, normalized keys,
-unprojected values and additive retrieval, and adapt the source grouping to the hybrid blocks.
-For a source set $\mathcal V_i$ available before sublayer $i$,
+\subsection{Routing rule and initialization}
+Following DAR~\cite{dar}, each source $v_j\in\mathcal V_{b,i}$ supplies a normalized
+key and its original value. At each token position,
 \begin{align}
- a_{ij}&=\operatorname{softmax}_{j\in\mathcal V_i}
-       \left(z_i^T\operatorname{RMSNorm}_{\mathrm{key}}(v_j)\right),\\
- r_i&=\sum_{j\in\mathcal V_i}a_{ij}v_j,\qquad
- \delta_i=F_i\!\left(\operatorname{Norm}_{\mathrm{pre}}(x_i+r_i)\right),\\
- x_{i+1}&=\operatorname{sanitize}(x_i+\delta_i)\quad\text{for token mixers}.
- \label{eq:dar}
+ a_{b,i,j}&=\operatorname{softmax}_{j}
+ \left(z_{b,i}^{\mathsf T}\operatorname{RMSNorm}_{\mathrm{key},b,i}(v_j)\right),\\
+ r_{b,i}&=\sum_j a_{b,i,j}v_j.\label{eq:dar}
 \end{align}
-The query $z_i$ is a learned vector, initialized at zero, rather than a projection of
-$x_i$. A zero query produces uniform weights over a nonempty source set; it does not
-make retrieval zero. If there are no sources, retrieval is zero. The ordinary residual
-stream remains present. The FFN has an analogous routed input with pre-LayerNorm and
-an ordinary additive residual update; it is not clipped at the same update site as the mixers.
+The query is a learned vector independent of the current residual; the softmax is over
+depth sources, not sequence positions. For an empty list we define $r_{b,i}=0$.
+For each mixer, the implemented update is
+\begin{align}
+ h_{b,i}&=\operatorname{RMSNorm}_{\mathrm{pre},b,i}(x_{b,i-1}+r_{b,i}),\\
+ \delta_{b,i}&=\mathcal C\!\left(F_{b,i}(h_{b,i})\right),\qquad
+ x_{b,i}=\mathcal C(x_{b,i-1}+\delta_{b,i}),\label{eq:mixer}
+\end{align}
+where $\mathcal C$ clips to $[-10^3,10^3]$ and replaces NaNs with zero. The mixer
+output includes its projection and dropout. Thus local sources are sanitized outputs;
+when residual clipping activates, they need not equal $x_{b,i}-x_{b,i-1}$.
+The FFN instead uses
+\begin{equation}
+ \delta_{b,5}=F_{b,5}\!\left(\operatorname{LayerNorm}(x_{b,4}+r_{b,5})\right),\qquad
+ x_{b,5}=x_{b,4}+\delta_{b,5},
+ \label{eq:ffn}
+\end{equation}
+without the same outer clipping operation. These details specify the deployed model,
+rather than an idealized unclipped residual network.
 
-\section{The \texttt{atomic\_gdn2} kernel}
+\paragraph{Zero query means uniform retrieval.}
+For $m=|\mathcal V_{b,i}|>0$, initialization at $z_{b,i}=0$ gives
+\begin{equation}
+ a_{b,i,j}=\frac1m,\qquad r_{b,i}=\frac1m\sum_{j=1}^{m}v_j,\qquad
+ \|r_{b,i}\|\leq\frac1m\sum_{j=1}^{m}\|v_j\|.
+ \label{eq:init}
+\end{equation}
+This follows directly from equal softmax logits and the triangle inequality. Retrieval
+is generally nonzero: zero query alone does not switch routing off or guarantee an
+identity-preserving conversion of a pretrained backbone. The reported models were trained
+from scratch. A nonzero task gradient confirms participation in computation, while the
+quality contribution of routing still requires a controlled ablation.
+
+\subsection{Backbone and source hierarchy}
+The model has seven blocks, each with three GDN-2 mixers followed by one causal MLA
+mixer and one SwiGLU FFN. MLA uses a rank-512 KV representation and separate 64-dimensional
+non-positional and rotary query/key components per head. The model configuration is
+given in Table~\ref{tab:model}. In comparison, each baseline block has four GDN-2 mixers
+and one FFN. The baseline has 334,156,800 parameters and hybrid has 307,131,392,
+approximately 8.09\% fewer.
+
+\begin{table}[htbp]\centering\small
+\caption{Current model configuration. A token mixer is counted separately from the one FFN
+per block. Both models use the same external kernel implementation.}\label{tab:model}
+\begin{tabular}{lrr}\toprule Setting&Baseline&hybrid\\\midrule
+Parameters&334,156,800&307,131,392\\
+Token mixers / blocks&28 / 7&28 / 7\\
+GDN-2 / MLA mixers&28 / 0&21 / 7\\
+SwiGLU FFNs&7&7\\
+Hidden / FFN dimension&1024 / 3584&1024 / 3584\\
+Heads / head dimension&8 / 128&8 / 128\\
+MLA KV rank&---&512\\
+MLA non-RoPE / RoPE dimensions&---&64 / 64\\
+DAR query&---&1024-vector per router\\
+Vocabulary / context&50,257 / 2048&50,257 / 2048\\
+Dropout&0.1&0.1\\
+Tied embeddings&Yes&Yes\\
+Model compute / parameters&bf16 / fp32&bf16 / fp32\\\bottomrule
+\end{tabular}\end{table}
+
+Before mixer $i$ in block $b$, the source list is the concatenation
+\begin{equation}
+ \mathcal V_{b,i}=[s_1,\ldots,s_{b-1}]\mathbin\Vert[\delta_{b,1},\ldots,\delta_{b,i-1}].
+\end{equation}
+The FFN receives the same previous-block summaries plus all four earlier mixer deltas.
+After the FFN, the block appends $s_b=x_{b,5}-x_{b,0}$, the actual change including the FFN.
+Only earlier sublayers can contribute; no layer reads its own newly computed delta.
+These are depth sources at the same sequence position, not persistent memory across
+independent sequences.
+
+
+\begin{table}[htbp]\centering\small
+\caption{What is inherited from DAR and what this implementation changes. The original
+paper already includes both sublayer and block variants; block grouping itself is not a new claim.}
+\label{tab:dar-adaptation}
+\begin{tabular}{>{\raggedright\arraybackslash}p{.18\textwidth}>{\raggedright\arraybackslash}p{.33\textwidth}>{\raggedright\arraybackslash}p{.39\textwidth}}\toprule
+Component&DAR formulation~\cite{dar}&This hierarchical hybrid\\\midrule
+Scoring&Learned query, RMS-normalized source keys, depth softmax&Same scoring form; one query per receiving mixer/FFN\\
+Retrieval&Original delta values added to the residual&Same additive placement before sublayer normalization\\
+Sources&Sublayer deltas or grouped block changes&Prior completed-block changes plus earlier local mixer outputs\\
+Block boundaries&Block variant includes an embedding source&No embedding source; empty history gives zero retrieval; FFN-inclusive net block change\\
+Backbone&Transformer attention/MLP sublayers&Three GDN-2 mixers, one MLA mixer and one FFN per block\\
+Numerics&Residual update formulation&Two mixer clipping sites; FFN update follows Eq.~\ref{eq:ffn}\\\bottomrule
+\end{tabular}\end{table}
+
+\begin{algorithm}[htbp]
+\caption{One hierarchical hybrid block, matching the released forward path.}
+\label{alg:hierarchical}
+\small
+\begin{tabular}{@{}r p{.91\linewidth}@{}}
+1&\textbf{Input:} $x_{b,0}$, history $H=[s_1,\ldots,s_{b-1}]$; set $x\gets x_{b,0}$, $D\gets[\,]$.\\
+2&\textbf{For} $i=1,\ldots,4$ \textbf{do} ($F_{b,1:3}$: GDN-2; $F_{b,4}$: MLA):\\
+3&\quad $\mathcal V_{b,i}\gets H\mathbin\Vert D$.\\
+4&\quad $r_{b,i}\gets\operatorname{Retrieve}(z_{b,i},\mathcal V_{b,i})$ using Eq.~\ref{eq:dar}; zero if empty.\\
+5&\quad $h\gets\operatorname{RMSNorm}_{\mathrm{pre},b,i}(x+r_{b,i})$.\\
+6&\quad $\delta_{b,i}\gets\mathcal C(F_{b,i}(h))$; append $\delta_{b,i}$ to $D$.\\
+7&\quad $x\gets\mathcal C(x+\delta_{b,i})$.\\
+8&\textbf{End for}.\\
+9&$\mathcal V_{b,5}\gets H\mathbin\Vert D$.\\
+10&$r_{b,5}\gets\operatorname{Retrieve}(z_{b,5},\mathcal V_{b,5})$.\\
+11&$x\gets x+F_{b,5}(\operatorname{LayerNorm}(x+r_{b,5}))$.\\
+12&$s_b\gets x-x_{b,0}$; append $s_b$ to $H$.\\
+13&\textbf{Return} $x_{b,5}=x$ and $H$.\\
+\end{tabular}
+\end{algorithm}
+
+Algorithm~\ref{alg:hierarchical} fixes the order: retrieve from earlier sources, compute
+the next output, then expose it to later receivers. After the block, local outputs are
+represented in later blocks by the net summary $s_b$. This hierarchy trades individual
+access to completed-block sublayers for a shorter source list; it does not preserve
+every past sublayer as a distinct candidate. Figure~\ref{fig:architecture} shows the same path.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.90\textwidth,height=0.60\textheight,keepaspectratio]{figures/architecture.pdf}
+\caption{The current hybrid computation, with a diagram layout inspired by the stacked
+residual presentation of Vaswani et al.~\cite{transformer}. (a) Seven blocks, each containing
+three GDN-2 mixers, one MLA mixer and one FFN. (b) Sequential sublayers with an ordinary
+residual bypass and an additive DAR input before normalization. Mixer inputs use RMSNorm;
+the FFN uses LayerNorm. The depth-source box means summaries and deltas available before
+the indicated stage; it is not a simultaneous all-layer attention operation. Mixer sanitization follows Eq.~\ref{eq:mixer}; the FFN follows Eq.~\ref{eq:ffn}.
+Block input/output correspond to $x_{b,0}$ and $x_{b,5}$; the summary is $s_b$.}\label{fig:architecture}
+\end{figure}
+\FloatBarrier
+
+\section{TPU implementation}
 \subsection{Execution structure and memory}
 The \texttt{atomic-ops} distribution contains two distinct kernel generations:
 the older \texttt{atomic\_ops} port and the TPU-oriented \texttt{atomic\_gdn2} implementation
@@ -156,62 +284,12 @@ Historical kernel microbenchmarks use different shapes and a supplied scan wrapp
 initial-state, scaling, final-state and composition conventions require an equivalence audit.
 They are not used to claim a speedup of hybrid over the baseline. Detailed source evidence
 and a corrected, as-yet-untimed reproduction harness are provided in the model repository's
-\texttt{docs/KERNEL\_EVIDENCE.md}; kernel code remains at the pinned \texttt{atomic-ops} revision.
-
-\section{Hybrid architecture}
-The model has seven blocks, each with three GDN-2 mixers followed by one causal MLA
-mixer and one SwiGLU FFN. MLA uses a rank-512 KV representation and separate 64-dimensional
-non-positional and rotary query/key components per head. The model configuration is
-given in Table~\ref{tab:model}. In comparison, each baseline block has four GDN-2 mixers
-and one FFN. The baseline has 334,156,800 parameters and hybrid has 307,131,392,
-approximately 8.09\% fewer.
-
-\begin{table}[htbp]\centering\small
-\caption{Current model configuration. A token mixer is counted separately from the one FFN
-per block. Both models use the same external kernel implementation.}\label{tab:model}
-\begin{tabular}{lrr}\toprule Setting&Baseline&hybrid\\\midrule
-Parameters&334,156,800&307,131,392\\
-Token mixers / blocks&28 / 7&28 / 7\\
-GDN-2 / MLA mixers&28 / 0&21 / 7\\
-SwiGLU FFNs&7&7\\
-Hidden / FFN dimension&1024 / 3584&1024 / 3584\\
-Heads / head dimension&8 / 128&8 / 128\\
-MLA KV rank&---&512\\
-MLA non-RoPE / RoPE dimensions&---&64 / 64\\
-DAR query&---&1024-vector per router\\
-Vocabulary / context&50,257 / 2048&50,257 / 2048\\
-Dropout&0.1&0.1\\
-Tied embeddings&Yes&Yes\\
-Model compute / parameters&bf16 / fp32&bf16 / fp32\\\bottomrule
-\end{tabular}\end{table}
-
-Within block $b$, the source set before mixer $i$ is
-\begin{equation}
- \mathcal V_{b,i}=\{s_1,\ldots,s_{b-1}\}\cup\{\delta_{b,1},\ldots,\delta_{b,i-1}\}.
-\end{equation}
-The FFN receives the same previous-block summaries plus all four earlier mixer deltas.
-After the FFN, the block appends $s_b=x_{out}-x_{in}$, including the FFN change.
-Only earlier sublayers can contribute; no layer reads its own newly computed delta.
-These are depth sources at the same sequence position, not persistent memory across
-independent sequences. The current design does not contain the previous standalone
-IntraBlockAttention Q/K projection mechanism.
-
-\begin{figure}[htbp]\centering
-\includegraphics[width=0.90\textwidth,height=0.60\textheight,keepaspectratio]{figures/architecture.pdf}
-\caption{The current hybrid computation, with a diagram layout inspired by the stacked
-residual presentation of Vaswani et al.~\cite{transformer}. (a) Seven blocks, each containing
-three GDN-2 mixers, one MLA mixer and one FFN. (b) Sequential sublayers with an ordinary
-residual bypass and an additive DAR input before normalization. Mixer inputs use RMSNorm;
-the FFN uses LayerNorm. The depth-source box means summaries and deltas available before
-the indicated stage; it is not a simultaneous all-layer attention operation. Sanitization
-locations are specified in the implementation.}\label{fig:architecture}
-\end{figure}
-\FloatBarrier
+\href{https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/KERNEL_EVIDENCE.md}{kernel evidence notes}; kernel code remains at the pinned \texttt{atomic-ops} revision.
 
 \section{Experiments}
 \subsection{Data, optimization and run protocol}
 All four runs were trained from scratch on the uint16 GPT-2-tokenized
-\texttt{windmaple/openwebtext-gpt2} corpus. The available files contain 9,035,582,489
+\href{https://www.kaggle.com/datasets/windmaple/openwebtext-gpt2}{\texttt{windmaple/openwebtext-gpt2}} corpus. The available files contain 9,035,582,489
 training tokens and 4,434,606 validation tokens. The loader forms nonoverlapping
 windows of 2049 tokens, uses 2048 labels per window, and drops incomplete batches.
 Final evaluation covers 67 full batches, or 4,390,912 target tokens. The configured
@@ -304,8 +382,7 @@ interval. The curve stops at the last common observation, 61,500 steps.}\label{f
 For each seed separately, the threshold crossing is the first recorded validation at
 or below the target. We then average those step/token/time values across seeds; this
 is not a crossing computed from the mean BPB curve. Table~\ref{tab:efficiency} gives the
-four evaluated thresholds. Token savings are 14.29--18.52\%, smaller than the superseded
-single-seed historical claims. A zero SD in observed crossing steps means both seeds
+four evaluated thresholds. Token savings are 14.29--18.52\%. A zero SD in observed crossing steps means both seeds
 crossed on the same 1500-step grid point; it does not locate the true crossing exactly.
 
 \begin{table}[htbp]\centering\small
@@ -360,7 +437,14 @@ language of Transformer diagrams \cite{transformer}, not their encoder--decoder 
 or post-normalization ordering. Muon is used as an optimizer component rather than
 introduced or independently benchmarked here \cite{muon}.
 
-\section{Limitations}
+\section{Discussion and limitations}
+\paragraph{Observed pattern and open mechanism.}
+The hybrid advantage appears early and narrows over the observed interval, with the same
+sign in both seed pairs. This is consistent with improved learning efficiency for the
+combined architecture under this protocol. It does not identify which component causes
+the gain or predict a different asymptotic loss. A fixed-token LR schedule and matched
+MLA/routing ablations would make that distinction more informative.
+
 \paragraph{Replication and evaluation scope.}
 Two seeds expose the observed run-to-run variation but give a weak estimate of its
 distribution. Sample SD is not a confidence interval. The study uses one corpus,
@@ -380,8 +464,7 @@ Learning rates depend on elapsed time, so models at the same step can have diffe
 learning-rate histories. The time-limited runs did not finish the available data pass.
 The selected near-step cutoff is post hoc and differs slightly between architectures
 and hybrid seeds; the exact common-step comparison and complete raw logs are therefore
-reported alongside it. No optimizer-reset artifact from the superseded experiment is
-attributed to these fresh runs.
+reported alongside it.
 
 \paragraph{Metric and crossing resolution.}
 BPB uses a fixed bytes-per-token conversion. Validation drops the final incomplete batch.
@@ -421,17 +504,16 @@ the measurements; the publication repository contains the revised documentation 
 \emph{Gated DeltaNet-2: Decoupling Erase and Write in Linear Attention}. arXiv:2605.22791, 2026.
 \url{https://arxiv.org/abs/2605.22791}.
 \bibitem{deepseek} DeepSeek-AI. \emph{DeepSeek-V2: A Strong, Economical, and Efficient
-Mixture-of-Experts Language Model}. arXiv:2405.04434, 2024.
+Mixture-of-Experts Language Model}. arXiv:2405.04434, 2024. \url{https://arxiv.org/abs/2405.04434}.
 \bibitem{dar} C. Luo, Z. Cai and J. Hu. \emph{Delta Attention Residuals}.
 arXiv:2605.18855, 2026. \url{https://arxiv.org/abs/2605.18855}.
 \bibitem{pallas} JAX authors. \emph{Pallas: a JAX kernel language}.
 \url{https://docs.jax.dev/en/latest/pallas/}.
 \bibitem{transformer} A. Vaswani et al. \emph{Attention Is All You Need}.
 Advances in Neural Information Processing Systems, 2017. arXiv:1706.03762.
+\url{https://arxiv.org/abs/1706.03762}.
 \bibitem{muon} K. Jordan. \emph{Muon: An optimizer for hidden layers in neural networks}, 2024.
 \url{https://github.com/KellerJordan/Muon}.
-\bibitem{kernelartifact} A. Omirbay. \emph{atomic-ops: GDN-2 kernels and attestation}.
-\url{https://github.com/Akseleu-J/atomic-ops}.
 \end{thebibliography}
 
 \clearpage
@@ -451,9 +533,10 @@ error bars are sample SD over two seeds.}
 \FloatBarrier
 
 \section{Reproduction records}
-The repository attestation contains source hashes, learning curves, per-seed crossings and
+\href{https://github.com/Akseleu-J/atomic-gdn2/blob/main/attestation/training.json}{The repository attestation} contains source hashes, learning curves, per-seed crossings and
 the exact/near-step distinction. Its artifact ZIP retains metrics, console and training logs,
-resolved configs and runtime checks for all four runs. Dataset edge hashes are not a full-corpus
+resolved configs and runtime checks for all four runs; see the
+\href{https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/REPRODUCING.md}{reproduction guide}. Dataset edge hashes are not a full-corpus
 checksum. Each safetensors manifest records its source step, seed, shapes, count and digest;
 default aliases refer to seed 2. Inference exports exclude the optimizer state retained in
 the original Orbax checkpoints. The model card documents research use and absence of instruction tuning.
