@@ -1,73 +1,66 @@
-# Kernel evidence for the language-model publication
+# Kernel evidence and model-training provenance
 
-## Source and scope
+Evidence status: 17 October 2026. Model quality and kernel performance have separate protocols.
 
-The four 2026-10-16 model runs used `atomic_gdn2` from immutable atomic-ops commit
-`0dbc59cf74883315d7adbebe9229c520663e0d58`. This documentation revision does not alter kernel math.
-The `atomic_ops` v0.1 port and `atomic_gdn2` v0.2 implementation are separate generations.
-The language-model comparison uses v0.2 for both architectures, not different backends.
+## Source identities
 
-## Implementation facts
+| Experiment | Kernel revision | Numerical scope |
+|---|---|---|
+| Four completed language-model runs | `0dbc59cf74883315d7adbebe9229c520663e0d58` | Original resolved training settings; both architectures share this kernel |
+| Four-path speed experiment | `11616acd8a061768a38feb12c58e5e329952f5d5` | Zero damping; measured precision, leaf sizes and rematerialization policies |
 
-- Three forward Pallas stages: scores, leaf-batched WY solve, fused factor reconstruction/chunk scan.
-- One fused B2/B1/B3/B4/B5 backward call per segment, not one call for all forward/backward or unlimited context.
-- Custom VJP retains chunk-start states, updated values, score/solve matrices and inputs;
-  backward selectively reconstructs local factors. Saved training memory grows with chunk count.
-- The default segment cap is 32 chunks. The API carries h0/h_final across segments.
-- `dot_mode=highest`, `solve_dot_mode=bf16x3`, `b3_dot_mode=bf16x3`; B4 explicitly uses highest.
-- bf16x3 uses hi/lo components and three products, not three components per operand.
-- Solve: `A=(I+(1-eps)Akk)^-1`; eps=1e-3 rescales triangular coupling, not eps-I loading.
-- With b_s2=32, g_max=160/32=5 and the BTL half-span bound is 80<88.
-- Kernel clip=1e4 and hybrid mixer clip=1e3 are different safeguards. Their activation rate is unmeasured.
+The implementation has three forward stages, a segment-fused custom backward and selective
+recomputation. Saved arrays scale with chunk count. The current package is `atomic_gdn2`;
+the earlier `atomic_ops` path is a separate comparator. `wy_eps` rescales triangular
+coupling in `[I + (1-eps)T]^-1`; it is not diagonal Tikhonov loading.
 
-## Recurrence implemented by the reference
+## Current performance evidence
 
-    Sbar = Diag(exp(g)) S_prev
-    u = b * k
-    v_new = w * v - Sbar.T @ u
-    S = Sbar + outer(k, v_new)
-    o = scale * S.T @ q
+Single TPU v5e-1, three seeds, three rounds per seed, two warmups and four timed calls
+per round for each of four paths. Full return trees are synchronized; compilation and
+host checks are outside timing. Each call replays the initial state.
 
-The erase/write gates are channel-wise. Omitting w or replacing b by an unexplained scalar
-does not specify the current API. Damping and sanitization require an explicit numerical qualification.
+| Workload | OLD/NEW | JAX_REF/NEW |
+|---|---:|---:|
+| Six-input gradient microbenchmark, B4/H6/L2048/D128 | 411.75 ± 5.13× | 34.50 ± 0.43× |
+| Complete synthetic LM optimizer step, 34,873,952 parameters, B8/L2048 | 117.76 ± 0.15× | 4.531 ± 0.004× |
 
-## Historical reports
+SD is sample SD across three seed summaries, not a confidence interval or cross-machine
+variation. Ratios are summarized from paired round ratios. OLD uses block rematerialization
+in the full step. OLD and JAX_REF are my implementations, not external library baselines.
+The experiment has 1008 timed calls and 504 warmups; all six kernel shapes are reported.
 
-`attestation/scaling.json` reports 192.83x--467.64x versus the supplied associative-scan wrapper,
-single v5e chip, B=4, D=128, b_s2=64, H=2/4/6 and L=2048/4096. It cites repo_commit b8a7687.
-Forward relative L2 values 2.486e-6 and 2.481e-6 refer to two shapes, not universal backward error.
-The `c6862ced...` identifier in the attestation README is described as a content hash and
-must not automatically be treated as a Git commit. Original per-notebook raw logs are not committed.
+[Protocol and all timing samples](https://github.com/Akseleu-J/atomic-ops/blob/main/benchmarks/README.md).
 
-The aggregate summary has 145 PASS / 1 FAIL entries mixing numerical, training and status gates.
-The complete cell list additionally contains 6 INFO and 1 ERROR records; the ERROR is a disk-full
-scale attempt documented as superseded by a later scale notebook.
-The FAIL is an OLD MQAR OOM, not a NEW numerical failure. Do not call this 146 numerical tests.
+## Numerical agreement
 
-Older README reports 103.29 vs 20674.62 ms (200.17x) for a 27.5M L=2048 LM. The matching
-raw artifact is not in the inspected aggregate. `final_report.json` instead contains a different
-27.49M L=4096 run: NEW 169.6 ms, PROD 757.65 ms, OLD 26764.55 ms (157.81x and 4.47x).
-These records must not be merged, transferred to the 307M hybrid, or selected as if from one protocol.
+Recorded kernel-gradient and full-step parameter/state/loss norm gates pass. NEW versus
+JAX_REF parameter-update checks pass all three seeds. NEW versus OLD update checks fail
+at seeds 0 and 1 and pass at seed 2. Passing parameter norms is not equivalent to passing
+update comparisons or proving equal optimizer trajectories.
 
-## Reproducer correction
+A full-model coordinate capture documents severe cancellation near AdamW's epsilon scale.
+Exact summation of its captured FP32 factors retains 98.2542% of the selected seed-0
+OLD/NEW gradient difference: the final convolution reduction alone does not explain it.
+The exact TPU audit verifies frozen factors (27 cross contractions, nine decompositions,
+nine permutation checks, eight controls), not the unrounded full-network gradient.
+It does not establish the exclusive cause of every upstream discrepancy. A separate
+seed-1 decay_a discrepancy remains outside that coordinate investigation.
 
-The previous notebook had duplicate h0 arguments, unequal h0/final-state/scale behavior,
-transition normalization inside OLD composition, a removed b4_dot_mode field hidden by a broad
-exception, and different timing repeat counts. It had no saved execution outputs.
-These defects do not prove historical measurements false, but prevent treating the old wrapper
-as an equivalent-workload reproducer. The optional corrected harness is
-[`scripts/reproduce_kernel_bench.py`](../scripts/reproduce_kernel_bench.py) in this model repository.
-At the owner's request, publication documentation changes in atomic-ops were reverted;
-its tracked tree is restored exactly to the pinned kernel revision. These audit notes belong
-to the model publication and do not change the numerical kernel implementation.
+[Numerical methods, controls and scope](https://github.com/Akseleu-J/atomic-ops/tree/main/numerical).
 
-The updated harness compares identical nonzero h0, actual final state, output scale and loss,
-uses pure affine composition, zero damping for equivalence, equal precision and repeats,
-and gates timings on forward and gradient parity. It has not yet been timed on TPU.
-No new performance number is claimed by this publication update.
+## Historical evidence and the earlier paper
 
-## Repositories
+Earlier scaling, finite differences, MQAR and model integration remain useful evidence for
+their recorded revisions. The mixed historical aggregate reports 145 PASS and one OLD
+MQAR OOM; these are not 146 independent numerical proofs of the current benchmark.
+Earlier 468×/200.17× figures are historical measurements, superseded for current headline
+reporting by the new protocol. They are not invalidated or silently redefined as the new run.
 
-- Kernel and historical attestation: https://github.com/Akseleu-J/atomic-ops
-- Current model/code/paper and four run records: https://github.com/Akseleu-J/atomic-gdn2
-- Current parameter exports/model card: https://huggingface.co/Akseleu/Atomic-GDN2
+[Historical records](https://github.com/Akseleu-J/atomic-ops/tree/main/attestation) ·
+[Original archive roles and hashes](https://github.com/Akseleu-J/atomic-ops/blob/main/artifacts/INDEX.json).
+
+The 16 October model paper still contains the earlier kernel section. See
+[paper status](../paper/README.md). Its revision is a separate editorial task.
+The optional `scripts/reproduce_kernel_bench.py` in this model repository is a different
+highest-precision diagnostic, not the harness that generated the current four-path table.

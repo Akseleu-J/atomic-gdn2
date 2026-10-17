@@ -28,4 +28,4 @@ for the exact sanitization locations. This detail is not hidden by the schematic
 Baseline: 334,156,800. Hybrid: 307,131,392, about 8.09% fewer. The obsolete 342M hybrid
 and latent-Q/K DAR checkpoints are different architectures and must not be resumed as current weights.
 Keys in the safetensors release preserve Flax names and Dense kernel orientation.
-The reference equations are adapted from Delta Attention Residuals; the block grouping/backbone is ours.
+The reference equations are adapted from Delta Attention Residuals; the block grouping/backbone is my adaptation.

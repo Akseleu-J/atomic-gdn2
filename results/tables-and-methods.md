@@ -78,4 +78,5 @@ abs(Δ)/pooled std — описательное отношение, не t-stati
 - table2-token-efficiency.csv и per-seed CSV — точные first-observed значения.
 - attestation/training.json — новые runs, seeds, matched_token_result, per_step_evolution.
 - Исторические arxiv_figure и attestation сохранены в archive/before-research-figures. Старый arxiv_figure.png фактически был PDF; новый файл соответствует расширению PNG.
-- Текст статьи не менялся. Изменения подготовлены локально, не опубликованы на GitHub.
+- Таблицы и графики входят в публичный release snapshot. Данные прогонов не изменялись.
+- BPB здесь означает BPB_est = token CE / ln(2) / 4.2; это не точный byte-level BPB.

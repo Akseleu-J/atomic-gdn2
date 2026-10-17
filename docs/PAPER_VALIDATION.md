@@ -1,3 +1,8 @@
+> **Dated receipt:** the checks below apply to the unchanged 16 October PDF.
+> Its kernel headline figures have been superseded by the 17 October measurements.
+> See [paper status](../paper/README.md) and [current evidence status](PUBLICATION_AUDIT.md).
+> A new manuscript has not yet passed a new render or bibliography audit.
+
 # Article validation — 2026-10-16
 
 Current revision: **13 pages**, sole author **Akseleu Omirbay**, I/my voice.

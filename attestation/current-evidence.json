@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "model_training_kernel_commit": "0dbc59cf74883315d7adbebe9229c520663e0d58",
+  "separate_speed_kernel_commit": "11616acd8a061768a38feb12c58e5e329952f5d5",
+  "kernel_evidence_url": "https://github.com/Akseleu-J/atomic-ops/tree/24f99004da1af2c7d5b079eeec913170fac49790",
+  "model_source_archive": "artifacts/four-runs-20261016.zip",
+  "training_source_history_is_private": true,
+  "original_provenance_preserved": true,
+  "paper_status": "16 October PDF retained; current kernel claims are documented separately; revised manuscript pending",
+  "runs": [
+    {
+      "model": "baseline",
+      "seed": 1,
+      "metrics_sha256": "6cf3f39a6440bf0d677a897e64531a09bb25ebed881c3ee6fd795f03b32d5800",
+      "hf_metrics_byte_identical": true,
+      "seed_init": 1,
+      "seed_data": 43,
+      "seed_dropout": 124,
+      "last_step": 65000,
+      "metrics_path": "artifacts/runs/baseline_seed1_b32/metrics.jsonl",
+      "public_zip_source_prefix": "raw/baseline_seed1_b32/baseline_seed1_b32/source/"
+    },
+    {
+      "model": "baseline",
+      "seed": 2,
+      "metrics_sha256": "5a71d7ac05b7ab142fe6d20ab5623957c0e035d0f1dfe55990133cc5c16ef618",
+      "hf_metrics_byte_identical": true,
+      "seed_init": 2,
+      "seed_data": 44,
+      "seed_dropout": 125,
+      "last_step": 65000,
+      "metrics_path": "artifacts/runs/baseline_seed2_b32/metrics.jsonl",
+      "public_zip_source_prefix": "raw/baseline_seed2_b32/baseline_seed2_b32/source/"
+    },
+    {
+      "model": "hybrid",
+      "seed": 1,
+      "metrics_sha256": "d99f247e6d4ba8c65a4c29f01897100f4dc528cc291d199cf11b7f2fce8b9479",
+      "hf_metrics_byte_identical": true,
+      "seed_init": 1,
+      "seed_data": 43,
+      "seed_dropout": 124,
+      "last_step": 62673,
+      "metrics_path": "artifacts/runs/hybrid_darfix_seed1_b32/metrics.jsonl",
+      "public_zip_source_prefix": "raw/hybrid_darfix_seed1_b32/hybrid_darfix_seed1_b32/source/"
+    },
+    {
+      "model": "hybrid",
+      "seed": 2,
+      "metrics_sha256": "ebab5b1a42116e90f9635eada7652c08f82bc1ea0c7e616b3ea418b44866dc4f",
+      "hf_metrics_byte_identical": true,
+      "seed_init": 2,
+      "seed_data": 44,
+      "seed_dropout": 125,
+      "last_step": 62683,
+      "metrics_path": "artifacts/runs/hybrid_darfix_seed2_b32/metrics.jsonl",
+      "public_zip_source_prefix": "raw/hybrid_darfix_seed2_b32/hybrid_darfix_seed2_b32/source/"
+    }
+  ]
+}

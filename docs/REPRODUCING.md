@@ -19,3 +19,13 @@ The original notebook bootstrap owned the setup-inclusive deadline; an ordinary 
 
 The current repository is prepared from the measured implementation; current publication commits
 are not misrepresented as the commits on which training happened.
+
+## Public source recovery
+
+The original model commit IDs identify training in private development history. Readers do
+not need access to that history: `artifacts/four-runs-20261016.zip` includes each run's
+`raw/<run>/<run>/source/atomic-gdn2/` and `source/atomic-ops/` payloads, plus hashes and
+resolved run configs. Use the matching payload, not an assumed public commit URL.
+Initialization seeds are 1/2, data seeds 43/44 and dropout seeds 124/125.
+Portable metric paths and kernel experiment identities are in
+[`attestation/current-evidence.json`](../attestation/current-evidence.json).

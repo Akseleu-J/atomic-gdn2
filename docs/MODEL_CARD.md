@@ -93,7 +93,7 @@ Mixer and FFN normalization/sanitization sites are specified in the
 [architecture notes](https://github.com/Akseleu-J/atomic-gdn2/blob/main/docs/ARCHITECTURE.md).
 
 <p align="center">
-  <img src="https://huggingface.co/Akseleu/Atomic-GDN2/resolve/fb8fdf2e00b992f4041885d26b209fcedb5b5c0c/assets/architecture.png" alt="Sequential hybrid model and expanded block with additive depth routing" width="760" />
+  <img src="https://huggingface.co/Akseleu/Atomic-GDN2/resolve/main/assets/architecture.png" alt="Sequential hybrid model and expanded block with additive depth routing" width="760" />
 </p>
 
 ## 3. Evaluation results
@@ -111,7 +111,7 @@ Validation covers **4,390,912 target tokens** in 67 full batches. The metric is
 `BPB_est = token cross-entropy / ln(2) / 4.2`: a fixed bytes-per-token estimate,
 not exact byte-level BPB. No separate test-set or downstream result is reported.
 
-![Validation learning curves and first-observed target-token requirements](https://huggingface.co/Akseleu/Atomic-GDN2/resolve/fb8fdf2e00b992f4041885d26b209fcedb5b5c0c/assets/learning-curves.png)
+![Validation learning curves and first-observed target-token requirements](https://huggingface.co/Akseleu/Atomic-GDN2/resolve/main/assets/learning-curves.png)
 
 The learning-curve endpoint uses the selected near-step cutoff: Baseline **63,000**,
 hybrid **62,673 / 62,683**. Its mean difference is **−0.011617 BPB**; this endpoint is
@@ -193,7 +193,9 @@ and generation-throughput measurements are not part of the release.
 | Setting | Reported protocol |
 |:---|:---|
 | Corpus | `windmaple/openwebtext-gpt2` |
-| Initialization / data seeds | 1 and 2 for each architecture |
+| Initialization seeds | 1 and 2 for each architecture |
+| Data seeds | 43 and 44 |
+| Dropout seeds | 124 and 125 |
 | Global batch / sequence length | 32 / 2048 |
 | Hardware per run | 8 TPU v5e devices |
 | Notebook time limit | 8 h 54 min, including setup/compile and finalization |
@@ -218,6 +220,21 @@ and generation-throughput measurements are not part of the release.
 The publication repository is a release snapshot. Per-run manifests identify the actual training sources.
 
 </details>
+
+### Kernel provenance and separate benchmark evidence
+
+The four released models use kernel commit `0dbc59cf74883315d7adbebe9229c520663e0d58`.
+The separate [four-path benchmark](https://github.com/Akseleu-J/atomic-ops/blob/main/benchmarks/README.md)
+pins `11616acd8a061768a38feb12c58e5e329952f5d5`, with zero damping and fixed-state replay.
+It measures 411.75 ± 5.13× peak gradient-evaluation speedup and 117.76 ± 0.15× for a
+synthetic 34.87M LM step versus the author's OLD scan (OLD E2E uses block remat).
+Against the author's JAX_REF, the corresponding ratios are 34.50 ± 0.43× and 4.531 ± 0.004×.
+These are not measured speedups of the released 307M/334M models.
+
+[Numerical evidence](https://github.com/Akseleu-J/atomic-ops/tree/main/numerical) retains
+passing NEW/JAX_REF update checks and two failing NEW/OLD update checks. Its exact TPU
+contractions use frozen factors, not a new full-model evaluation. The linked 16 October
+report still has an earlier kernel section; see [paper status](https://github.com/Akseleu-J/atomic-gdn2/blob/main/paper/README.md).
 
 ## 7. Scope and limitations
 

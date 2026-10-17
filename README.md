@@ -2,7 +2,7 @@
 
 **TPU language-model research: pure GDN-2 and a GDN-2/MLA hybrid with hierarchical delta attention residuals.**
 
-[Paper](paper/atomic-gdn2.pdf) · [Weights](https://huggingface.co/Akseleu/Atomic-GDN2) ·
+[Earlier paper, 16 October](paper/atomic-gdn2.pdf) · [Paper status](paper/README.md) · [Weights](https://huggingface.co/Akseleu/Atomic-GDN2) ·
 [Kernel](https://github.com/Akseleu-J/atomic-ops) · [Exact results](attestation/training.json) ·
 [Full run evidence](artifacts/four-runs-20261016.zip)
 
@@ -10,11 +10,11 @@
 
 ## What is measured
 
-Four fresh Kaggle TPU v5e-8 runs, two initialization/data seeds per model, batch 32, context 2048.
+Four fresh Kaggle TPU v5e-8 runs, two seed settings per model (initialization 1/2; data 43/44; dropout 124/125), batch 32, context 2048.
 The **hybrid** combines 21 GDN-2 mixers, 7 MLA mixers and 7 SwiGLU FFNs; the **Baseline** uses
 28 GDN-2 mixers and 7 FFNs. Both use the same external `atomic_gdn2` kernel implementation.
 
-| Model | Parameters | BPB at exactly 61,500 steps (mean ± sample SD) |
+| Model | Parameters | BPB_est at exactly 61,500 steps (mean ± sample SD) |
 |---|---:|---:|
 | Baseline | 334,156,800 | 1.005909 ± 0.000227 |
 | hybrid | 307,131,392 | **0.993838 ± 0.000111** |
@@ -25,7 +25,7 @@ evaluation steps in both seeds. Sample SD is computed across two seeds (`ddof=1`
 
 ![Validation learning curves](results/figure1-val-bpb.png)
 
-| Target BPB ≤ | Fewer tokens to first logged target | Less notebook time |
+| Target BPB_est ≤ | Fewer tokens to first logged target | Less notebook time |
 |---:|---:|---:|
 | 1.10 | 18.52% | 13.48% |
 | 1.08 | 17.65% | 13.55% |
@@ -60,8 +60,6 @@ is not part of this release. [Architecture](docs/ARCHITECTURE.md).
 
 ## Use the weights
 
-
-
 Weights on Hugging Face use **safetensors with original Flax tensor layout**. They are not a
 Transformers `AutoModelForCausalLM` checkpoint. Use this package's loader and matching model config;
 see [weights and inference](docs/WEIGHTS.md). No optimizer state is embedded in inference weights.
@@ -85,13 +83,26 @@ artifacts and `scripts/training_entry.py`. No training job auto-resumes into the
 
 ## Kernel scope
 
-`atomic-ops` contains distinct v0.1 and v0.2 kernel generations; this model imports v0.2 `atomic_gdn2`.
-Historical kernel microbenchmarks and current model quality are separate evidence.
-The paper includes my **up to 468× kernel speedup** against the supplied scan baseline and
-**200.17× end-to-end speedup** in a separate 27.5M-parameter language-model benchmark.
-The kernel, small-model timing and current architecture-quality comparisons have distinct
-configurations. [Kernel evidence](docs/KERNEL_EVIDENCE.md) ·
-[Strict publication audit](docs/PUBLICATION_AUDIT.md).
+Both trained architectures use `atomic_gdn2` from kernel commit
+`0dbc59cf74883315d7adbebe9229c520663e0d58`.
+The separate 17 October four-path benchmark pins
+`11616acd8a061768a38feb12c58e5e329952f5d5` and uses zero damping.
+
+| Separate benchmark | Versus the author's OLD scan | Versus the author's JAX_REF WY |
+|---|---:|---:|
+| Gradient microbenchmark, B4/H6/L2048/D128 | 411.75 ± 5.13× | 34.50 ± 0.43× |
+| Complete synthetic 34,873,952-parameter LM step, B8/L2048 | 117.76 ± 0.15× | 4.531 ± 0.004× |
+
+OLD uses block rematerialization in the full step. Timings use synchronized fixed-state
+replay, three seeds and sample SD. These ratios are not measured speedups of the
+307M/334M models. NEW/JAX_REF update checks pass all three seeds; NEW/OLD update
+checks fail for two seeds despite passing recorded full-snapshot norm gates.
+
+[Current benchmark](https://github.com/Akseleu-J/atomic-ops/blob/main/benchmarks/README.md) ·
+[Numerical evidence](https://github.com/Akseleu-J/atomic-ops/tree/main/numerical) ·
+[Kernel evidence and provenance](docs/KERNEL_EVIDENCE.md).
+The linked 16 October paper retains earlier kernel measurements; consult its
+[status and errata](paper/README.md) before quoting those numbers.
 
 ## Limitations
 

@@ -10,5 +10,6 @@
 - First observed crossing is quantized by eval_every=1500; crossing SD=0 does not mean exact crossing time.
 - Clip/nan_to_num frequency and causal effect on quality were not separately measured.
 - Saved checkpoint markers do not on their own establish restoration or semantic correctness.
-- A kernel microbenchmark is not a model-level speedup. Historical benchmark wrappers have known
-  equivalence/reproduction issues documented in KERNEL_EVIDENCE.md.
+- The current four-path kernel benchmark is separate from these four model runs. Its zero-damping
+  profile, fixed-state replay, asymmetric OLD rematerialization and update-comparison failures
+  are documented in KERNEL_EVIDENCE.md. Its speed ratios are not model-level speedups.

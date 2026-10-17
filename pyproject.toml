@@ -9,7 +9,7 @@ description = "GDN-2 baseline vs hybrid GDN-2/MLA + hierarchical block-delta DAR
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "Apache-2.0" }
-authors = [{ name = "Akseleu" }]
+authors = [{ name = "Akseleu Omirbay" }]
 keywords = ["jax", "tpu", "pallas", "linear-attention", "gated-delta-net", "language-model"]
 dependencies = [
     "numpy",
