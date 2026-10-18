@@ -1,0 +1,3 @@
+
+# Preserve Observatory evidence and manifest bytes on every platform.
+Observatory/** -text

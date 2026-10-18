@@ -1,0 +1,77 @@
+{
+  "checkpoint": {
+    "repo": "Akseleu/Atomic-GDN2",
+    "revision": "efb564b842b8c001c91f222ebf453716006b73c4",
+    "path": "/root/.cache/huggingface/hub/models--Akseleu--Atomic-GDN2/snapshots/efb564b842b8c001c91f222ebf453716006b73c4/hybrid/seed-2/model.safetensors",
+    "sha256": "4f44215338eaeab0fc043b9151ad7f32e798a0ae34ae83626b458c356e750ca8",
+    "parameters": 307131392,
+    "step": 62683,
+    "verified": true
+  },
+  "finite_values_checked": 899750,
+  "tokens": 8,
+  "modules": 36,
+  "dar_source_pairs": 175,
+  "dar_mean_reconstruction_max_error": 1.259601946357325e-8,
+  "softmax_sum_max_error": 1.8812716007232666e-7,
+  "individual_dense_products": 40320,
+  "product_max_rounding_error": 1.0355570623232779e-7,
+  "all_graph_endpoints_valid": true,
+  "graph_sizes": [
+    {
+      "groups": 16,
+      "expanded": false,
+      "nodes": 2948,
+      "edges": 6944,
+      "dense": 0,
+      "dar_channels": 2800,
+      "projections": 0
+    },
+    {
+      "groups": 16,
+      "expanded": true,
+      "nodes": 14566,
+      "edges": 40066,
+      "dense": 21504,
+      "dar_channels": 2800,
+      "projections": 112
+    },
+    {
+      "groups": 32,
+      "expanded": false,
+      "nodes": 9485,
+      "edges": 24233,
+      "dense": 6720,
+      "dar_channels": 5600,
+      "projections": 35
+    },
+    {
+      "groups": 32,
+      "expanded": true,
+      "nodes": 15119,
+      "edges": 40235,
+      "dense": 17088,
+      "dar_channels": 5600,
+      "projections": 89
+    },
+    {
+      "groups": 64,
+      "expanded": false,
+      "nodes": 15309,
+      "edges": 38121,
+      "dense": 6720,
+      "dar_channels": 11200,
+      "projections": 35
+    },
+    {
+      "groups": 64,
+      "expanded": true,
+      "nodes": 16022,
+      "edges": 40178,
+      "dense": 8064,
+      "dar_channels": 11200,
+      "projections": 42
+    }
+  ],
+  "scope": "Export and graph validation. Does not establish production TPU bf16/fused numerical parity."
+}

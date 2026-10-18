@@ -1,0 +1,22 @@
+{
+  "hybrid.py": {
+    "lf_sha256": "48cf38d769ee001e4d667c3841b4b108418238cdff3c2f8ee17442f922901bb4",
+    "training_sha256": "48cf38d769ee001e4d667c3841b4b108418238cdff3c2f8ee17442f922901bb4",
+    "matches_after_windows_newline_normalization": true
+  },
+  "gdn2.py": {
+    "lf_sha256": "d85ef3b6b14deb4fb6c99064d7d8d9651a3456c90178e340eacf6b0a558e35f0",
+    "training_sha256": "d85ef3b6b14deb4fb6c99064d7d8d9651a3456c90178e340eacf6b0a558e35f0",
+    "matches_after_windows_newline_normalization": true
+  },
+  "mla.py": {
+    "lf_sha256": "58814b201382e198701fc695f34adcf6604003e8cb9eb2513c202e4955986e2b",
+    "training_sha256": "58814b201382e198701fc695f34adcf6604003e8cb9eb2513c202e4955986e2b",
+    "matches_after_windows_newline_normalization": true
+  },
+  "common.py": {
+    "lf_sha256": "6ebb53cbb7ec27938483ba4975379752f1f5e01b83d92c6bcf6ca593d935980c",
+    "training_sha256": "6ebb53cbb7ec27938483ba4975379752f1f5e01b83d92c6bcf6ca593d935980c",
+    "matches_after_windows_newline_normalization": true
+  }
+}

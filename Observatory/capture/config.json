@@ -1,0 +1,31 @@
+{
+  "arch": "hybrid",
+  "model": {
+    "vocab_size": 50257,
+    "d_model": 1024,
+    "n_heads": 8,
+    "d_ff": 3584,
+    "layers_per_block": 4,
+    "num_blocks": 7,
+    "dropout_rate": 0.1,
+    "gdn2_chunk_size": 128,
+    "gdn2_bs2": 32,
+    "gdn2_mb": 8,
+    "gdn2_g_init": 0.05,
+    "l2norm_qk": true,
+    "rope_theta": 10000.0,
+    "kv_lora_rank": 512,
+    "q_lora_rank": null,
+    "qk_nope_head_dim": 64,
+    "qk_rope_head_dim": 64,
+    "d_latent": 256,
+    "layer_types_override": [],
+    "tie_embeddings": true,
+    "use_bf16": true,
+    "kernel_interpret": false
+  },
+  "format": "flax-safetensors",
+  "tensor_key_separator": "/",
+  "tokenizer": "openai-community/gpt2",
+  "transformers_compatible": false
+}

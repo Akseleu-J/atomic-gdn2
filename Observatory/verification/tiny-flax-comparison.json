@@ -1,0 +1,16 @@
+{
+  "torch_vs_original_flax_stage_max_errors": {
+    "embedding": 0.0,
+    "block_0_layer_0": 0.0003660917282104492,
+    "block_0_layer_1": 0.0003083944320678711,
+    "block_0_ffn": 0.000758826732635498,
+    "block_0_summary": 0.0009199380874633789,
+    "block_1_layer_0": 0.0004940330982208252,
+    "block_1_layer_1": 0.00034624338150024414,
+    "block_1_ffn": 0.0014980435371398926,
+    "block_1_summary": 0.0014339089393615723
+  },
+  "max_stage_error": 0.0014980435371398926,
+  "scope": "Tiny checkpoint FP32 serial reference vs original fused-interpreted Flax observations; retains observed differences",
+  "production_parity_established": false
+}

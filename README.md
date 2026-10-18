@@ -8,6 +8,16 @@
 
 ![hybrid architecture](paper/figures/architecture.png)
 
+<!-- OBSERVATORY:BEGIN -->
+## 🔭 Interactive Observatory
+
+**[Open the 3D checkpoint visualization](https://huggingface.co/spaces/Akseleu/Atomic-GDN2-Observatory)** · [Source and verification](Observatory/) · [Capture new text in Colab](https://colab.research.google.com/github/Akseleu-J/atomic-gdn2/blob/main/Observatory/notebooks/Atomic-Production-Capture.ipynb)
+
+[![Atomic-GDN2 Observatory](Observatory/assets/preview.png)](https://huggingface.co/spaces/Akseleu/Atomic-GDN2-Observatory)
+
+Hybrid seed 2: **40,235 graph links**, with a lighter-mode toggle. Checkpoint-derived **FP32 serial reference**; grouped overview, selected Dense products and structural dependencies. Eight tokens; individual Dense details are from the final token. Production TPU bf16/fused parity is not established. [Data scope and audit](Observatory/#what-the-data-means).
+<!-- OBSERVATORY:END -->
+
 ## What is measured
 
 Four fresh Kaggle TPU v5e-8 runs, two seed settings per model (initialization 1/2; data 43/44; dropout 124/125), batch 32, context 2048.
