@@ -11,11 +11,12 @@ class Element{
  setPointerCapture(){}
 }
 const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id);};
-for(const [id,value]of Object.entries({mode:'network',groups:'32',density:'100',glow:'55',sway:'40',blockLight:'25',speed:'65',module:'0',head:'0'}))get(id).value=value;
-const uniforms={};let attrib=0;const gl=new Proxy({}, {get:(_,name)=>{
+for(const [id,value]of Object.entries({mode:'network',groups:'32',density:'100',glow:'55',sway:'40',blockLight:'100',speed:'65',module:'0',head:'0'}))get(id).value=value;
+const uniforms={},draws=[];let attrib=0;const gl=new Proxy({}, {get:(_,name)=>{
  if(name==='getAttribLocation')return()=>attrib++;
  if(name==='getUniformLocation')return(_,s)=>s;
  if(name==='uniform1f')return(k,v)=>{uniforms[k]=v;};
+ if(name==='drawArrays')return()=>draws.push({...uniforms});
  if(name==='getShaderParameter'||name==='getProgramParameter')return()=>true;
  if(name.startsWith('create'))return()=>({});
  if(name.toUpperCase()===name)return 1;
@@ -30,6 +31,19 @@ ctx.window=ctx;ctx.ATOMIC_TRACE=JSON.parse(fs.readFileSync(path.join(__dirname,'
 for(const file of ['production.js','topology.js','filaments.js','app.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',file),'utf8'),ctx,{filename:file});
 function tick(count=40){for(let i=0;i<count;i++){now+=16.667;frame(now);}}
 tick();assert.equal(get('message').textContent,'');
+const html=fs.readFileSync(path.join(__dirname,'../web/index.html'),'utf8');
+assert.match(html, /id="blockLight"[^>]*value="100"/);
+const effectiveBlockLight=()=>uniforms.blockLight*uniforms.exposure/.65;
+const maximum=4*150/55;
+assert(Math.abs(effectiveBlockLight()-maximum)<1e-10);
+const referencePasses=[150/55,150/55*.3,.035*150/55,.82,150/55*.12,150/55*.65].map(v=>4*v);
+for(const glow of ['10','55','150']){
+ get('glow').value=glow;tick(1);assert(Math.abs(effectiveBlockLight()-maximum)<1e-10);
+ draws.slice(-6).forEach((pass,i)=>assert(Math.abs(pass.blockLight*pass.exposure-referencePasses[i])<1e-10));
+}
+get('blockLight').value='25';tick(1);assert(Math.abs(effectiveBlockLight()-maximum/4)<1e-10);
+get('blockLight').value='0';tick(1);assert.equal(effectiveBlockLight(),0);
+get('blockLight').value='100';get('glow').value='55';tick(1);
 const probe=JSON.parse(get('scene').dataset.pickTarget),event={clientX:probe.x,clientY:probe.y,button:0,pointerId:1};
 get('scene').onpointermove(event);tick();const hoverId=get('scene').dataset.selection;
 assert(hoverId);assert.equal(get('scene').dataset.pinned,'false');assert(uniforms.focusMix>.95);
@@ -41,5 +55,5 @@ get('motion').onclick();tick();const paused=uniforms.time;tick(100);assert.equal
 get('motion').onclick();tick();assert(uniforms.time>paused);
 get('scene').onpointermove(event);tick();get('scene').onpointerleave();tick();assert.equal(get('scene').dataset.selection,'');
 get('near').onclick();tick(100);assert(get('scene').dataset.lineVertices);assert(Number(get('scene').dataset.lineVertices)>0);
-const result={passed:true,hover_white_fan_state:true,click_pins:true,pin_survives_token:true,escape_clears:true,pointer_leave_clears_hover:true,motion_pause_freezes_clock:true,scope:'Actual app handlers with mock DOM/WebGL; GPU appearance checked separately in Chrome'};
+const result={passed:true,block_delta_default_maximum:true,block_delta_independent_of_scene_glow:true,block_delta_manual_dimming:true,hover_white_fan_state:true,click_pins:true,pin_survives_token:true,escape_clears:true,pointer_leave_clears_hover:true,motion_pause_freezes_clock:true,scope:'Actual app handlers with mock DOM/WebGL; GPU appearance checked separately in Chrome'};
 fs.writeFileSync(path.join(__dirname,'validation-interactions.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));

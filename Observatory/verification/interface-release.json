@@ -1,6 +1,8 @@
 {
   "passed": true,
-  "approved_scene_sources_identical": true,
+  "approved_graph_geometry_palette_identical": true,
+  "block_delta_default_percent": 100,
+  "block_delta_independent_of_scene_glow": true,
   "notebook_code_parses": true,
   "notebook_embeds_current_interface": true,
   "app_build_reproducible": true,

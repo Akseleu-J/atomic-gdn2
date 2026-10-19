@@ -1,5 +1,8 @@
 {
   "passed": true,
+  "block_delta_default_maximum": true,
+  "block_delta_independent_of_scene_glow": true,
+  "block_delta_manual_dimming": true,
   "hover_white_fan_state": true,
   "click_pins": true,
   "pin_survives_token": true,

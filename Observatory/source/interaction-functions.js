@@ -1,6 +1,9 @@
-function drawBuffer(name,kind,point,particle,exposure,size){
+function drawBuffer(name,kind,point,particle,exposure,size,usesSceneGlow=true){
  gl.bindBuffer(gl.ARRAY_BUFFER,buffers[name]);let off=0;
  for(const [k,n]of [['a',3],['b',3],['c',4],['d',4],['meta',4],['prior',4],['lut',4]]){gl.enableVertexAttribArray(loc[k]);gl.vertexAttribPointer(loc[k],n,gl.FLOAT,false,104,off*4);off+=n;}
+ // Match the previous maximum settings, compensating only passes using scene glow.
+ const blockLight=Number($('blockLight').value)/25*(usesSceneGlow?150/Math.max(10,Number($('glow').value)):1);
+ gl.uniform1f(loc.blockLight,blockLight);
  gl.uniform1f(loc.point,point);gl.uniform1f(loc.particle,particle);gl.uniform1f(loc.exposure,exposure);gl.uniform1f(loc.scale,size);gl.drawArrays(kind,0,counts[name]||0);
 }
 function animate(now){
@@ -19,11 +22,11 @@ function animate(now){
  if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;pickDirty=true;}
  gl.viewport(0,0,w,h);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.enable(gl.BLEND);matrix=view();if(pickDirty)updateScreenNodes();
  if(!focused&&!drag&&hoverX>=0&&now-pickStamp>65){pickStamp=now;const next=pickNode(hoverX,hoverY);if(next!==hover){hover=next;setSelection(next);inspectNode(next);}}
- gl.uniformMatrix4fv(loc.vp,false,matrix);gl.uniform1f(loc.time,clock);gl.uniform1f(loc.selectedId,selectionId);gl.uniform1f(loc.focusMix,selectionFade);gl.uniform1f(loc.transition,smooth);gl.uniform1f(loc.sway,Number($('sway').value)/40);gl.uniform1f(loc.blockLight,Number($('blockLight').value)/25);
  const exposure=Number($('glow').value)/55;
+ gl.uniformMatrix4fv(loc.vp,false,matrix);gl.uniform1f(loc.time,clock);gl.uniform1f(loc.selectedId,selectionId);gl.uniform1f(loc.focusMix,selectionFade);gl.uniform1f(loc.transition,smooth);gl.uniform1f(loc.sway,Number($('sway').value)/40);
  gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);drawBuffer('line',gl.LINES,0,0,exposure,1);
  gl.blendFunc(gl.SRC_ALPHA,gl.ONE);drawBuffer('line',gl.LINES,0,0,exposure*.3,1);
- drawBuffer('node',gl.POINTS,1,0,.035*exposure,ratio*2.6);drawBuffer('node',gl.POINTS,1,0,.82,ratio*.85);
+ drawBuffer('node',gl.POINTS,1,0,.035*exposure,ratio*2.6);drawBuffer('node',gl.POINTS,1,0,.82,ratio*.85,false);
  if(signals){drawBuffer('pulse',gl.POINTS,1,1,exposure*.12,ratio*2);drawBuffer('pulse',gl.POINTS,1,1,exposure*.65,ratio*.65);}
  for(const l of labels){const p=project(l.p);l.el.style.transform=`translate(${p[0]}px,${p[1]}px)`;const major=(trace.version===4?trace.modules.some((m,i)=>m.label===l.title&&i%5===0):true)||l.title.startsWith('Δ BLOCK');l.el.style.display=p[2]>0&&p[0]>0&&p[0]<innerWidth&&p[1]>80&&p[1]<innerHeight-120&&!(mode==='network'&&camera.distance>140&&!major)?'':'none';}
  frames++;

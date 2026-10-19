@@ -11,7 +11,7 @@ The default **40k+** view contains **40,235 graph links** and **15,119 displayed
 - Official Observatory branding, translucent side panels with close controls, grouped settings and responsive layouts.
 - Curved strands with fixed endpoints, subtle sway and direction particles. Hover highlights incident links in white; a click pins the selection across tokens.
 - Node brightness follows activation magnitude with a fixed scale within each bank across the captured token sequence. Structural junctions are visually distinct.
-- Local/layer routes remain bright; lower block-delta routes are deliberately subdued. Settings expose density, glow, block-route light, sway and signal speed.
+- Lower block-delta light starts at 100%, matching the previous maximum block-route and scene-glow settings. It remains independent of scene glow; the dedicated slider can dim it manually. Settings also expose density, glow, sway and signal speed.
 - The operating system's reduced-motion preference pauses illustrative motion on startup; users can re-enable it. Capture values and graph identities are unchanged.
 - Renderer sources and build script are in `source/`. The Colab notebook embeds the same interface.
 
