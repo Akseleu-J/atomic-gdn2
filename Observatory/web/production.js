@@ -15,7 +15,7 @@ root.ProductionGraph=function(trace,t,detail,moduleIndex=0,groups=32,expanded=fa
   const {m,x,normalized,op}=ctx;
   const src=[...new Set(p.edges.map(e=>e[0]))].sort((a,b)=>a-b),dst=[...new Set(p.edges.map(e=>e[1]))].sort((a,b)=>a-b);
   const z=slot===0?4:(slot%2?-1:1)*(4+Math.floor(slot/2)*4);
-  const a=bank(p.id+'/selected x',src.map(i=>p.input[i]),x+2.8,z,0,24,src),b=bank(p.id+'/selected y',dst.map(i=>p.output[i]),x+4.5,z,0,24,dst);
+  const a=bank(p.id+'/selected x',src.map(i=>p.input[i]),x+2.8,z,0,24,src),b=bank(p.id+'/selected y',dst.map(i=>p.output[i]),x+6.3,z,0,24,dst);
   const ai=new Map(src.map((v,i)=>[v,a[i]])),bi=new Map(dst.map((v,i)=>[v,b[i]]));
   for(const [i,j,v,w,c] of p.edges)line(ai.get(i),bi.get(j),c,'dense',`${p.id} · individual channels\nx[${i}] × W[${i},${j}] = ${c.toPrecision(6)}\nx=${v.toPrecision(5)} · W=${w.toPrecision(5)}`);
   a.forEach((n,i)=>line(normalized[Math.floor(src[i]*groups/p.input_dim)],n,0,'operation','Channel membership in normalized tensor group · structural, not a numerical mean-to-channel map'));
@@ -36,10 +36,10 @@ root.ProductionGraph=function(trace,t,detail,moduleIndex=0,groups=32,expanded=fa
   labels.push({p:[0,16,0],title:m.label,sub:'Individual channels · selected strongest outputs and their inputs'});
   return{nodes,edges,labels,total,width:Math.max(35,ds.length*7),detail:true};
  }
- const width=trace.modules.length*10,origin=-width/2;
+ const width=trace.modules.length*12,origin=-width/2;
  let residual=bank('Embedding · channel means',mean(stage('embedding')),origin);
  for(let i=0;i<trace.modules.length;i++){
-  const m=trace.modules[i],x=origin+i*10+3,r=trace.routes.find(r=>r.target===m.stage);
+  const m=trace.modules[i],x=origin+i*12+3,r=trace.routes.find(r=>r.target===m.stage);
   if(!blockStarts.has(m.block))blockStarts.set(m.block,residual);
   if(m.kind==='head'){
    const a=bank('Head LayerNorm · means',mean(m.normalized[t]),x+2),op=bank('Tied LM head',[0],x+6,0,0,0);
@@ -52,9 +52,9 @@ root.ProductionGraph=function(trace,t,detail,moduleIndex=0,groups=32,expanded=fa
    diag(residual,sum,'residual','Residual contribution');diag(got,sum,'retrieved','Retrieved Δ');
    r.sources.forEach((id,s)=>{const src=banks.get(id),hist=id.endsWith('_summary');if(!src)throw Error('Missing production DAR source '+id);diag(src,got,hist?'history':'local',id+' → '+m.stage+' · α='+r.weights[t][s].toPrecision(6),r.weights[t][s],hist?-12-Math.abs(src[0].p[0]-x)*.025:7+Math.abs(src[0].p[0]-x)*.02);});routed=sum;
   }
-  const normalized=bank(m.stage+'/normalized · means',mean(m.normalized[t]),x+2),delta=bank(m.stage,mean(stage(m.stage)),x+5),next=bank(m.stage+'/residual · means',mean(m.output[t]),x+7);
+  const normalized=bank(m.stage+'/normalized · means',mean(m.normalized[t]),x+2),delta=bank(m.stage,mean(stage(m.stage)),x+7.2),next=bank(m.stage+'/residual · means',mean(m.output[t]),x+9.4);
   diag(routed,normalized,'operation','RMSNorm/LayerNorm · structural dependency');
-  const op=bank(m.id+' operation',[0],x+3.5,0,-10,0)[0];op.structural=true;normalized.forEach(n=>line(n,op,0,'operation',m.label+' tensor input'));delta.forEach(n=>line(op,n,0,'operation',m.label+' measured Δ output'));
+  const op=bank(m.id+' operation',[0],x+4.5,0,-10,0)[0];op.structural=true;normalized.forEach(n=>line(n,op,0,'operation',m.label+' tensor input'));delta.forEach(n=>line(op,n,0,'operation',m.label+' measured Δ output'));
   const ctx={m,x,normalized,op};contexts.push(ctx);
   if(groups>=32||expanded){const p=trace.projections.find(p=>p.id.startsWith(m.id+'/'));if(p)addInputProjection(ctx,p);}
 diag(residual,next,'residual','Residual skip',1,2);diag(delta,next,'residual','Δ addition');residual=next;
@@ -73,6 +73,6 @@ diag(residual,next,'residual','Residual skip',1,2);diag(delta,next,'residual','�
    }
   }
  }
- nodes.forEach(n=>n.p[0]*=.62);labels.forEach(l=>l.p[0]*=.62);return{nodes,edges,labels,total,width:width*.62,groups,expanded,projectionCount};
+ nodes.forEach(n=>{n.p[0]*=.72;n.p[1]*=1.45;n.p[2]*=1.5;});labels.forEach(l=>{l.p[0]*=.72;l.p[1]*=1.45;l.p[2]*=1.5;});return{nodes,edges,labels,total,width:width*.72,groups,expanded,projectionCount};
 };
 })(typeof globalThis!=='undefined'?globalThis:this);

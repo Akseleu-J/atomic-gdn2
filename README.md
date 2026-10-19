@@ -16,6 +16,7 @@
 [![Atomic-GDN2 Observatory](Observatory/assets/preview.png)](https://huggingface.co/spaces/Akseleu/Atomic-GDN2-Observatory)
 
 Hybrid seed 2: **40,235 graph links**, with a lighter-mode toggle. Checkpoint-derived **FP32 serial reference**; grouped overview, selected Dense products and structural dependencies. Eight tokens; individual Dense details are from the final token. Production TPU bf16/fused parity is not established. [Data scope and audit](Observatory/#what-the-data-means).
+The official Observatory now includes curved signal strands, activation-based brightness, a pinned white connection fan and compact translucent controls. The underlying audited FP32 capture is unchanged.
 <!-- OBSERVATORY:END -->
 
 ## What is measured

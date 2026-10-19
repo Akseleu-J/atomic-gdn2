@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "hover_white_fan_state": true,
+  "click_pins": true,
+  "pin_survives_token": true,
+  "escape_clears": true,
+  "pointer_leave_clears_hover": true,
+  "motion_pause_freezes_clock": true,
+  "scope": "Actual app handlers with mock DOM/WebGL; GPU appearance checked separately in Chrome"
+}

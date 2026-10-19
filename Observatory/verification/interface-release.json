@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "approved_scene_sources_identical": true,
+  "notebook_code_parses": true,
+  "notebook_embeds_current_interface": true,
+  "app_build_reproducible": true,
+  "capture_unchanged": true
+}

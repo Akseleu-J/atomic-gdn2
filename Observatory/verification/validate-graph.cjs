@@ -51,5 +51,5 @@ for(let i=0;i<t.modules.length;i++){
  for(const e of g.edges)assert(ids.has(e.source)&&ids.has(e.target));
 }
 const report={checkpoint:t.metadata.checkpoint,finite_values_checked:finite,tokens:8,modules:36,dar_source_pairs:pairs,dar_mean_reconstruction_max_error:darError,softmax_sum_max_error:weightError,individual_dense_products:products,product_max_rounding_error:productError,all_graph_endpoints_valid:true,graph_sizes:graphs,scope:'Export and graph validation. Does not establish production TPU bf16/fused numerical parity.'};
-fs.writeFileSync(path.join(__dirname,'validation-production.json'),JSON.stringify(report,null,2));
+fs.writeFileSync(path.join(__dirname,'graph-audit.json'),JSON.stringify(report,null,2));
 console.log(JSON.stringify({...report,checkpoint:{sha256:report.checkpoint.sha256}}));

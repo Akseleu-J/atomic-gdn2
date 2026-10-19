@@ -4,7 +4,18 @@
 
 [![Atomic-GDN2 Observatory](assets/preview.png)](https://huggingface.co/spaces/Akseleu/Atomic-GDN2-Observatory)
 
-The default **40k+** view contains **40,235 graph links** and **15,119 displayed nodes** at 32 groups / full density. The top toggle restores the lighter standard view (24,233 links). Colors are preserved in the Carbon Dark interface.
+The default **40k+** view contains **40,235 graph links** and **15,119 displayed nodes** at 32 groups / full density. The top toggle restores the lighter standard view (24,233 links). The official interface uses restrained translucent instrument panels, compact navigation and a token dock. The signal palette remains signed and magnitude-aware.
+
+## Interface release · 2026-10-19
+
+- Official Observatory branding, translucent side panels with close controls, grouped settings and responsive layouts.
+- Curved strands with fixed endpoints, subtle sway and direction particles. Hover highlights incident links in white; a click pins the selection across tokens.
+- Node brightness follows activation magnitude with a fixed scale within each bank across the captured token sequence. Structural junctions are visually distinct.
+- Local/layer routes remain bright; lower block-delta routes are deliberately subdued. Settings expose density, glow, block-route light, sway and signal speed.
+- The operating system's reduced-motion preference pauses illustrative motion on startup; users can re-enable it. Capture values and graph identities are unchanged.
+- Renderer sources and build script are in `source/`. The Colab notebook embeds the same interface.
+
+Motion is a visual aid, not measured neural or hardware timing. The baseline remains available in repository history before this release.
 
 ## What the data means
 
@@ -27,7 +38,7 @@ The default **40k+** view contains **40,235 graph links** and **15,119 displayed
 
 ## Explore and reproduce
 
-Left drag: orbit; right/middle drag or Shift+drag: pan. Wheel: zoom. WASD + Q/E: fly. Shift accelerates. Click a node to inspect saved incident links; double click or F focuses it. Home resets. Use the top **40k+** toggle to compare modes, and settings for DAR, GDN state, MLA attention and projection details. Lower density or choose the standard mode on slower GPUs.
+Left drag: orbit; right/middle drag or Shift+drag: pan. Wheel: zoom. WASD + Q/E: fly. Shift accelerates. Hover a node for its white incident-link fan; click to pin selection, Esc to release; double click or F focuses it. Home resets. Use the top **40k+** toggle to compare modes, and settings for DAR, GDN state, MLA attention and projection details. Lower density or choose the standard mode on slower GPUs.
 
 The hosted site replays the frozen checkpoint trace. **New prompts run through the public Colab notebook**, with a CPU reference capture bounded to the first 8 GPT-2 tokens. No API token or private Drive notebook is needed for the public replay. Public weights are fetched without embedded credentials.
 
@@ -44,6 +55,6 @@ python Observatory/verification/audit_checkpoint.py --weights model.safetensors 
 node Observatory/verification/validate-graph.cjs
 ```
 
-`MANIFEST.json` records exact publication-file hashes. Browser short-window performance is device/load dependent; the expanded view was observed near 18 FPS on the development machine, not a universal benchmark.
+`MANIFEST.json` records exact publication-file hashes. Rendering speed is device/load dependent; no performance improvement is claimed for this interface release.
 
 Apache-2.0; see LICENSE. Tokenizer/data rights remain with their respective sources.

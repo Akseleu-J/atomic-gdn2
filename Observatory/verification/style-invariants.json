@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "node_comparisons": 31426,
+  "edge_comparisons": 83158,
+  "moving_curves": 83158,
+  "original_and_v1_preserved": true,
+  "trace_identical": true,
+  "curve_endpoints_fixed": true,
+  "block_routes_dimmed": true,
+  "scope": "Render/data invariants; browser interactions and performance checked separately"
+}

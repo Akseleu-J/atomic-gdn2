@@ -36,3 +36,13 @@ footer{background:linear-gradient(transparent,#0b0c0ef2 30%)}
 .scene-label{color:#9ca3ae;text-shadow:0 1px 6px #000}
 .scene-label strong{color:#d1d5dc}
 button:focus-visible,select:focus-visible{outline:2px solid #aab0bc;outline-offset:2px}
+
+/* Filament v1: local visual experiment based on the supplied video. */
+body{background:#030622}
+#scene{background:radial-gradient(ellipse at 12% 12%,#49264c66,transparent 42%),radial-gradient(ellipse at 86% 90%,#073c6466,transparent 44%),radial-gradient(ellipse at 50% 50%,#080b38,#020321 80%)}
+header{background:linear-gradient(#040623e8,transparent)}
+footer{background:linear-gradient(transparent,#040623ed 40%)}
+.brand span{color:#adb7d1}.scene-label{opacity:.68}.scene-label strong{color:#c3cde6}
+button,select{background:#0e1530dc;border-color:#354360}
+aside,body #inspector,body.info-open #inspector{background:#080e28ed;border-color:#354360}
+.warm{background:#ffbaab}.cool{background:#87ffd4}.violet{background:#d1b8ff}

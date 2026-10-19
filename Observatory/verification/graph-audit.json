@@ -2,7 +2,6 @@
   "checkpoint": {
     "repo": "Akseleu/Atomic-GDN2",
     "revision": "efb564b842b8c001c91f222ebf453716006b73c4",
-    "path": "/root/.cache/huggingface/hub/models--Akseleu--Atomic-GDN2/snapshots/efb564b842b8c001c91f222ebf453716006b73c4/hybrid/seed-2/model.safetensors",
     "sha256": "4f44215338eaeab0fc043b9151ad7f32e798a0ae34ae83626b458c356e750ca8",
     "parameters": 307131392,
     "step": 62683,
