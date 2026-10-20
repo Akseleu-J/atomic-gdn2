@@ -5,8 +5,8 @@
   "interface_release": "2026-10-19",
   "files": {
     "assets/preview.png": {
-      "bytes": 106923,
-      "sha256": "e51e4af5c53ac9eb537d81cfabb4b732b698f0db8ece276137b96cbfdf4da48f"
+      "bytes": 124483,
+      "sha256": "1da641b1b7ba7b5b0687b39981a143832e9bbeacc9ced09fe2c02be700cdb3cf"
     },
     "capture/compact_capture.py": {
       "bytes": 2521,
@@ -29,32 +29,32 @@
       "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
     },
     "notebooks/Atomic-Production-Capture.ipynb": {
-      "bytes": 125940,
-      "sha256": "307e0d10f37f8d108def888bfa86d5c4afaaf97b456125590d825a60557ad8bc"
+      "bytes": 123300,
+      "sha256": "63d9ac887c41fcea1fe4338b566d7060b7ac87f1f2fb6dce66058cb22d6c9ead"
     },
     "README.md": {
-      "bytes": 6729,
-      "sha256": "7ad9ccfc2b7da89dbc54ee6c635e296487a6ed2f94f82e7d18b88310f1ece0c6"
+      "bytes": 7340,
+      "sha256": "12ab9d075d32128075b568f396aa3a7a5abf5afbcd2852fa2b366604d1f12ee6"
     },
     "source/app-source.js": {
-      "bytes": 27318,
-      "sha256": "4d289b23baf9403e32ae5e95f0fd61fcac15e2517b8d1cfa19809ac6484486c8"
+      "bytes": 26019,
+      "sha256": "53b0473c43a86d71cd26bba85e65fa3070de2dbe9dc58e7befb8c3d056e849fd"
     },
     "source/build.py": {
       "bytes": 1747,
       "sha256": "5eb854169bf72ef43f6b4f0c765f4ca73233297dc968708b59024c85c3dab68b"
     },
     "source/interaction-functions.js": {
-      "bytes": 5726,
-      "sha256": "f5f274a3c88e7b782e9dce666c95aa8bdc75e0fc8b8dca49c4315894af21a145"
+      "bytes": 5816,
+      "sha256": "acdfa027139dd766a5e3c4db150e3d5e3a9c37fcf1f2156d0d2f5c4935e88b3b"
     },
     "source/README.md": {
       "bytes": 618,
       "sha256": "cb46a279250d5e48729ebbee3dbf336d4449b1e793b27e8b3c02769f56ca3579"
     },
     "source/renderer-functions.js": {
-      "bytes": 5527,
-      "sha256": "ec54ecedc1b07e995a18fee2579ee5cb8f274eb644dd827eedf7077b6af6def3"
+      "bytes": 5410,
+      "sha256": "fe5d0493e4d07f1ef2fdfdb4358ee5eeb55a5b4b8a6aa64523706d726c13074f"
     },
     "verification/audit_checkpoint.py": {
       "bytes": 10512,
@@ -69,8 +69,8 @@
       "sha256": "c93fb930ded3cfb37cbea4ca18b5c104229ee2434049a7d933ae4d05f4c644d1"
     },
     "verification/interface-release.json": {
-      "bytes": 309,
-      "sha256": "c23d9282f25c698fe2ba6fdc34473f046a56d540121037ae9d46dea55496f7ef"
+      "bytes": 409,
+      "sha256": "92923eea0639d4189d6248ddb5f7a239187972ec29842f63026b64c81acd5566"
     },
     "verification/source-audit.json": {
       "bytes": 1034,
@@ -89,28 +89,28 @@
       "sha256": "a2f9b844233aa47a3ca15b604000874ea43351b8e77462cca3b237653b58f3f4"
     },
     "verification/validate-interactions.cjs": {
-      "bytes": 5429,
-      "sha256": "7a8853be8dd89b8f54c1e8513cbb171be123a6a1cdb06aabac6e3256f500b985"
+      "bytes": 5531,
+      "sha256": "68f8f1610caec9a0bd109544f43c114707451e229ee875fac85ee79a97909f52"
     },
     "verification/validation-interactions.json": {
       "bytes": 431,
       "sha256": "b17d280c4a7e154b1c71934482690b09bf6877048d9d22052b4e2a99b6708eed"
     },
     "web/app.js": {
-      "bytes": 38538,
-      "sha256": "ea591b2ddcb5a9427400c8c249705374a3e6de37f93d2c23ee3fbd619a15e6ff"
+      "bytes": 37212,
+      "sha256": "a733fbcbb729d8938bb670689d3a9b67e5b570d44ba52290af3eadb130ddec50"
     },
     "web/filaments.js": {
-      "bytes": 2303,
-      "sha256": "051758e684d2bbb03fe36d0100de812a8ae02a6ac6ba33d61c0a052d9d7fbe1c"
+      "bytes": 2301,
+      "sha256": "c01b489240aab2ecb7c9caaaaf5f7084909db3085b012c71df8ef0fee6912ffd"
     },
     "web/index.html": {
-      "bytes": 6733,
-      "sha256": "f9485b6f9f0a17edebe32f043b054595047e55f553fdce6558567ffffafb96d0"
+      "bytes": 5930,
+      "sha256": "568cf2c5eb894b7ea016edf7b51c9ee40458868208b061ac38aee3c808067b56"
     },
     "web/interface.css": {
-      "bytes": 9886,
-      "sha256": "f99b1ecbd053c931ff4a9eb4ab0893a2696837b6cc3fff72c98f93839dc95970"
+      "bytes": 10034,
+      "sha256": "9dcf2ea5f98130c93c3618552c64d68855fba3010f31940361c9a14073a08945"
     },
     "web/interface.js": {
       "bytes": 1224,

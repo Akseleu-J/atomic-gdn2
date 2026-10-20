@@ -33,13 +33,14 @@ function tick(count=40){for(let i=0;i<count;i++){now+=16.667;frame(now);}}
 tick();assert.equal(get('message').textContent,'');
 const html=fs.readFileSync(path.join(__dirname,'../web/index.html'),'utf8');
 assert.match(html, /id="blockLight"[^>]*value="100"/);
-const effectiveBlockLight=()=>uniforms.blockLight*uniforms.exposure/.65;
+const effectiveBlockLight=()=>{const pass=draws.at(-2);return pass.blockLight*pass.exposure/.65;};
 const maximum=4*150/55;
 assert(Math.abs(effectiveBlockLight()-maximum)<1e-10);
-const referencePasses=[150/55,150/55*.3,.035*150/55,.82,150/55*.12,150/55*.65].map(v=>4*v);
+const referencePasses=[150/55,150/55*.3,.012*150/55,150/55*.12,150/55*.65,.98].map(v=>4*v);
 for(const glow of ['10','55','150']){
  get('glow').value=glow;tick(1);assert(Math.abs(effectiveBlockLight()-maximum)<1e-10);
  draws.slice(-6).forEach((pass,i)=>assert(Math.abs(pass.blockLight*pass.exposure-referencePasses[i])<1e-10));
+ assert.equal(draws.at(-1).point,2);assert.equal(draws.at(-1).particle,0);
 }
 get('blockLight').value='25';tick(1);assert(Math.abs(effectiveBlockLight()-maximum/4)<1e-10);
 get('blockLight').value='0';tick(1);assert.equal(effectiveBlockLight(),0);

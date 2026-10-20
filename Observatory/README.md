@@ -6,6 +6,10 @@
 
 The default **40k+** view contains **40,235 graph links** and **15,119 displayed nodes** at 32 groups / full density. The top toggle restores the lighter standard view (24,233 links). The official interface uses restrained translucent instrument panels, compact navigation and a token dock. The signal palette remains signed and magnitude-aware.
 
+## English and color release · 2026-10-20
+
+All viewer controls, tooltips, error messages, mode explanations and Colab validation messages are in English. Dense links use saturated red for positive contributions and green for negative contributions. Layer deltas use saturated violet; block deltas use golden yellow, retaining the independent 100% light default. Discrete shaded neuron cores are drawn above the links with a small optional halo; brightness still follows the captured activation magnitude. Overview nodes remain grouped means; module projections expose the saved individual channel sample.
+
 ## Interface release · 2026-10-19
 
 - Official Observatory branding, translucent side panels with close controls, grouped settings and responsive layouts.

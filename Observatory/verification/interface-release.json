@@ -1,6 +1,9 @@
 {
   "passed": true,
-  "approved_graph_geometry_palette_identical": true,
+  "approved_graph_and_positions_identical": true,
+  "language": "English",
+  "saturated_signed_dense_palette": true,
+  "discrete_neuron_cores": true,
   "block_delta_default_percent": 100,
   "block_delta_independent_of_scene_glow": true,
   "notebook_code_parses": true,

@@ -63,7 +63,7 @@ function inspectNode(n){
  if(!n)return;
  const connected=adjacency.get(F.key(n))||[];
  $('inspectTitle').textContent=n.title;
- $('inspect').textContent=(n.structural?'Структурный узел операции.':'Значение записанного токена: '+n.v.toPrecision(7))+'\n'+connected.length+' сохранённых связей. '+(focused?'Закреплено · Esc снимает выбор.':'Наведение · клик закрепляет.')+'\n'+connected.slice().sort((a,b)=>Math.abs(b.v)-Math.abs(a.v)).slice(0,4).map(e=>e.info).join('\n');
+ $('inspect').textContent=(n.structural?'Structural operation junction.':'Captured token value: '+n.v.toPrecision(7))+'\n'+connected.length+' saved incident links. '+(focused?'Pinned · Esc releases selection.':'Hover · click to pin.')+'\n'+connected.slice().sort((a,b)=>Math.abs(b.v)-Math.abs(a.v)).slice(0,4).map(e=>e.info).join('\n');
 }
 function focusCamera(n,distance=45){if(!n)return;cameraGoal={target:[...n.p],distance};}
 function updateScreenNodes(){

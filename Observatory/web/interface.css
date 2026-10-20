@@ -1,4 +1,6 @@
 /* Observatory interface: quiet instrument surfaces around the approved scene. */
+.warm{background:#ff0e09}.cool{background:#06ff1f}.violet{background:#ad38ff}.gold{background:#ffc206}
+.detail-view .scene-label .sub{display:none}
 :root{--surface:rgba(12,18,35,.90);--stroke:rgba(174,199,224,.15);--ink:#e2e9f0;--muted:#91a1b5;--accent:#b3dfda;--panel-top:126px;--dock:164px}
 body{font-family:Inter,'Segoe UI',sans-serif;color:var(--ink)}
 button,select,input,a{outline-offset:4px}button{transition:background .18s,border-color .18s,color .18s;white-space:nowrap}

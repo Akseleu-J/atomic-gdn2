@@ -2,7 +2,7 @@
 (function(root){
  const key=n=>n.id||n.title;
  const bank=n=>key(n).replace(/:\d+$|\s*\[\d+(?:,\d+)?\].*$/,'');
- const signed=(v,a)=>v>=0?[1,.49,.42,a]:[.3,1,.7,a];
+ const signed=(v,a)=>v>=0?[1,.055,.035,a]:[.025,1,.12,a];
  function hash(s){let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619);return(h>>>0)/4294967296;}
  function blockEdge(e){return e.kind==='history'||e.kind==='summary'||/block_\d+_summary/.test((e.source||'')+' '+(e.target||''))||/Block end contribution|Subtract block start/.test(e.info||'');}
  function curve(e){
@@ -21,13 +21,13 @@
   return [...check.slice(0,3).map(v=>v/Math.max(length,1e-8)),Math.max(length,.001)];
  }
  function palette(e,max=1){
-  // Block summaries stay warm, but at least an order of magnitude quieter.
-  if(blockEdge(e))return [1,.73,.61,e.kind==='history'?.0012:.0025];
+  // Golden block routes retain their independent full-light default.
+  if(blockEdge(e))return [1,.76,.025,e.kind==='history'?.0012:.0025];
   if(e.kind==='frame')return [.37,.5,.7,.02];
-  if(['dar','local'].includes(e.kind))return [.82,.72,1,.055];
+  if(['dar','local'].includes(e.kind))return [.68,.22,1,.07];
   if(e.kind==='operation')return [.64,.79,1,.008];
   if(['residual','retrieved'].includes(e.kind))return [.5,1,.78,.065];
-  return signed(e.v,.026+.13*Math.pow(Math.min(1,Math.abs(e.v)/Math.max(max,1e-8)),.38));
+  return signed(e.v,.05+.22*Math.pow(Math.min(1,Math.abs(e.v)/Math.max(max,1e-8)),.38));
  }
  function nodeColor(n,scale){return n.structural?[.65,.8,1,.38]:signed(n.v,.08+.82*Math.sqrt(Math.min(1,Math.abs(n.v)/Math.max(scale,1e-8))));}
  const api={key,bank,hash,blockEdge,curve,sample,arc,palette,nodeColor};root.Filaments=api;if(typeof module==='object'&&module.exports)module.exports=api;

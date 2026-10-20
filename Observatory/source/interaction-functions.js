@@ -26,8 +26,10 @@ function animate(now){
  gl.uniformMatrix4fv(loc.vp,false,matrix);gl.uniform1f(loc.time,clock);gl.uniform1f(loc.selectedId,selectionId);gl.uniform1f(loc.focusMix,selectionFade);gl.uniform1f(loc.transition,smooth);gl.uniform1f(loc.sway,Number($('sway').value)/40);
  gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);drawBuffer('line',gl.LINES,0,0,exposure,1);
  gl.blendFunc(gl.SRC_ALPHA,gl.ONE);drawBuffer('line',gl.LINES,0,0,exposure*.3,1);
- drawBuffer('node',gl.POINTS,1,0,.035*exposure,ratio*2.6);drawBuffer('node',gl.POINTS,1,0,.82,ratio*.85,false);
+ drawBuffer('node',gl.POINTS,1,0,.012*exposure,ratio*2.1);
  if(signals){drawBuffer('pulse',gl.POINTS,1,1,exposure*.12,ratio*2);drawBuffer('pulse',gl.POINTS,1,1,exposure*.65,ratio*.65);}
+ // Draw discrete neuron bodies last with standard alpha blending, above strands.
+ gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);drawBuffer('node',gl.POINTS,2,0,.98,ratio*1.05,false);
  for(const l of labels){const p=project(l.p);l.el.style.transform=`translate(${p[0]}px,${p[1]}px)`;const major=(trace.version===4?trace.modules.some((m,i)=>m.label===l.title&&i%5===0):true)||l.title.startsWith('Δ BLOCK');l.el.style.display=p[2]>0&&p[0]>0&&p[0]<innerWidth&&p[1]>80&&p[1]<innerHeight-120&&!(mode==='network'&&camera.distance>140&&!major)?'':'none';}
  frames++;
  if(now-fpsStart>1000){
@@ -51,5 +53,5 @@ canvas.onpointercancel=()=>{drag=null;};
 canvas.addEventListener('wheel',e=>{e.preventDefault();cameraGoal=null;camera.distance=Math.max(.8,Math.min(1500,camera.distance*Math.exp(e.deltaY*.001)));pickDirty=true;},{passive:false});
 canvas.ondblclick=e=>focusCamera(pickNode(e.clientX,e.clientY,15));
 canvas.oncontextmenu=e=>e.preventDefault();
-canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();$('message').textContent='Контекст WebGL потерян. Перезагрузите страницу.';});
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();$('message').textContent='WebGL context lost. Reload the page.';});
 
