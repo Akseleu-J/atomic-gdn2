@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: atomic-gdn2-model
+Version: 0.1.0
+Summary: GDN-2 baseline vs hybrid GDN-2/MLA + hierarchical block-delta DAR language models in JAX/Flax on TPU
+Author: Akseleu
+License: Apache-2.0
+Keywords: jax,tpu,pallas,linear-attention,gated-delta-net,language-model
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: jax>=0.11.2
+Requires-Dist: flax==0.12.9
+Requires-Dist: optax>=0.2.0
+Requires-Dist: orbax-checkpoint
+Requires-Dist: atomic-ops>=0.2.0
+Provides-Extra: tpu
+Requires-Dist: jax[tpu]==0.11.2; extra == "tpu"
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: ruff>=0.5; extra == "dev"
+Requires-Dist: nbformat; extra == "dev"

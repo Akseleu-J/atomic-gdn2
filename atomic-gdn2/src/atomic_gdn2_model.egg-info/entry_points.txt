@@ -1,0 +1,2 @@
+[console_scripts]
+atomic-gdn2-model-train = atomic_gdn2_model.cli:main

@@ -1,0 +1,30 @@
+Metadata-Version: 2.4
+Name: atomic_ops
+Version: 0.2.0
+Summary: Fused Gated DeltaNet-2 kernels for TPU v5e (JAX/Pallas)
+Author-email: Omirbay Akseleu <omirbajakseleu5@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/Akseleu-J/atomic-ops
+Project-URL: Repository, https://github.com/Akseleu-J/atomic-ops
+Project-URL: Issues, https://github.com/Akseleu-J/atomic-ops/issues
+Keywords: jax,pallas,tpu,gated-deltanet2,deltanet,linear-attention,gated-linear-attention
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: jax<0.13,>=0.4.20
+Requires-Dist: jaxlib<0.13,>=0.4.20
+Requires-Dist: numpy>=1.24
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: ruff>=0.6.0; extra == "dev"
+Requires-Dist: pre-commit>=3.0; extra == "dev"
+Provides-Extra: examples
+Requires-Dist: flax<0.13,>=0.12.9; extra == "examples"
+Requires-Dist: optax>=0.1.7; extra == "examples"
