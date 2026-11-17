@@ -41,6 +41,7 @@ class ModelConfig:
     qk_rope_head_dim: int = 64
     # hierarchical block-delta DAR (hybrid only)
     use_dar: bool = True           # false = no-routing ablation arm
+    use_dar_official: bool = False  # true = official flat DAR (Luo et al., arXiv:2605.18855); takes precedence over use_dar
     d_latent: int = 256
     layer_types_override: tuple[str, ...] = ()
     # misc

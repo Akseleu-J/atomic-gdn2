@@ -33,6 +33,25 @@ class PaperDAR(nn.Module):
         return residual + selected.astype(residual.dtype)
 
 
+class OfficialDAR(nn.Module):
+    """Official Delta Attention Residuals (Luo et al., arXiv:2605.18855): flat
+    per-sublayer delta routing -- sources are ALL previous sublayer/FFN deltas
+    (no block grouping), plus a Null Source identity path; additive residual."""
+
+    cfg: ModelConfig
+
+    @nn.compact
+    def __call__(self, residual, sources):
+        values = jnp.stack([jnp.zeros_like(residual)] + list(sources))
+        keys = nn.RMSNorm(epsilon=1e-6, dtype=self.cfg.cdtype,
+                          param_dtype=self.cfg.pdtype, name='key_norm')(values)
+        query = self.param('query', nn.initializers.zeros, (self.cfg.d_model,), self.cfg.pdtype)
+        scores = jnp.einsum('d,nbtd->nbt', query.astype(jnp.float32), keys.astype(jnp.float32))
+        weights = jax.nn.softmax(scores, axis=0)
+        selected = jnp.einsum('nbt,nbtd->btd', weights, values.astype(jnp.float32))
+        return residual + selected.astype(residual.dtype)
+
+
 class PaperLayer(nn.Module):
     cfg: ModelConfig
     layer_type: str
@@ -40,12 +59,19 @@ class PaperLayer(nn.Module):
 
     @nn.compact
     def __call__(self, x, local, history):
-        sources = [history[j] for j in range(history.shape[0])] + list(local)
-        if self.cfg.use_dar:
-            routed = PaperDAR(self.cfg, name='dar')(x, sources)
+        if self.cfg.use_dar_official:
+            # official DAR: flat sources = ALL previous deltas (history already
+            # carries per-sublayer + FFN deltas in this mode); Null Source inside.
+            sources = [history[j] for j in range(history.shape[0])]
+            routed = OfficialDAR(self.cfg, name='dar')(x, sources)
             routed = nn.RMSNorm(epsilon=1e-6, name='pre_sublayer_norm')(routed)
         else:
-            routed = nn.RMSNorm(epsilon=1e-6, name='pre_sublayer_norm')(x)
+            sources = [history[j] for j in range(history.shape[0])] + list(local)
+            if self.cfg.use_dar:
+                routed = PaperDAR(self.cfg, name='dar')(x, sources)
+                routed = nn.RMSNorm(epsilon=1e-6, name='pre_sublayer_norm')(routed)
+            else:
+                routed = nn.RMSNorm(epsilon=1e-6, name='pre_sublayer_norm')(x)
         sub = GDN2Sub if self.layer_type == 'gdn2' else MLASub
         return _sanitize(sub(self.cfg, self.deterministic, name='sublayer')(routed))
 
@@ -63,15 +89,25 @@ class PaperBlock(nn.Module):
             delta = PaperLayer(self.cfg, lt, self.deterministic, name=f'layer_{i}')(x, local, history)
             local.append(delta)
             x = _sanitize(x + delta)
-        sources = [history[j] for j in range(history.shape[0])] + local
-        if self.cfg.use_dar:
-            routed = PaperDAR(self.cfg, name='ffn_dar')(x, sources)
+            if self.cfg.use_dar_official:
+                history = jnp.concatenate([history, delta[None]], axis=0)
+        if self.cfg.use_dar_official:
+            routed = x                       # official DAR: FFN is a plain source, no extra block router
         else:
-            routed = x
+            sources = [history[j] for j in range(history.shape[0])] + local
+            if self.cfg.use_dar:
+                routed = PaperDAR(self.cfg, name='ffn_dar')(x, sources)
+            else:
+                routed = x
         h = nn.LayerNorm(dtype=self.cfg.cdtype, param_dtype=self.cfg.pdtype)(routed)
-        x = x + SwiGLU(self.cfg, self.deterministic, name='ffn')(h)
-        # Actual block change includes the FFN; grouping boundaries stay identical.
-        return x, jnp.concatenate([history, (x - start_x)[None]], axis=0)
+        ffn_delta = SwiGLU(self.cfg, self.deterministic, name='ffn')(h)
+        x = x + ffn_delta
+        if self.cfg.use_dar_official:
+            history = jnp.concatenate([history, ffn_delta[None]], axis=0)
+        else:
+            # Actual block change includes the FFN; grouping boundaries stay identical.
+            history = jnp.concatenate([history, (x - start_x)[None]], axis=0)
+        return x, history
 
 
 class LM(nn.Module):
